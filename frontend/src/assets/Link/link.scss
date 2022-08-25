@@ -1,0 +1,35 @@
+@import '../colors.scss';
+
+// TODO: link
+// Primary Link
+a.primary-link{
+    font-size: .8rem;
+    text-decoration: none;
+    color: $colorBlue;
+}
+
+a.primary-link:hover{
+    text-decoration: underline;
+}
+
+// Light Link
+a.light-link{
+    color: gray;
+    font-size: .75rem;
+    text-decoration: none;
+}
+
+a.light-link:hover{
+    text-decoration: underline;
+}
+
+// Dark Link
+a.dark-link{
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.dark-link:hover{
+    text-decoration: underline;
+}

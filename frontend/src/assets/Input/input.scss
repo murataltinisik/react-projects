@@ -1,0 +1,24 @@
+@import '../colors.scss';
+
+// TODO: INPUT COMPONENT
+.input-group{
+    margin-top: 1rem;
+
+    // INPUT
+    input{
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid rgb(225, 225, 225);
+        border-radius: .5rem;
+        transition: all .2s ease;
+    }
+
+    input:focus{
+        outline: none;
+        border-color: $colorBlue;        
+    }
+}
+
+.input-group:first-child{
+    margin-top: 0;
+}
