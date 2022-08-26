@@ -9,17 +9,18 @@ import '../../assets/Link/link.scss';
 import '../../assets/List/list.scss';
 // MODULE SCSS
 import Scss from './style.module.scss';
+import './responsive/responsive.scss';
 
 class Login extends PureComponent {
   render() {
     return (
       <>
-        <div id={Scss.MainContainer} className="height-auto">
+        <div id={Scss.MainContainer} className="height-auto main-responsive">
           {/* LEFT BODY */}
 
           {/* RIGHT BODY */}
           <div
-            className={`${Scss.rightBody} ${Scss.register} my-3`}
+            className={`${Scss.rightBody} ${Scss.register} my-3 register-responsive-container`}
             style={{ width: '27rem' }}
           >
             <div>

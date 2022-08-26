@@ -12,9 +12,9 @@ class Login extends PureComponent {
   render() {
     return (
       <>
-        <div id={Scss.MainContainer}>
+        <div id={Scss.MainContainer} className="px-5 login-main-container">
           {/* LEFT BODY */}
-          <div className={Scss.leftBody}>
+          <div className={`${Scss.leftBody} left-body-responsive`}>
             <h1>MuratBook</h1>
             <p className={Scss.content}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -24,7 +24,7 @@ class Login extends PureComponent {
           </div>
 
           {/* RIGHT BODY */}
-          <div className={Scss.rightBody}>
+          <div className={`${Scss.rightBody} right-body-responsive`}>
             {/* FORM */}
             <div className={Scss.container}>
               <form>

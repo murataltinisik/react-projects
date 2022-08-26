@@ -1,0 +1,58 @@
+// TABLET
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    // LOGIN CONTAINER
+    .login-main-container{
+        flex-direction: column !important;
+
+        .right-body-responsive{
+            margin: 0 !important;
+        }
+
+        .left-body-responsive{
+            text-align: center;
+            margin-bottom: 2rem;
+            p{
+                padding: 0 2rem;
+                text-align: justify;
+                width: 100% !important;
+            }
+        }
+    }
+
+    // REGISTER CONTAINER
+    .register-responsive-container{
+        width: 24rem !important;
+        margin: 2rem 0 !important;
+    }
+}
+
+// MOBILE
+@media only screen and (max-width: 479px){
+    // LOGIN CONTAINER
+    .login-main-container{
+        flex-direction: column !important;
+
+        .right-body-responsive{
+            width: 23rem !important;
+            margin: 0 !important;
+        }
+
+        .left-body-responsive{
+            width: auto !important;
+            text-align: center;
+            margin-bottom: 2rem;
+            p{
+                padding: 0 1rem;
+                text-align: justify;
+                width: 100% !important;
+                font-size: .7rem !important;
+            }
+        }
+    }
+
+    // REGISTER CONTAINER
+    .register-responsive-container{
+        width: 90% !important;
+        margin: 2rem 0 !important;
+    }
+}
