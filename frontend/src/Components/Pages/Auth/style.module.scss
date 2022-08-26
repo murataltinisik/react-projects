@@ -16,8 +16,38 @@ html,body{
     align-items: center;
     background-color: #F0F2F5;
 
+    // * HEADER
+    header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: .75rem;
+        background-color: #fff;
+        box-shadow: 0 0 5px #ccc;
+
+        // TITLE
+        .title{
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: $colorBlue;
+        }
+
+        // FORM
+        form{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            input{
+                width: 14rem;
+                border-radius: .2rem;
+            }
+        }
+    }
+
      // TITLE
-     h1{
+    h1{
         font-size: 2.5rem;
         color: $colorBlue;
     }
@@ -36,7 +66,6 @@ html,body{
     // * RIGHT BODY
     .rightBody{
         width: 25rem;
-        margin-left: 5rem;
         border-radius: .5rem;
         text-align: center;
 

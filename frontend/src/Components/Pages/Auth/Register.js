@@ -11,7 +11,7 @@ import '../../assets/List/list.scss';
 import Scss from './style.module.scss';
 import './responsive/responsive.scss';
 
-class Login extends PureComponent {
+class Register extends PureComponent {
   render() {
     return (
       <>
@@ -291,4 +291,4 @@ class Login extends PureComponent {
   }
 }
 
-export default Login;
+export default Register;

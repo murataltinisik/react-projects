@@ -31,3 +31,14 @@
 .success-btn:hover{
     background-color: $colorGreen;
 }
+
+// * SECONDARY BTN
+.secondary-btn{
+    color: gray !important;
+    background-color: $colorSecondary;
+    @include name;
+}
+
+.secondary-btn:hover{
+    background-color: $colorGreen;
+}
