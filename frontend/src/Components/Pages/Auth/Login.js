@@ -29,11 +29,14 @@ class Login extends PureComponent {
             <div className={Scss.container}>
               <form>
                 <div className="input-group">
-                  <input placeholder="E-Posta veya Telefon Numarası..." />
+                  <input
+                    type="text"
+                    placeholder="E-Posta veya Telefon Numarası..."
+                  />
                 </div>
 
                 <div className="input-group">
-                  <input placeholder="Şifreniz..." />
+                  <input type="text" placeholder="Şifreniz..." />
                 </div>
 
                 <div className="input-group">
