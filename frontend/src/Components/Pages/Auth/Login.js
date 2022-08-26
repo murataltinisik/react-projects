@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 // ASSETS -> CSS
-import '../../../assets/Input/input.scss';
-import '../../../assets/Button/button.scss';
-import '../../../assets/MarginPadding/margin-padding.scss';
-import '../../../assets/Link/link.scss';
-import '../../../assets/List/list.scss';
+import '../../assets/Input/input.scss';
+import '../../assets/Button/button.scss';
+import '../../assets/MarginPadding/margin-padding.scss';
+import '../../assets/Link/link.scss';
+import '../../assets/List/list.scss';
 // MODULE SCSS
 import Scss from './style.module.scss';
 
