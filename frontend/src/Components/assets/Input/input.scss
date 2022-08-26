@@ -4,18 +4,44 @@
 .input-group{
     margin-top: 1rem;
 
+    // INPUT GROUP TITLE
+    .input-group-title{
+        text-align: left;
+        font-size: .7rem;
+        color: gray;
+    }
+
     // INPUT
-    input{
+    input[type=text], input[type=password],select, .radio{
         width: 100%;
         padding: 1rem;
         border: 1px solid rgb(225, 225, 225);
         border-radius: .5rem;
         transition: all .2s ease;
+        font-weight: 500;
     }
 
-    input:focus{
+    input:not(.register-input):focus{
         outline: none;
         border-color: $colorBlue;        
+    }
+
+    input.register-input, select.register-input, .radio{
+        border-radius: .3rem;
+        border-color: #ccc;
+    }
+
+    input.register-input:focus{
+        outline: none;
+    }
+
+    // RADIO
+    .radio{
+        padding-left: 1.8rem;
+        padding-right: 1.8rem;
+        span{
+            font-size: .75rem;
+        }
     }
 }
 
