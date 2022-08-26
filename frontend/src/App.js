@@ -4,7 +4,7 @@ import Register from './Components/Pages/Auth/Register';
 function App() {
   return (
     <div className="App">
-      <Register />
+      <Login />
     </div>
   );
 }

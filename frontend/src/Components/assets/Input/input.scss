@@ -17,13 +17,13 @@
         padding: 1rem;
         border: 1px solid rgb(225, 225, 225);
         border-radius: .5rem;
-        transition: all .2s ease;
         font-weight: 500;
     }
 
     input:not(.register-input):focus{
         outline: none;
-        border-color: $colorBlue;        
+        border-color: $colorBlue;     
+        box-shadow: 0 0 3px $colorBlue;   
     }
 
     input.register-input, select.register-input, .radio{
