@@ -1,4 +1,7 @@
 @import '../colors.scss';
+input:focus{
+    outline: none;
+}
 
 // TODO: INPUT COMPONENT
 .input-group{
@@ -31,10 +34,6 @@
         border-color: #ccc;
     }
 
-    input.register-input:focus{
-        outline: none;
-    }
-
     // RADIO
     .radio{
         padding-left: 1.8rem;
@@ -47,4 +46,26 @@
 
 .input-group:first-child{
     margin-top: 0;
+}
+
+// TODO: SEARCH COMPONENT
+.search-input{
+    padding: .5rem;
+    border-radius: 5rem;
+    background-color: $colorDarkSecondary;
+
+    // ICON
+    .icon{
+        padding-left: .5rem;
+        color: gray;
+    }
+
+    // INPUT
+    input{
+        width: 13rem;
+        border: none;
+        padding-left: .5rem;
+        font-weight: 600;
+        background-color: $colorDarkSecondary;
+    }
 }

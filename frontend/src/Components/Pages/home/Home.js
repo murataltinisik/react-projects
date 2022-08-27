@@ -1,11 +1,21 @@
 import React, { PureComponent } from 'react';
+// ? HEADER & SECTION
+import Header from '../../static/Header';
+import Section from './Section';
+
+// ? ASSETS CSS
+import '../../assets/Display/flex.scss';
+import '../../assets/main.scss';
+import '../../assets/MarginPadding/margin-padding.scss';
+import '../../assets/Input/input.scss';
 
 export class Home extends PureComponent {
   render() {
     return (
-      <div>
-        <h1>Anasayfa</h1>
-      </div>
+      <>
+        <Header />
+        <Section />
+      </>
     );
   }
 }

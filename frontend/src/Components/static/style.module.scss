@@ -1,0 +1,109 @@
+@import '../assets/colors.scss';
+
+// TODO: HEADER
+#HeaderContainer{
+    height: 3.6rem;
+    background-color: #fff;
+    box-shadow: 0 0 6px rgb(179, 179, 179);
+
+    // TITLE
+    .title{
+        // IMAGE
+        img{
+            width: 3.6rem;
+            height: 3.6rem;
+        }
+    }
+
+    // MAIN NAVBAR & RIGHT NAVBAR
+    .navbar, .rightNavbar{
+        height: 3.6rem;
+        ul li{
+            position: relative;
+            .info{
+                opacity: 0;
+                position: absolute;
+                bottom: -2.25rem;
+                padding: .4rem .6rem;
+                border-radius: .5rem;
+                box-shadow: 0 0 3px #39393A;
+                font-size: .7rem;
+                color: #fff;
+                transition: all .3s ease;
+                background-color: #39393A;
+            }
+        }
+
+        li:hover{
+            .info{
+                display: block;
+                opacity: 1;
+            }
+
+            .info:hover{
+                display: none;
+            }
+        }
+    }
+
+    // NAVBAR
+    .navbar{
+        ul{
+            height: 100%;
+
+            li{
+                height: 100%;
+                display: flex;
+                margin: 0 .5rem;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 3px solid #fff;
+
+                a{
+                    width: 8rem;
+                    height: 3rem;
+                    line-height: 3rem;
+                    text-align: center;
+                    display: block;
+                    font-size: 1.25rem;
+                    color: #ccc;
+                }
+
+                a:not(.activeLink):hover{
+                    border-radius: .3rem;
+                    background-color: $colorDarkSecondary !important;
+                    border-color: $colorDarkSecondary;
+                }
+            }
+
+            li.active{
+                border-color: $colorDarkBlue;
+
+                a{
+                    color: $colorDarkBlue;
+                }
+            }
+        }
+
+    }
+
+    .rightNavbar{
+        ul li{
+            margin-right: .5rem;
+            a{
+                display: block;
+                width: auto;
+                width: 2.8rem;
+                height: 2.8rem;
+                font-size: 1.2rem;
+                color: #000;
+                text-align: center;
+                line-height: 2.8rem;
+                border-radius: 50%;
+                text-align: center;
+                background-color: #eee;
+            }  
+        }      
+    }
+
+}
