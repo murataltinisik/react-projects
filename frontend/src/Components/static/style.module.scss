@@ -72,8 +72,8 @@
 
                 a:not(.activeLink):hover{
                     border-radius: .3rem;
-                    background-color: $colorDarkSecondary !important;
-                    border-color: $colorDarkSecondary;
+                    background-color: $colorDarkSecondaryOpacity !important;
+                    border-color: $colorDarkSecondaryOpacity;
                 }
             }
 

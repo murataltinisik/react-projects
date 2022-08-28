@@ -1,7 +1,11 @@
 import React from 'react';
-import Left from './Left';
+
 // ? MODULE CSS
 import Scss from './style.module.scss';
+
+// * PARTS
+import Left from './parts/Left';
+import Center from './parts/Center';
 
 function Section() {
   return (
@@ -10,11 +14,10 @@ function Section() {
       className="d-flex justify-content-between"
     >
       {/* LEFT */}
-      <Left Scss={Scss} />
+      <Left />
 
-      <div className={Scss.center}>
-        <h1>CONTENT</h1>
-      </div>
+      {/* CENTER */}
+      <Center />
 
       <div className={Scss.right}>
         <h1>GROUPS</h1>
