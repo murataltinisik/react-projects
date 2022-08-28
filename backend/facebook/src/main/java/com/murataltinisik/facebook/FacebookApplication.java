@@ -1,4 +1,4 @@
-package com.murataltinisik.Facebook;
+package com.murataltinisik.facebook;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

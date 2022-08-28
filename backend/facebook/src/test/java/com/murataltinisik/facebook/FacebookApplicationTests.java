@@ -1,4 +1,4 @@
-package com.murataltinisik.Facebook;
+package com.murataltinisik.facebook;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
