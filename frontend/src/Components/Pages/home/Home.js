@@ -8,6 +8,7 @@ import '../../assets/Display/flex.scss';
 import '../../assets/main.scss';
 import '../../assets/MarginPadding/margin-padding.scss';
 import '../../assets/Input/input.scss';
+import '../../assets/Link/link.scss';
 
 export class Home extends PureComponent {
   render() {
