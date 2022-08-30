@@ -10,6 +10,7 @@ import '../../assets/MarginPadding/margin-padding.scss';
 import '../../assets/Input/input.scss';
 import '../../assets/Link/link.scss';
 import '../../assets/Button/button.scss';
+import '../../assets/Elips/elips.scss';
 
 export class Home extends PureComponent {
   render() {

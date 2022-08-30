@@ -3,18 +3,26 @@
     display: flex;
 }
 
-.justify-content-between{
-    justify-content: space-between;
-}
-
 .direction-column{
     flex-direction: column;
+}
+
+.justify-content-between{
+    justify-content: space-between;
 }
 
 .justify-content-center{
     justify-content: center !important;
 }
 
+.justify-content-start{
+    justify-content: flex-start !important;
+}
+
 .align-items-center{
     align-items: center;
+}
+
+.align-items-start{
+    align-items: flex-start;
 }

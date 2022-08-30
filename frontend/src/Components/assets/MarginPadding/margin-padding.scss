@@ -23,6 +23,10 @@
     margin-top: 30px;
 }
 
+.mb-0{
+    margin-bottom: 0;
+}
+
 .mr-1{
     margin-right: 12px;
 }
@@ -78,10 +82,19 @@
     padding-right: 12px !important;
 }
 
-
 .px-2{
     padding-left: 20px !important;
     padding-right: 20px !important;
+}
+
+.px-3{
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+}
+
+.px-4{
+    padding-left: 44px !important;
+    padding-right: 44px !important;
 }
 
 .py-1{

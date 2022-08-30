@@ -170,27 +170,27 @@ function Left() {
           <a href="#" className="light-link">
             Gizlilik
           </a>
-          <div className={Scss.elips}></div>
+          <div className="elips"></div>
           <a href="#" className="light-link">
             Koşullar
           </a>
-          <div className={Scss.elips}></div>
+          <div className="elips"></div>
           <a href="#" className="light-link">
             Reklam
           </a>
-          <div className={Scss.elips}></div>
+          <div className="elips"></div>
           <a href="#" className="light-link">
             Ad Choices
           </a>
-          <div className={Scss.elips}></div>
+          <div className="elips"></div>
           <a href="#" className="light-link">
             Çerezler
           </a>
-          <div className={Scss.elips}></div>
+          <div className="elips"></div>
           <a href="#" className="light-link">
             Diğer
           </a>
-          <div className={Scss.elips}></div>
+          <div className="elips"></div>
           <a href="#" className="light-link">
             Meta <FontAwesomeIcon icon={faCopyright} /> 2022
           </a>
