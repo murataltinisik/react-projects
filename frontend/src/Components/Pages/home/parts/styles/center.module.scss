@@ -50,7 +50,32 @@
 
                 .content{
                     display: none;
+                    transition: all .7s ease;
 
+                    .contentInfo{
+                        margin-top: 2rem;
+                        margin-left: .5rem;
+                        ul{
+                            display: block;
+
+                            li{
+                                width: 100%;
+                                height: auto;
+                                line-height: normal;
+                                text-align: left;
+                                font-weight: normal;
+                                padding: 8px;
+                                cursor: initial;
+
+                                span{
+                                    font-size: 1.2rem;
+                                    color: gray;
+                                }
+                            }:hover{
+                                background-color: transparent;
+                            }
+                        }
+                    }
 
                     // * STORIES
                     .stories{
@@ -101,31 +126,6 @@
 
                     .stories:hover{
                         animation: blink 1s ease infinite;
-                    }
-
-                    .storyInfo{
-                        margin-top: 2rem;
-                        margin-left: .5rem;
-                        ul{
-                            display: block;
-
-                            li{
-                                width: 100%;
-                                height: auto;
-                                line-height: normal;
-                                text-align: left;
-                                font-weight: normal;
-                                padding: 8px;
-                                cursor: initial;
-
-                                span{
-                                    font-size: 1.2rem;
-                                    color: gray;
-                                }
-                            }:hover{
-                                background-color: transparent;
-                            }
-                        }
                     }
 
                     // * REELS
@@ -187,22 +187,88 @@
     
                        
                     }
-                    
-                    button{
-                        position: absolute;
-                        right: 19rem;
-                        top: 4.5rem;
+
+                    .nextBtn, .prevBtn{
                         font-size: 1.2rem;
                         color: gray;
                         padding: .85rem 1.1rem;
                         border-radius: 50%;
-                        background-color: transparent;
                         box-shadow: 0 0 9px #00000050;
                         background-color: #fff;
                         border: none;
                         cursor: pointer;
+                        position: absolute;
+                        top: 4.5rem;
+                        transition: all .2s ease;
+                    }
+                    button.nextBtn{
+                        right: 20rem;
+                        opacity: 1;
+                        display: block;
+                    }
+                    button.prevBtn{
+                        left: 19rem;
+                        opacity: 0;
+                        display: none;
                     }
 
+                    button:active{
+                        padding: .8rem 1.05rem;
+                        background-color: #eee;
+                    }
+
+                    // * ROOMS
+                    .rooms{
+                        width: 16.2rem;
+                        height: 12rem;
+                        padding-top: 1rem;
+                        padding-bottom: 1rem;
+                        border-radius: 7px;
+                        border: 1px solid #ccc;
+                        position: relative;
+                        transition: all .2s ease;
+
+                        // ICON
+                        .icon{
+                            width: 3.5rem;
+                            height: 5.8rem;
+                            color: purple;
+                            border-radius: 50%;
+                            border: 1px solid #eee;
+                            box-shadow: 0 0 3px purple;
+                            transition: all .2s ease;
+                        }
+
+                        // FOOT
+                        .foot{
+                            margin-top: 1rem;
+                            // P
+                            p{
+                                font-weight: 600;
+                                font-size: .85rem;
+                            }
+
+                            // BUTTON
+                            button{
+                                width: 90%;
+                                padding: .4rem 0;
+                                color: $colorBlue;
+                                font-weight: 500;
+                                border-radius: 5px;
+                                box-shadow: 0 0 3px $colorBlue;
+                                position: absolute;
+                                bottom: .8rem;
+                                cursor: pointer;
+                            }:hover{
+                                background-color: #fff;
+                            }
+                        }
+                    }
+
+                    
+                    .rooms:hover{
+                        background-color: #eee;
+                    }
                     
                 }:first-child{
                     display: flex;

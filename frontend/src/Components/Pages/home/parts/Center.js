@@ -1,11 +1,15 @@
 import {
+  faChevronLeft,
   faChevronRight,
   faCircleArrowRight,
   faClock,
   faCommentDots,
   faHeart,
+  faLink,
   faPlay,
   faPlus,
+  faUserGroup,
+  faVideoCamera,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
@@ -17,6 +21,7 @@ function Center() {
   // ACTIVE TAB MENU
   const [active, setActive] = useState(0);
 
+  // * ACTIVE TAB
   const makeActivate = e => {
     const itemId = e.target.getAttribute('itemId');
 
@@ -27,6 +32,36 @@ function Center() {
     document.querySelectorAll('.contents > div')[itemId].style.display = 'flex';
 
     setActive(itemId);
+  };
+
+  // * REELS SLIDER
+  const reelsSlider = e => {
+    // VARIABLE
+    const reelContainer = document.getElementById('reels');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const { tagName } = e.target;
+
+    if (e.target.id === 'next') {
+      reelContainer.style.left = '-19rem';
+      // NEXT
+      tagName === 'BUTTON' && (e.target.style.display = 'none');
+      tagName === 'BUTTON' && (e.target.style.opacity = '0');
+
+      // PREV
+      prev.style.display = 'block';
+      setTimeout(() => (prev.style.opacity = '1'), 800);
+    } else if (e.target.id === 'prev') {
+      reelContainer.style.left = '0';
+
+      // PREV
+      tagName === 'BUTTON' && (e.target.style.display = 'none');
+      tagName === 'BUTTON' && (e.target.style.opacity = '0');
+
+      // NEXT
+      next.style.display = 'block';
+      setTimeout(() => (next.style.opacity = '1'), 800);
+    }
   };
 
   return (
@@ -81,7 +116,7 @@ function Center() {
               </div>
 
               {/* STORY INFO */}
-              <div className={Scss.storyInfo}>
+              <div className={Scss.contentInfo}>
                 <ul>
                   <li className="d-flex align-items-center">
                     <span>
@@ -106,7 +141,10 @@ function Center() {
             </div>
 
             {/* REELS */}
-            <div className={`${Scss.content} ${Scss.overflow} d-flex`}>
+            <div
+              id="reels"
+              className={`${Scss.content} ${Scss.overflow} d-flex`}
+            >
               <div id={Scss.reelsContainer}>
                 <div className={Scss.reels}>
                   <img src="https://scontent.fesb10-1.fna.fbcdn.net/v/t15.5256-10/297722868_393717246195070_3089430352480405677_n.jpg?stp=dst-jpg_s960x960&_nc_cat=1&ccb=1-7&_nc_sid=ad6a45&_nc_ohc=bZRPKBQ04s0AX8n9iGq&_nc_ht=scontent.fesb10-1.fna&oh=00_AT9hOttHH4JLVJOt3qJeh1lPwbktor7Lt5_-hwGB-qjBqQ&oe=6312B195" />
@@ -163,13 +201,60 @@ function Center() {
                 </div>
               </div>
 
-              <button>
+              <button onClick={reelsSlider} className={Scss.nextBtn} id="next">
                 <FontAwesomeIcon icon={faChevronRight} />
+              </button>
+
+              <button onClick={reelsSlider} className={Scss.prevBtn} id="prev">
+                <FontAwesomeIcon icon={faChevronLeft} />
               </button>
             </div>
 
             {/* ROOMS */}
-            <div className={Scss.content}>Odalar</div>
+            <div className={Scss.content}>
+              <div
+                className={`${Scss.rooms} d-flex direction-column justify-content-center align-items-center`}
+              >
+                <div
+                  className={`${Scss.icon} d-flex justify-content-center align-items-center`}
+                >
+                  <FontAwesomeIcon icon={faVideoCamera} />
+                </div>
+
+                <div
+                  className={`${Scss.foot} d-flex direction-column align-items-center`}
+                >
+                  <p>Murat'ın Odası</p>
+                  <small>Başla</small>
+                  <button className="btn">Oluştur</button>
+                </div>
+              </div>
+
+              {/* STORY INFO */}
+              <div className={Scss.contentInfo}>
+                <ul>
+                  <li className="d-flex align-items-center">
+                    <span>
+                      <FontAwesomeIcon icon={faUserGroup} className="pr-1" />
+                    </span>
+                    Arkadaşlarınla canlı sesli konuşmaları yap veya
+                    arkadaşlarınla görüntülü sohbet et.
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <span>
+                      <FontAwesomeIcon icon={faUserGroup} className="pr-1" />
+                    </span>
+                    Odanda sana kimin, ne zaman katılabileceğini kontrol et.
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <span>
+                      <FontAwesomeIcon icon={faLink} className="pr-1" />
+                    </span>
+                    Facebook hesabı olan kişiler bir bağlantıyla katılabilir.
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
