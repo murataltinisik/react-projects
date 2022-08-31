@@ -11,6 +11,7 @@ import '../../assets/Input/input.scss';
 import '../../assets/Link/link.scss';
 import '../../assets/Button/button.scss';
 import '../../assets/Elips/elips.scss';
+import '../../assets/Background/background.scss';
 
 export class Home extends PureComponent {
   render() {
