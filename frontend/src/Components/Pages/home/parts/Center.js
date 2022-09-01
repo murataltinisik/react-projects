@@ -401,7 +401,7 @@ function Center() {
       </div>
 
       {/* SEND AND OTHER */}
-      <div className={Scss.sendAndOther}>
+      <div className={Scss.sendContainer}>
         <div className={Scss.send}>
           <div className="d-flex justity-content-between align-items-start">
             {/* USER */}
@@ -615,6 +615,29 @@ function Center() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ACQUAINTANCES */}
+      <div className={`${Scss.acquaintances} px-2 p-1`}>
+
+        {/* HEAD */}
+        <div className={`${Scss.head} d-flex  justify-content-between align-items-center`}>
+          <p>Tanıyor Olabileceğin Kişiler</p>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+
+        {/* FRIENDS */}
+        <div className={`${Scss.friends} ${Scss.overflow} d-flex justify-content-start align-items-center mt-1`}>
+
+          <div className={Scss.friend}></div>
+          <div className={Scss.friend}></div>
+          <div className={Scss.friend}></div>
+          <div className={Scss.friend}></div>
+          <div className={Scss.friend}></div>
+          <div className={Scss.friend}></div>
+
+        </div>
+
       </div>
     </div>
   );

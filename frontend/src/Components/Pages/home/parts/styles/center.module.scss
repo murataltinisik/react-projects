@@ -276,7 +276,6 @@ body{
                         }
                     }
 
-                    
                     .rooms:hover{
                         background-color: #eee;
                     }
@@ -345,7 +344,7 @@ body{
     }
 
     // * SEND AND OTHER
-    .sendAndOther{
+    .sendContainer{
         width: 42.5rem;
         margin-top: .8rem;
         @include centerCss;
@@ -535,5 +534,40 @@ body{
             }
         }
 
+    }
+
+    // * ACQUAINTANCES
+    .acquaintances{
+        width: 42.5rem;
+        margin-top: .8rem;
+        position: relative;
+        @include centerCss;
+        overflow: hidden;
+
+        // HEAD
+        .head{
+            p{
+                font-weight: 500;
+            }
+        }
+
+        // FRIENDS
+        .friends{
+            width: fit-content;
+            position: relative;
+            // FRIEND
+            .friend{
+                margin-right: .7rem;
+                width: 11.7rem;
+                height: 15rem;
+                border-radius: 10px;
+                background-color: #fff;
+                box-shadow: 0 1px 3px #ccc;
+            }:last-child{
+                margin-right: 0;
+            }
+        }.overflow{
+            left: 0 !important;
+        }
     }
 }
