@@ -7,6 +7,7 @@ import {
   faCircleArrowRight,
   faCircleMinus,
   faClock,
+  faClose,
   faCommentDots,
   faHeart,
   faLink,
@@ -19,15 +20,17 @@ import {
   faSortUp,
   faThumbsUp,
   faUserGroup,
+  faUserPlus,
   faVideoCamera,
   faWarning,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // ? MODULE SCSS
 import Scss from './styles/center.module.scss';
 
+var friendCounter = 1;
 function Center() {
   // ACTIVE TAB MENU
   const [active, setActive] = useState(0);
@@ -92,10 +95,6 @@ function Center() {
   const onBlurSend = () => {
     setMenuListShow(false);
   };
-
-  useEffect(() => {
-    console.log(menuListShow);
-  }, [menuListShow]);
 
   return (
     <div id={Scss.CenterContainer}>
@@ -618,26 +617,240 @@ function Center() {
       </div>
 
       {/* ACQUAINTANCES */}
-      <div className={`${Scss.acquaintances} px-2 p-1`}>
-
+      <div className={`${Scss.acquaintances} px-2 p-1`} id="Acquaintances">
         {/* HEAD */}
-        <div className={`${Scss.head} d-flex  justify-content-between align-items-center`}>
+        <div
+          className={`${Scss.head} d-flex  justify-content-between align-items-center`}
+        >
           <p>Tanıyor Olabileceğin Kişiler</p>
           <FontAwesomeIcon icon={faBars} />
         </div>
 
-        {/* FRIENDS */}
-        <div className={`${Scss.friends} ${Scss.overflow} d-flex justify-content-start align-items-center mt-1`}>
+        {/* NEXT & PREV */}
+        <div className={`${Scss.nextAndPrev} d-flex justify-content-between`}>
+          <div id="prevFriend">
+            <FontAwesomeIcon icon={faChevronLeft} id="prevIcon" />
+          </div>
 
-          <div className={Scss.friend}></div>
-          <div className={Scss.friend}></div>
-          <div className={Scss.friend}></div>
-          <div className={Scss.friend}></div>
-          <div className={Scss.friend}></div>
-          <div className={Scss.friend}></div>
-
+          <div id="nextFriend">
+            <FontAwesomeIcon icon={faChevronRight} id="nextIcon" />
+          </div>
         </div>
 
+        {/* FRIENDS */}
+        <div
+          id="friendContainer"
+          className={`${Scss.friends} ${Scss.overflow} d-flex justify-content-start align-items-center mt-1`}
+        >
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+
+          <div className={Scss.friend}>
+            <div className={Scss.hide}>
+              <FontAwesomeIcon icon={faClose} />
+            </div>
+
+            <img
+              className={Scss.image}
+              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+            />
+
+            <div className="px-2 d-flex direction-column align-items-center">
+              <p className={Scss.name}>Murat Altınışık</p>
+
+              <button className={`${Scss.add} btn`}>
+                <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
