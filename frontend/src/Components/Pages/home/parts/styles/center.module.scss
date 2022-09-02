@@ -583,6 +583,8 @@ body{
             }
 
             div:nth-child(2){
+                opacity: 1;
+                display: block;
                 position: absolute;
                 right: 2.5rem;
             }
@@ -593,7 +595,7 @@ body{
         .friends{
             width: fit-content;
             position: relative;
-            transition: all .4s ease;
+            transition: all .7s ease;
 
             // FRIEND
             .friend{
@@ -653,6 +655,8 @@ body{
             }:last-child{
                 margin-right: 0;
             }
+        }.friendOverflow{
+            left: 0;
         }
     }
 }
