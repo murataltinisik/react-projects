@@ -22,6 +22,9 @@ class acquaintances extends Component {
       slideCounter: 0,
       nextFriend: document.getElementById('nextFriend'),
       prevFriend: document.getElementById('prevFriend'),
+      width: 12.65,
+      nextClickedCount: 0,
+      prevClickedCount: 0,
     };
   }
 
@@ -58,17 +61,34 @@ class acquaintances extends Component {
     // VARIABLE
     let size = (this.state.friendSize -= 3);
     let container = this.state.friendContainer;
+    const width = this.state.width;
+    let length = this.state.constLength;
+    let clickedCount = ++this.state.nextClickedCount;
 
     if (size >= 3) {
       this.state.slideCounter += 3;
-      container.style.left = `${-12.65 * this.state.slideCounter}rem`;
+      container.style.left = `${-width * this.state.slideCounter}rem`;
     } else if (size < 3 && size > 0) {
       this.state.slideCounter += size - 0.17;
-      container.style.left = `${-12.65 * this.state.slideCounter}rem`;
+      container.style.left = `${-width * this.state.slideCounter}rem`;
       this.nextFriendStyle('none', '0');
     }
 
+    if (this.state.friendSize < 0) {
+      this.state.friendSize = 3;
+    }
+
+    if (clickedCount > 3) {
+      container.style.left = `${-width * this.state.slideCounter}rem`;
+    }
+
+    if (size <= 3) {
+      this.nextFriendStyle('none', 0);
+      container.style.left = parseInt(container.style.left) + 1 + 'rem';
+    }
+
     this.prevFriendStyle('block', '1');
+    console.log('next', size);
   };
 
   // * PREV FRIEND
@@ -77,35 +97,43 @@ class acquaintances extends Component {
     let size = (this.state.friendSize += 3);
     let container = this.state.friendContainer;
     let length = this.state.constLength;
+    const width = this.state.width;
 
-    if (size > length) {
-      size = length;
+    if (this.state.friendSize > length) {
+      this.state.friendSize = length;
+    }
+
+    if (this.state.friendSize < length) {
+      this.state.friendSize = length;
+    }
+
+    if (this.state.friendSize < 0) {
+      this.state.friendSize = 3;
     }
 
     if (this.state.slideCounter <= 3) {
       this.state.slideCounter = 0;
-      container.style.left = `${-12.65 * this.state.slideCounter}rem`;
+      container.style.left = `${-width * this.state.slideCounter}rem`;
       this.prevFriendStyle('none', '0');
     } else {
       this.state.slideCounter -= 3;
       this.state.slideCounter = Math.floor(this.state.slideCounter);
 
       container.style.left = `${
-        -12.65 * Math.floor(this.state.slideCounter)
+        -width * Math.floor(this.state.slideCounter)
       }rem`;
 
       this.state.slideCounter = Math.floor(this.state.slideCounter);
     }
 
     this.nextFriendStyle('block', '1');
+
+    console.log('prev', size);
   };
 
   render() {
     return (
-      <div
-        className={`${Scss.acquaintances} px-2 p-1`}
-        id="Acquaintances"
-      >
+      <div className={`${Scss.acquaintances} px-2 p-1`} id="Acquaintances">
         {/* HEAD */}
         <div
           className={`${Scss.head} d-flex  justify-content-between align-items-center`}
@@ -116,24 +144,12 @@ class acquaintances extends Component {
 
         {/* NEXT & PREV */}
         <div className={`${Scss.nextAndPrev} d-flex justify-content-between`}>
-          <div
-            id="prevFriend"
-            onClick={this.prevFriend}
-          >
-            <FontAwesomeIcon
-              icon={faChevronLeft}
-              id="prevIcon"
-            />
+          <div id="prevFriend" onClick={this.prevFriend}>
+            <FontAwesomeIcon icon={faChevronLeft} id="prevIcon" />
           </div>
 
-          <div
-            id="nextFriend"
-            onClick={this.nextFriend}
-          >
-            <FontAwesomeIcon
-              icon={faChevronRight}
-              id="nextIcon"
-            />
+          <div id="nextFriend" onClick={this.nextFriend}>
+            <FontAwesomeIcon icon={faChevronRight} id="nextIcon" />
           </div>
         </div>
 
