@@ -9,13 +9,6 @@ $leftMenuListHoverColor: #E4E6E9;
         overflow: hidden;
     }
 
-    // ! LINK AND BUTTON STYLE
-    @mixin linkAndButton {
-        padding: 8px;
-        border-radius: 10px;
-        transition: all .2s ease;
-    }
-
     // LEFT MENU
     #leftMenu{
         padding: 0 8px;
@@ -27,16 +20,6 @@ $leftMenuListHoverColor: #E4E6E9;
 
         li{
             width: 17.45rem;
-
-            // A
-            a{
-                font-size: .9rem;
-                @include linkAndButton;
-            }:hover, button:hover{
-                background-color: $leftMenuListHoverColor;
-            }:active, button:active{
-                background-color: #ccc;
-            }
 
             // IMG
             img{
@@ -64,7 +47,6 @@ $leftMenuListHoverColor: #E4E6E9;
                 background-color: transparent;
                 font-weight: 500;
                 cursor: pointer;
-                @include linkAndButton;
             }
         }.menuFooter{
             overflow: hidden !important;

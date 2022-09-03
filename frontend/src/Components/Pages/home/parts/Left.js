@@ -9,10 +9,13 @@ import Scss from './styles/left.module.scss';
 
 function Left() {
   return (
-    <div className={Scss.left} id={Scss.LeftContainer}>
+    <div
+      className={Scss.left}
+      id={Scss.LeftContainer}
+    >
       {/* LEFT MENU */}
       <ul id={Scss.leftMenu}>
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -25,7 +28,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -38,7 +41,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -51,7 +54,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -64,7 +67,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -77,7 +80,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -90,7 +93,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -103,7 +106,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -116,7 +119,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -129,7 +132,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -142,7 +145,7 @@ function Left() {
           </a>
         </li>
 
-        <li>
+        <li className="private-btn">
           <a
             href="#"
             className="d-flex align-items-center text-decoration-none dark-link"
@@ -156,7 +159,7 @@ function Left() {
         </li>
 
         {/* MORE MENU ITEM */}
-        <li className={Scss.moreMenuItem}>
+        <li className="additionalButton private-btn">
           <button>
             <span className="mr-1">
               <FontAwesomeIcon icon={faChevronDown} />
@@ -167,31 +170,52 @@ function Left() {
 
         {/* MENU FOOTER */}
         <li className={`${Scss.menuFooter}`}>
-          <a href="#" className="light-link">
+          <a
+            href="#"
+            className="light-link"
+          >
             Gizlilik
           </a>
           <div className="elips"></div>
-          <a href="#" className="light-link">
+          <a
+            href="#"
+            className="light-link"
+          >
             Koşullar
           </a>
           <div className="elips"></div>
-          <a href="#" className="light-link">
+          <a
+            href="#"
+            className="light-link"
+          >
             Reklam
           </a>
           <div className="elips"></div>
-          <a href="#" className="light-link">
+          <a
+            href="#"
+            className="light-link"
+          >
             Ad Choices
           </a>
           <div className="elips"></div>
-          <a href="#" className="light-link">
+          <a
+            href="#"
+            className="light-link"
+          >
             Çerezler
           </a>
           <div className="elips"></div>
-          <a href="#" className="light-link">
+          <a
+            href="#"
+            className="light-link"
+          >
             Diğer
           </a>
           <div className="elips"></div>
-          <a href="#" className="light-link">
+          <a
+            href="#"
+            className="light-link"
+          >
             Meta <FontAwesomeIcon icon={faCopyright} /> 2022
           </a>
         </li>

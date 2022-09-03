@@ -1,0 +1,23 @@
+@import "../../../../assets/colors.scss";
+
+// TODO: RIGHT CONTAINER
+#RightContainer{
+    padding-top: 1.5rem !important;
+    padding-right: 8px;
+
+    // * HEAD
+    .head{
+        width: 18.5rem;
+        h3{
+            color: gray;
+            font-size: 1rem;
+        }
+    }
+
+    // * GROUPS
+    .groups{
+        margin-top: .3rem;
+        width: 19rem;
+    }
+
+}

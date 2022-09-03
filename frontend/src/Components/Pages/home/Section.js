@@ -6,6 +6,7 @@ import Scss from './style.module.scss';
 // * PARTS
 import Left from './parts/Left';
 import Center from './parts/Center';
+import Right from './parts/Right';
 
 function Section() {
   return (
@@ -19,9 +20,8 @@ function Section() {
       {/* CENTER */}
       <Center />
 
-      <div className={Scss.right}>
-        <h1>GROUPS</h1>
-      </div>
+      {/* RIGHT */}
+      <Right />
     </section>
   );
 }

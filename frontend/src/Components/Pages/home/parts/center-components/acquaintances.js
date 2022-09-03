@@ -12,8 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Scss from '../styles/center.module.scss';
 
 class acquaintances extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       friendContainer: document.querySelector('#friendContainer'),
       friends: document.querySelectorAll('#friendContainer .friend'),
@@ -62,7 +62,6 @@ class acquaintances extends Component {
     let size = (this.state.friendSize -= 3);
     let container = this.state.friendContainer;
     const width = this.state.width;
-    let length = this.state.constLength;
     let clickedCount = ++this.state.nextClickedCount;
 
     if (size >= 3) {
@@ -80,6 +79,10 @@ class acquaintances extends Component {
 
     if (clickedCount > 3) {
       container.style.left = `${-width * this.state.slideCounter}rem`;
+    }
+
+    if (size <= 0) {
+      container.style.right = '0';
     }
 
     if (size <= 3) {
@@ -133,23 +136,43 @@ class acquaintances extends Component {
 
   render() {
     return (
-      <div className={`${Scss.acquaintances} px-2 p-1`} id="Acquaintances">
+      <div
+        className={`${Scss.acquaintances} px-2 p-1`}
+        id="Acquaintances"
+      >
         {/* HEAD */}
         <div
           className={`${Scss.head} d-flex  justify-content-between align-items-center`}
         >
           <p>Tanıyor Olabileceğin Kişiler</p>
-          <FontAwesomeIcon icon={faBars} />
+          <span>
+            <FontAwesomeIcon
+              id="menuBtn2"
+              icon={faBars}
+            />
+          </span>
         </div>
 
         {/* NEXT & PREV */}
         <div className={`${Scss.nextAndPrev} d-flex justify-content-between`}>
-          <div id="prevFriend" onClick={this.prevFriend}>
-            <FontAwesomeIcon icon={faChevronLeft} id="prevIcon" />
+          <div
+            id="prevFriend"
+            onClick={this.prevFriend}
+          >
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              id="prevIcon"
+            />
           </div>
 
-          <div id="nextFriend" onClick={this.nextFriend}>
-            <FontAwesomeIcon icon={faChevronRight} id="nextIcon" />
+          <div
+            id="nextFriend"
+            onClick={this.nextFriend}
+          >
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              id="nextIcon"
+            />
           </div>
         </div>
 

@@ -19,12 +19,20 @@
     justify-content: flex-start !important;
 }
 
+.justify-content-end{
+    justify-content: flex-end !important;
+}
+
 .align-items-center{
     align-items: center;
 }
 
 .align-items-start{
     align-items: flex-start;
+}
+
+.align-items-end{
+    align-items: flex-end !important;
 }
 
 // BLOCK

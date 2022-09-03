@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // ? MODULE SCSS
 import Scss from './styles/center.module.scss';
@@ -16,18 +16,24 @@ function Center() {
   // MENU LIST SHOW
   const [menuListShow, setMenuListShow] = useState(false);
 
-  // FRIEND CONTAINER
-  const [counter, setCounter] = useState(0);
-
-  // useEffect(() => console.log(counter), [counter]);
-
   return (
     <div id={Scss.CenterContainer}>
       {/* TOP OF */}
-      <TopOf Scss={Scss} active={active} setActive={setActive} />
+      <TopOf
+        Scss={Scss}
+        active={active}
+        setActive={setActive}
+      />
 
       {/* SHIPMENT OPERATION */}
       <Shipment Scss={Scss} />
+
+      {/* ACQUAINTANCES */}
+      <Acquaintances
+        Scss={Scss}
+        menuListShow={menuListShow}
+        setMenuListShow={setMenuListShow}
+      />
 
       {/* SEND AND OTHER */}
       <Send
@@ -35,9 +41,6 @@ function Center() {
         menuListShow={menuListShow}
         setMenuListShow={setMenuListShow}
       />
-
-      {/* ACQUAINTANCES */}
-      <Acquaintances Scss={Scss} counter={counter} setCounter={setCounter} />
     </div>
   );
 }

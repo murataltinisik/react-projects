@@ -17,10 +17,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function topOf({ Scss, active, setActive }) {
   // * ACTIVE TAB
-  const makeActivate = e => {
+  const makeActivate = (e) => {
     const itemId = e.target.getAttribute('itemId');
 
-    document.querySelectorAll('.contents > div').forEach(item => {
+    document.querySelectorAll('.contents > div').forEach((item) => {
       item.style.display = 'none';
     });
 
@@ -30,7 +30,7 @@ function topOf({ Scss, active, setActive }) {
   };
 
   // * REELS SLIDER
-  const reelsSlider = e => {
+  const reelsSlider = (e) => {
     // VARIABLE
     const reelContainer = document.getElementById('reels');
     const prev = document.getElementById('prev');
@@ -114,19 +114,28 @@ function topOf({ Scss, active, setActive }) {
               <ul>
                 <li className="d-flex align-items-center">
                   <span>
-                    <FontAwesomeIcon icon={faHeart} className="pr-1" />
+                    <FontAwesomeIcon
+                      icon={faHeart}
+                      className="pr-1"
+                    />
                   </span>
                   Arkadaşlarınla ve ailenle günlük anlarını paylaş.
                 </li>
                 <li className="d-flex align-items-center">
                   <span>
-                    <FontAwesomeIcon icon={faClock} className="pr-1" />
+                    <FontAwesomeIcon
+                      icon={faClock}
+                      className="pr-1"
+                    />
                   </span>
                   Hikayeler 24 saat sonra kaybolur.
                 </li>
                 <li className="d-flex align-items-center">
                   <span>
-                    <FontAwesomeIcon icon={faCommentDots} className="pr-1" />
+                    <FontAwesomeIcon
+                      icon={faCommentDots}
+                      className="pr-1"
+                    />
                   </span>
                   Yanıtlar ve ifadeler gizlidir.
                 </li>
@@ -135,7 +144,10 @@ function topOf({ Scss, active, setActive }) {
           </div>
 
           {/* REELS */}
-          <div id="reels" className={`${Scss.content} ${Scss.overflow} d-flex`}>
+          <div
+            id="reels"
+            className={`${Scss.content} ${Scss.overflow} d-flex`}
+          >
             <div id={Scss.reelsContainer}>
               <div className={Scss.reels}>
                 <img src="https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6" />
@@ -192,11 +204,19 @@ function topOf({ Scss, active, setActive }) {
               </div>
             </div>
 
-            <button onClick={reelsSlider} className={Scss.nextBtn} id="next">
+            <button
+              onClick={reelsSlider}
+              className={Scss.nextBtn}
+              id="next"
+            >
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
 
-            <button onClick={reelsSlider} className={Scss.prevBtn} id="prev">
+            <button
+              onClick={reelsSlider}
+              className={Scss.prevBtn}
+              id="prev"
+            >
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
           </div>
@@ -226,20 +246,29 @@ function topOf({ Scss, active, setActive }) {
               <ul>
                 <li className="d-flex align-items-center">
                   <span>
-                    <FontAwesomeIcon icon={faUserGroup} className="pr-1" />
+                    <FontAwesomeIcon
+                      icon={faUserGroup}
+                      className="pr-1"
+                    />
                   </span>
                   Arkadaşlarınla canlı sesli konuşmaları yap veya arkadaşlarınla
                   görüntülü sohbet et.
                 </li>
                 <li className="d-flex align-items-center">
                   <span>
-                    <FontAwesomeIcon icon={faUserGroup} className="pr-1" />
+                    <FontAwesomeIcon
+                      icon={faUserGroup}
+                      className="pr-1"
+                    />
                   </span>
                   Odanda sana kimin, ne zaman katılabileceğini kontrol et.
                 </li>
                 <li className="d-flex align-items-center">
                   <span>
-                    <FontAwesomeIcon icon={faLink} className="pr-1" />
+                    <FontAwesomeIcon
+                      icon={faLink}
+                      className="pr-1"
+                    />
                   </span>
                   Facebook hesabı olan kişiler bir bağlantıyla katılabilir.
                 </li>

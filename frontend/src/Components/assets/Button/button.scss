@@ -48,3 +48,37 @@
 .secondary-btn:hover{
     background-color: $colorGreen;
 }
+
+// * PRIVATE BTN
+.private-btn{
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    font-size: .9rem;
+    border-radius: 10px;
+    transition: all .2s ease;
+}.private-btn:hover{
+    background-color: #E4E6E9 !important;
+}.private-btn:active{
+    background-color: #ccc !important;
+}
+
+// * ADDITIONAL BUTTON 
+.additionalButton{
+    span{
+        display: inline-block;
+        padding: 8px 13px;
+        border-radius: 50%;
+        margin-right: 12px;
+        background-color: #E4E6E9;
+    }
+
+    button{
+        width: 100%;
+        text-align: left;
+        border: none;
+        background-color: transparent;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}
