@@ -6,7 +6,7 @@
     background-color: #fff;
     box-shadow: 0 0 6px rgb(179, 179, 179);
 
-    // TITLE
+    // * TITLE
     .title{
         // IMAGE
         img{
@@ -15,7 +15,7 @@
         }
     }
 
-    // MAIN NAVBAR & RIGHT NAVBAR
+    // * MAIN NAVBAR & RIGHT NAVBAR
     .navbar, .rightNavbar{
         height: 3.6rem;
         ul li{
@@ -47,7 +47,7 @@
         }
     }
 
-    // NAVBAR
+    // * NAVBAR
     .navbar{
         ul{
             height: 100%;
@@ -88,10 +88,13 @@
 
     }
 
+    // * RIGHT NAVBAR
     .rightNavbar{
-        ul li{
+        position: relative;
+        > ul > li{
             margin-right: .5rem;
-            a{
+            position: unset;
+            > a{
                 display: block;
                 width: auto;
                 width: 2.8rem;
@@ -104,7 +107,25 @@
                 text-align: center;
                 background-color: #eee;
             }  
-        }      
+        }  
+        
+        // * MENU
+        .menu{
+            position: absolute;
+            right: 10px;
+            width: 30rem;
+            height: 50vh;
+            border-radius: 5px;
+            background-color: $colorSecondary;
+            z-index: 1;
+            box-shadow: 0 0 12px #ccc, 0 0 3px #eee;
+
+            // HEAD
+            .head{
+            }
+
+        }
     }
+
 
 }

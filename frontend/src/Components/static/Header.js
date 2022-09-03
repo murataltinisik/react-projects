@@ -14,12 +14,17 @@ import {
   faBell,
   faUser,
   faBars,
+  faEllipsis,
+  faMaximize,
 } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
   return (
     <>
-      <div id={Scss.HeaderContainer} className="px-1">
+      <div
+        id={Scss.HeaderContainer}
+        className="px-1"
+      >
         <header className="d-flex justify-content-between align-items-center">
           {/* TITLE */}
           <div
@@ -27,7 +32,10 @@ function Header() {
           >
             <img src="https://logosvector.net/wp-content/uploads/2022/02/facebook-icon-vector.png" />
             <label className="search-input">
-              <FontAwesomeIcon icon={faSearch} className="icon" />
+              <FontAwesomeIcon
+                icon={faSearch}
+                className="icon"
+              />
               <input
                 type="text"
                 className="search"
@@ -42,10 +50,16 @@ function Header() {
           >
             <ul className="d-flex justify-content-between align-items-center">
               <li className={Scss.active}>
-                <a href="#" className={Scss.activeLink}>
+                <a
+                  href="#"
+                  className={Scss.activeLink}
+                >
                   <FontAwesomeIcon icon={faHome} />
                 </a>
-                <div className={Scss.info} id="abc">
+                <div
+                  className={Scss.info}
+                  id="abc"
+                >
                   Anasayfa
                 </div>
               </li>
@@ -90,6 +104,24 @@ function Header() {
                   <FontAwesomeIcon icon={faBars} />
                 </a>
                 <div className={Scss.info}>Menü</div>
+                <div className={Scss.menu}>
+                  <div
+                    className={`${Scss.head} d-flex justify-content-between align-items-center p-1 px-2`}
+                  >
+                    <h4 className={Scss.title}>Menü</h4>
+
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          className="secondary-link"
+                        >
+                          <FontAwesomeIcon icon={faEllipsis} />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </li>
 
               <li>
