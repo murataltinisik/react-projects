@@ -65,6 +65,7 @@
 
 // * ADDITIONAL BUTTON 
 .additionalButton{
+    border-radius: 5px;
     span{
         display: inline-block;
         padding: 8px 13px;
@@ -81,4 +82,8 @@
         font-weight: 500;
         cursor: pointer;
     }
+}.btn-hover:hover{
+    background-color: #E4E6E9 !important;
+}.btn-hover:active{
+    background-color: #ccc !important;
 }
