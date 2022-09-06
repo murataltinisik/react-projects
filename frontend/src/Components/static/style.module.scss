@@ -125,6 +125,10 @@
         div.hideMenu{
             display: none;
         }
+
+        > ul > li > div:last-child{
+            top: 3.5rem;
+        }
         
         // * MENU
         .menu{
@@ -302,7 +306,6 @@
             .foot{
                 border-top: 1px solid #eee;
             }
-            
 
         }
         
@@ -383,6 +386,11 @@
         .userProfileContainer{
             background-color: #fff !important;
             width: 22.8rem !important;
+            padding: 1rem 0;
+
+            *{
+                transition: all .1s ease !important;
+            }
 
             // PROFILE
             .profile{
@@ -421,9 +429,18 @@
 
             // PROFILE MENU
             .profileMenu{
-                ul{
+                position: relative;
+                display: flex;
+                width: fit-content;
+
+                > ul:nth-child(1) {
+                    width: 22.4rem;
+                }
+
+                ul{ 
                     padding: 0 8px;
                     padding-bottom: 8px;
+                    width: 22.4rem;
                     li{
                         padding: 5px;
                         transition: all .2s ease;
@@ -436,10 +453,11 @@
                         position: relative;
 
                         button{
+                            position: relative;
                             svg{
                                 position: absolute;
-                                right: 1rem;
-                                top: 1.15rem;
+                                left: 16rem;
+                                top: 3px;
                             }    
                         }
                     }
@@ -449,6 +467,9 @@
                     }
                 }
             }
+
+            
+
         }
         
 

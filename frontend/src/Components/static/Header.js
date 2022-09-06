@@ -7,6 +7,7 @@ import '../assets/Link/link.scss';
 import '../assets/Display/flex.scss';
 import '../assets/MarginPadding/margin-padding.scss';
 import '../assets/WidthHeight/width-height.scss';
+import '../assets/Display/display.scss';
 
 // ? PARTS
 import Title from './parts/Title';
