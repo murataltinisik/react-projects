@@ -7,16 +7,23 @@ import {
   faBell,
   faBook,
   faBullhorn,
+  faChevronRight,
+  faCircleInfo,
   faCommentDots,
+  faCopyright,
+  faDoorOpen,
   faEdit,
   faEllipsis,
   faFlag,
+  faGear,
   faImagePortrait,
   faMaximize,
+  faMoon,
   faSearch,
   faUser,
   faUsers,
   faVideoCamera,
+  faWarning,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -24,32 +31,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Scss from '../style.module.scss';
 
 export class RightNavbar extends Component {
-  constructor() {
-    super();
-    this.state = {
-      allNotificate: document.querySelectorAll('#notificates ul'),
-      activeNotificateTab: 0,
-      showBtn: document.querySelectorAll('#shownBtn li'),
-    };
-  }
-
-  componentDidMount() {
-    this.state.allNotificate = document.querySelectorAll('#notificates ul');
-    this.state.allNotificate[0].style.display = 'block';
-    this.state.allNotificate[1].style.display = 'none';
-  }
-
-  onTab = e => {
-    const notificates = this.state.allNotificate;
-    this.state.activeNotificateTab = e.target.getAttribute('tabIndex');
-    const activeTab = this.state.activeNotificateTab;
-
-    for (let i = 0; i < notificates.length; i++) {
-      notificates[i].style.display = 'none';
-    }
-    notificates[activeTab].style.display = 'block';
-  };
-
   render() {
     return (
       <div
@@ -63,7 +44,7 @@ export class RightNavbar extends Component {
             </a>
             <div className={Scss.info}>Menü</div>
 
-            <div className={Scss.menu}>
+            <div className={`${Scss.menu} ${Scss.hideMenu}`}>
               <div
                 className={`${Scss.head} d-flex justify-content-between align-items-center p-1 px-2`}
               >
@@ -73,8 +54,14 @@ export class RightNavbar extends Component {
               <div className="d-flex justify-content-between align-items-start">
                 <div className={`${Scss.searchMenu} p-1 px-2`}>
                   <div className="search-input">
-                    <FontAwesomeIcon className="icon" icon={faSearch} />
-                    <input type="text" placeholder="Menü Ara" />
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faSearch}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Menü Ara"
+                    />
                   </div>
 
                   {/* CATEGORIES */}
@@ -174,7 +161,10 @@ export class RightNavbar extends Component {
 
                   <ul>
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faEdit} />
                         </span>
@@ -183,7 +173,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faBook} />
                         </span>
@@ -192,7 +185,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faVideoCamera} />
                         </span>
@@ -203,7 +199,10 @@ export class RightNavbar extends Component {
                     <div className="hr mx-1 mt-05 mb-05"></div>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faFlag} />
                         </span>
@@ -212,7 +211,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faBullhorn} />
                         </span>
@@ -221,7 +223,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faUsers} />
                         </span>
@@ -230,7 +235,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faImagePortrait} />
                         </span>
@@ -239,7 +247,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faBagShopping} />
                         </span>
@@ -260,7 +271,7 @@ export class RightNavbar extends Component {
             <div className={Scss.info}>Messenger</div>
 
             <div
-              className={`${Scss.menu} ${Scss.messengerContainer} width-auto height-auto`}
+              className={`${Scss.menu} ${Scss.messengerContainer} ${Scss.hideMenu} width-auto height-auto`}
             >
               <div className="d-flex justify-content-between align-items-center">
                 <div
@@ -295,8 +306,14 @@ export class RightNavbar extends Component {
               <div>
                 <div className={`${Scss.searchMenu} ${Scss.boxShadowNone} p-1`}>
                   <div className="search-input">
-                    <FontAwesomeIcon className="icon" icon={faSearch} />
-                    <input type="text" placeholder="Messenger'da Ara" />
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faSearch}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Messenger'da Ara"
+                    />
                   </div>
                 </div>
 
@@ -380,7 +397,7 @@ export class RightNavbar extends Component {
             <div className={Scss.info}>Bildirimler</div>
 
             <div
-              className={`${Scss.menu} ${Scss.notificateContainer} width-auto height-auto`}
+              className={`${Scss.menu} ${Scss.notificateContainer} ${Scss.hideMenu} width-auto height-auto`}
             >
               <div className="d-flex justify-content-between align-items-center">
                 <div className={`${Scss.head} p-1 px-2`}>
@@ -402,18 +419,8 @@ export class RightNavbar extends Component {
                   id="shownBtn"
                   className={`${Scss.shown} d-flex jusitfy-content-start align-items-center px-2 mt-1`}
                 >
-                  <li
-                    className="facebook-btn width-auto mr-2"
-                    tabIndex="0"
-                    onClick={this.onTab}
-                  >
-                    Tümü
-                  </li>
-                  <li
-                    className={`${Scss.notActive} facebook-btn width-auto`}
-                    tabIndex="1"
-                    onClick={this.onTab}
-                  >
+                  <li className="facebook-btn width-auto mr-2">Tümü</li>
+                  <li className={`${Scss.notActive} facebook-btn width-auto`}>
                     Hiç Okunmayanlar
                   </li>
                 </ul>
@@ -422,16 +429,25 @@ export class RightNavbar extends Component {
                   <div className="d-flex justify-content-between align-items-center px-2">
                     <div className={Scss.title}>Daha Öncekiler</div>
                     <div className={Scss.seeMore}>
-                      <a href="#" className="primary-link">
+                      <a
+                        href="#"
+                        className="primary-link"
+                      >
                         Tümünü Gör
                       </a>
                     </div>
                   </div>
 
-                  <div className={`${Scss.notificates}`} id="notificates">
-                    <ul aria-colindex="0">
+                  <div
+                    className={`${Scss.notificates}`}
+                    id="notificates"
+                  >
+                    <ul>
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -449,7 +465,10 @@ export class RightNavbar extends Component {
                       </li>
 
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -467,7 +486,10 @@ export class RightNavbar extends Component {
                       </li>
 
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -485,7 +507,10 @@ export class RightNavbar extends Component {
                       </li>
 
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -503,9 +528,12 @@ export class RightNavbar extends Component {
                       </li>
                     </ul>
 
-                    <ul aria-colindex="1">
+                    <ul>
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -528,11 +556,129 @@ export class RightNavbar extends Component {
             </div>
           </li>
 
+          {/* USERS */}
           <li>
             <a href="#">
               <FontAwesomeIcon icon={faUser} />
             </a>
             <div className={Scss.info}>Hesap</div>
+
+            <div
+              className={`${Scss.menu} ${Scss.userProfileContainer} ${Scss.hideMenu} width-auto height-auto`}
+            >
+              <div className={Scss.profile}>
+                <div
+                  className={`${Scss.selectedProfile} px-2 py-05 d-flex justify-content-start align-items-center`}
+                >
+                  <img src="https://scontent.fesb4-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p60x60&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX9V38AS&_nc_ht=scontent.fesb4-1.fna&oh=00_AT9daDbbsXxh0Fbrq5zuH8FOZJo5nyZHr6TeJavbEbLiHA&oe=633D2A78" />
+                  <span className="ml-1">Murat Altınışık</span>
+                </div>
+                <div className="hr mb-0"></div>
+                <div className={`${Scss.allProfileSee} private-btn text-left`}>
+                  Tüm Profileri Gör
+                </div>
+              </div>
+
+              <div className={`${Scss.profileMenu}`}>
+                <ul>
+                  <li className="additionalButton d-flex align-items-center">
+                    <span>
+                      <FontAwesomeIcon icon={faGear} />
+                    </span>
+                    <button>
+                      Ayarlar ve Gizlilik
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </button>
+                  </li>
+
+                  <li className="additionalButton d-flex align-items-center">
+                    <span>
+                      <FontAwesomeIcon icon={faCircleInfo} />
+                    </span>
+                    <button>
+                      Yardım ve Destek
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </button>
+                  </li>
+
+                  <li className="additionalButton d-flex align-items-center">
+                    <span>
+                      <FontAwesomeIcon icon={faMoon} />
+                    </span>
+                    <button>
+                      Görünüm ve Erişebilirlik
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </button>
+                  </li>
+
+                  <li className="additionalButton d-flex align-items-center">
+                    <span>
+                      <FontAwesomeIcon icon={faWarning} />
+                    </span>
+                    <button>Görüş Bildir</button>
+                  </li>
+
+                  <li className="additionalButton d-flex align-items-center">
+                    <span>
+                      <FontAwesomeIcon icon={faDoorOpen} />
+                    </span>
+                    <button>Çıkış Yap</button>
+                  </li>
+
+                  {/* MENU FOOTER */}
+                  <li className={`${Scss.menuFooter}`}>
+                    <a
+                      href="#"
+                      className="light-link"
+                    >
+                      Gizlilik
+                    </a>
+                    <div className="elips"></div>
+                    <a
+                      href="#"
+                      className="light-link"
+                    >
+                      Koşullar
+                    </a>
+                    <div className="elips"></div>
+                    <a
+                      href="#"
+                      className="light-link"
+                    >
+                      Reklam
+                    </a>
+                    <div className="elips"></div>
+                    <a
+                      href="#"
+                      className="light-link"
+                    >
+                      Ad Choices
+                    </a>
+                    <div className="elips"></div>
+                    <a
+                      href="#"
+                      className="light-link"
+                    >
+                      Çerezler
+                    </a>
+                    <div className="elips"></div>
+                    <a
+                      href="#"
+                      className="light-link"
+                    >
+                      Diğer
+                    </a>
+                    <div className="elips"></div>
+                    <a
+                      href="#"
+                      className="light-link"
+                    >
+                      Meta <FontAwesomeIcon icon={faCopyright} /> 2022
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </li>
         </ul>
       </div>

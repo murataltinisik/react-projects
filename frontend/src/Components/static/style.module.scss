@@ -109,6 +109,22 @@
                 background-color: #eee;
             }  
         }  
+
+        @mixin imageCss {
+            width: 3rem;
+            height: 3rem;
+            overflow: hidden;
+            border-radius: 50%;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        div.hideMenu{
+            display: none;
+        }
         
         // * MENU
         .menu{
@@ -213,21 +229,9 @@
 
         }
 
-        @mixin imageCss {
-            width: 3rem;
-            height: 3rem;
-            overflow: hidden;
-            border-radius: 50%;
-
-            img{
-                width: 100%;
-                height: 100%;
-            }
-        }
-
         // * MESSENGER
         .messengerContainer{
-            background-color: #fff;
+            background-color: #fff !important;
 
             // BOX SHADOW NONE
             .boxShadowNone{
@@ -302,9 +306,11 @@
 
         }
         
-        // NOTIFICATE
+        // * NOTIFICATE
         .notificateContainer{
             width: 22.8rem !important;
+            background-color: #fff !important;
+
             .container{
                 position: relative;
                 padding: 0 !important;
@@ -368,6 +374,78 @@
                             border-radius: 50%;
                             background-color: $colorBlue;
                         }
+                    }
+                }
+            }
+        }
+
+        // * USER PROFILE
+        .userProfileContainer{
+            background-color: #fff !important;
+            width: 22.8rem !important;
+
+            // PROFILE
+            .profile{
+                width: 20rem;
+                margin: 1rem auto;
+                box-shadow: 0 0 12px #ccc;
+                border-radius: 7px;
+                padding: 3px;
+
+                // SELECTED PROFILE
+                .selectedProfile{
+                    border-radius: 7px;
+                    font-weight: 600;
+                    font-size: .95rem;
+                    margin-bottom: 3px;
+                    cursor: pointer;    
+
+                    img{
+                        width: 2.7rem;
+                        height: 2.7rem;
+                        border-radius: 50%;
+                    }
+                }.selectedProfile:hover{
+                    background-color: #eee;
+                }
+
+                // ALL PROFILE SEE
+                .allProfileSee{
+                    margin-top: 3px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    color: $colorBlue;
+                }
+
+            }
+
+            // PROFILE MENU
+            .profileMenu{
+                ul{
+                    padding: 0 8px;
+                    padding-bottom: 8px;
+                    li{
+                        padding: 5px;
+                        transition: all .2s ease;
+                        cursor: pointer;
+                    }
+
+                    li:nth-child(1),
+                    li:nth-child(2),
+                    li:nth-child(3){
+                        position: relative;
+
+                        button{
+                            svg{
+                                position: absolute;
+                                right: 1rem;
+                                top: 1.15rem;
+                            }    
+                        }
+                    }
+
+                    li:hover{
+                        background-color: #eeeeee90;
                     }
                 }
             }
