@@ -543,6 +543,7 @@ body{
         position: relative;
         @include centerCss;
         overflow: hidden;
+        z-index: 999;
 
         // HEAD
         .head{
@@ -653,22 +654,6 @@ body{
                     text-align: left;
                     width: 100%;
                     font-size: .9rem;
-                }
-
-                // ADD BTN
-                button.add{
-                    width: 90%;
-                    padding: 8px;
-                    border-radius: 5px;
-                    color: $colorDarkBlue;
-                    background-color: $colorBlueOpacity;  
-                    position: absolute;
-                    bottom: 1rem;  
-                    font-size: .8rem;
-                    font-weight: 600;  
-                    cursor: pointer;
-                }button.add:hover{
-                    background-color: $colorBlueOpacityHover;
                 }
             }:last-child{
                 margin-right: 0;

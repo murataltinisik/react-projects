@@ -87,3 +87,22 @@
 }.btn-hover:active{
     background-color: #ccc !important;
 }
+
+// * FACEBOOK BTN
+.facebook-btn{
+    width: 90%;
+    padding: 8px;
+    border-radius: 5px;
+    color: $colorDarkBlue;
+    background-color: $colorBlueOpacity;  
+    position: absolute;
+    bottom: 1rem;  
+    font-size: .8rem;
+    font-weight: 600;  
+    cursor: pointer;
+    z-index: 999;
+}
+
+.facebook-btn:hover{
+    background-color: $colorBlueOpacityHover;
+}

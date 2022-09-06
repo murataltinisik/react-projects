@@ -136,43 +136,25 @@ class acquaintances extends Component {
 
   render() {
     return (
-      <div
-        className={`${Scss.acquaintances} px-2 p-1`}
-        id="Acquaintances"
-      >
+      <div className={`${Scss.acquaintances} px-2 p-1`} id="Acquaintances">
         {/* HEAD */}
         <div
           className={`${Scss.head} d-flex  justify-content-between align-items-center`}
         >
           <p>Tanıyor Olabileceğin Kişiler</p>
           <span>
-            <FontAwesomeIcon
-              id="menuBtn2"
-              icon={faBars}
-            />
+            <FontAwesomeIcon id="menuBtn2" icon={faBars} />
           </span>
         </div>
 
         {/* NEXT & PREV */}
         <div className={`${Scss.nextAndPrev} d-flex justify-content-between`}>
-          <div
-            id="prevFriend"
-            onClick={this.prevFriend}
-          >
-            <FontAwesomeIcon
-              icon={faChevronLeft}
-              id="prevIcon"
-            />
+          <div id="prevFriend" onClick={this.prevFriend}>
+            <FontAwesomeIcon icon={faChevronLeft} id="prevIcon" />
           </div>
 
-          <div
-            id="nextFriend"
-            onClick={this.nextFriend}
-          >
-            <FontAwesomeIcon
-              icon={faChevronRight}
-              id="nextIcon"
-            />
+          <div id="nextFriend" onClick={this.nextFriend}>
+            <FontAwesomeIcon icon={faChevronRight} id="nextIcon" />
           </div>
         </div>
 
@@ -194,7 +176,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 1</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -213,7 +195,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 2</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -232,7 +214,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 3</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -251,7 +233,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 4</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -270,7 +252,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 5</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -289,7 +271,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 6</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -308,7 +290,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 7</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -327,7 +309,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 8</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -346,7 +328,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 9</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -365,7 +347,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 10</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -384,7 +366,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 11</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
@@ -403,7 +385,7 @@ class acquaintances extends Component {
             <div className="px-2 d-flex direction-column align-items-center">
               <p className={Scss.name}>Murat Altınışık 12</p>
 
-              <button className={`${Scss.add} btn`}>
+              <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
               </button>
             </div>
