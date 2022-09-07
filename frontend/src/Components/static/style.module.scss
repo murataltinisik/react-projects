@@ -387,6 +387,7 @@
             background-color: #fff !important;
             width: 22.8rem !important;
             padding: 1rem 0;
+            overflow: hidden !important;
 
             *{
                 transition: all .1s ease !important;
@@ -399,6 +400,8 @@
                 box-shadow: 0 0 12px #ccc;
                 border-radius: 7px;
                 padding: 3px;
+                margin-top: 0 !important;
+                transition: all .1s ease;
 
                 // SELECTED PROFILE
                 .selectedProfile{
@@ -430,6 +433,7 @@
             // PROFILE MENU
             .profileMenu{
                 position: relative;
+                left: 0;
                 display: flex;
                 width: fit-content;
 
@@ -440,16 +444,17 @@
                 ul{ 
                     padding: 0 8px;
                     padding-bottom: 8px;
-                    width: 22.4rem;
+                    width: 22.8rem !important;
+                    position: relative;
                     li{
                         padding: 5px;
                         transition: all .2s ease;
                         cursor: pointer;
                     }
 
-                    li:nth-child(1),
-                    li:nth-child(2),
-                    li:nth-child(3){
+                    > li:nth-child(1),
+                    > li:nth-child(2),
+                    > li:nth-child(3){
                         position: relative;
 
                         button{
@@ -465,10 +470,58 @@
                     li:hover{
                         background-color: #eeeeee90;
                     }
-                }
-            }
+                } 
 
-            
+                .bottomProfileMenu{
+                    margin-top: -1rem;
+
+                    li a{
+                        font-size: .85rem;
+                        color: #000;
+                    }
+                    
+                    .bottomProfilMenuBack{
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        padding: 8px 8px;
+                        button{
+                            width: 100%;
+                            text-align: left;
+                            margin-left: 1rem; 
+                            font-size: 1.2rem;
+                            font-weight: 700;
+                        }
+
+                        span{
+                            width: 3.2rem;
+                            height: 2.7rem;
+                            text-align: center;
+                            line-height: 2.7rem;
+                            border-radius: 50%;
+                            svg{
+                                position: relative;
+                                left: 0;
+                            }
+                        }
+
+                        span:hover{
+                            background-color: #eee;
+                        }
+
+                        span:active{
+                            background-color: #ccc;
+                        }
+                        
+                    }
+
+                    .bottomProfilMenuBack:hover{
+                        background-color: #fff;
+                    }
+
+                }
+                
+            }
 
         }
         

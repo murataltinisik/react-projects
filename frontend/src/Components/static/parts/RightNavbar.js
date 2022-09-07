@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 
 // ? FONT AWESOME
 import {
+  faArrowTurnRight,
   faBagShopping,
   faBars,
   faBell,
   faBook,
   faBullhorn,
+  faChevronLeft,
   faChevronRight,
   faCircleInfo,
+  faClipboardList,
   faCommentDots,
   faCopyright,
   faDoorOpen,
@@ -16,11 +19,17 @@ import {
   faEllipsis,
   faFlag,
   faGear,
+  faGlobe,
   faImagePortrait,
+  faLock,
   faMaximize,
+  faMessage,
   faMoon,
+  faQuestionCircle,
   faSearch,
+  faSignal,
   faUser,
+  faUserLock,
   faUsers,
   faVideoCamera,
   faWarning,
@@ -39,7 +48,12 @@ export class RightNavbar extends Component {
         '#rightNavbarContainer #ListContainer .listItem'
       ),
       profileMenuContainer: document.querySelectorAll('.profileMenu')[0],
-      profileMenuElement: document.querySelectorAll('.profileMenu > ul > li'),
+      profileMenuElement: document.querySelectorAll(
+        '.profileMenu > #firstUl > li'
+      ),
+      profileMainList: document.getElementById('firstUl'),
+      profileMain: document.getElementById('profile'),
+      bottomProfileMenu: document.getElementsByClassName('bottomProfileMenu'),
     };
   }
 
@@ -48,14 +62,18 @@ export class RightNavbar extends Component {
       '#rightNavbarContainer #ListContainer .listItem'
     );
     this.state.profileMenuElement = document.querySelectorAll(
-      '.profileMenu > ul > li'
+      '.profileMenu > #firstUl > li'
     );
+    this.state.profileMainList = document.getElementById('firstUl');
     this.state.profileMenuContainer =
       document.querySelectorAll('.profileMenu')[0];
+    this.state.profileMain = document.getElementById('profile');
+    this.state.bottomProfileMenu =
+      document.getElementsByClassName('bottomProfileMenu');
   }
 
   // ? ON TAB OPEN
-  onTabOpen = e => {
+  onTabOpen = (e) => {
     const mainElement = e.target.parentElement;
     let id = this.state.index;
     const isA = e.target.parentElement.getAttribute('itemid') !== null;
@@ -80,8 +98,15 @@ export class RightNavbar extends Component {
     this.state.element[id].childNodes[2].style.display = 'block';
   };
 
+  // ? ON MOVE TAB CLOSE
+  onMouseLeave = () => {
+    for (let i = 0; i < this.state.element.length; i++) {
+      this.state.element[i].childNodes[2].style.display = 'none';
+    }
+  };
+
   // ? ON SETTINGS DETAIL
-  onSettingsDetail = e => {
+  onSettingsDetail = (e) => {
     let id = this.state.profileMenuIndex;
     const mainElement = e.target.parentElement;
     const isSpan = e.target.parentElement.getAttribute('itemId') !== null;
@@ -91,10 +116,46 @@ export class RightNavbar extends Component {
       id = mainElement.getAttribute('itemid');
     } else if (isButton) {
       id = mainElement.getAttribute('itemid');
+    } else {
+      id = e.target.getAttribute('itemid');
     }
 
-    console.log(this.state.profileMenuContainer);
-    this.state.profileMenuContainer.style.marginLeft = '-22.5rem';
+    for (let i = 0; i < this.state.bottomProfileMenu.length; i++) {
+      this.state.bottomProfileMenu[i].style.display = 'none';
+    }
+    this.state.bottomProfileMenu[id].style.display = 'block';
+
+    // * PROFILE MENU CONTAINER
+    this.state.profileMenuContainer.style.left = '-22.8rem';
+
+    //* BOTTOM PROFILE MENU
+    this.state.bottomProfileMenu[id].style.height = 'auto';
+
+    // * PROFILE MAIN LIST
+    this.state.profileMainList.style.height = '0';
+
+    // * PROFILE MAIN
+    this.state.profileMain.style.overflow = 'hidden';
+    this.state.profileMain.style.height = '0';
+    this.state.profileMain.style.padding = '0';
+    this.state.profileMain.style.margin = '0';
+    this.state.profileMain.style.display = 'none';
+  };
+
+  // ? USER PROFILE BACK MENU
+  userProfileBackMenu = () => {
+    // * PROFILE MENU CONTAINER
+    this.state.profileMenuContainer.style.left = '0';
+
+    // * PROFILE MAIN LIST
+    this.state.profileMainList.style.height = '100%';
+
+    // * PROFILE MAIN
+    this.state.profileMain.style.overflow = 'visible';
+    this.state.profileMain.style.height = '100%';
+    this.state.profileMain.style.margin = '1rem auto';
+    this.state.profileMain.style.padding = '3px';
+    this.state.profileMain.style.display = 'block';
   };
 
   render() {
@@ -108,13 +169,22 @@ export class RightNavbar extends Component {
           className="d-flex justify-content-between align-items-center"
         >
           {/* MENU */}
-          <li itemID="0" className="listItem">
-            <a href="#" onClick={this.onTabOpen}>
+          <li
+            itemID="0"
+            className="listItem"
+          >
+            <a
+              href="#"
+              onClick={this.onTabOpen}
+            >
               <FontAwesomeIcon icon={faBars} />
             </a>
             <div className={Scss.info}>Menü</div>
 
-            <div className={`${Scss.menu} d-none`}>
+            <div
+              className={`${Scss.menu} d-none`}
+              onMouseLeave={this.onMouseLeave}
+            >
               <div
                 className={`${Scss.head} d-flex justify-content-between align-items-center p-1 px-2`}
               >
@@ -124,8 +194,14 @@ export class RightNavbar extends Component {
               <div className="d-flex justify-content-between align-items-start">
                 <div className={`${Scss.searchMenu} p-1 px-2`}>
                   <div className="search-input">
-                    <FontAwesomeIcon className="icon" icon={faSearch} />
-                    <input type="text" placeholder="Menü Ara" />
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faSearch}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Menü Ara"
+                    />
                   </div>
 
                   {/* CATEGORIES */}
@@ -225,7 +301,10 @@ export class RightNavbar extends Component {
 
                   <ul>
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faEdit} />
                         </span>
@@ -234,7 +313,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faBook} />
                         </span>
@@ -243,7 +325,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faVideoCamera} />
                         </span>
@@ -254,7 +339,10 @@ export class RightNavbar extends Component {
                     <div className="hr mx-1 mt-05 mb-05"></div>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faFlag} />
                         </span>
@@ -263,7 +351,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faBullhorn} />
                         </span>
@@ -272,7 +363,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faUsers} />
                         </span>
@@ -281,7 +375,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faImagePortrait} />
                         </span>
@@ -290,7 +387,10 @@ export class RightNavbar extends Component {
                     </li>
 
                     <li className="additionalButton btn-hover">
-                      <a href="#" className="text-decoration-none dark-link">
+                      <a
+                        href="#"
+                        className="text-decoration-none dark-link"
+                      >
                         <span>
                           <FontAwesomeIcon icon={faBagShopping} />
                         </span>
@@ -304,13 +404,21 @@ export class RightNavbar extends Component {
           </li>
 
           {/* MESSENGER */}
-          <li itemID="1" className="listItem">
-            <a href="#" onClick={this.onTabOpen}>
+          <li
+            itemID="1"
+            className="listItem"
+          >
+            <a
+              href="#"
+              onMouseOut={this.onOutTabClose}
+              onClick={this.onTabOpen}
+            >
               <FontAwesomeIcon icon={faCommentDots} />
             </a>
             <div className={Scss.info}>Messenger</div>
 
             <div
+              onMouseLeave={this.onMouseLeave}
               className={`${Scss.menu} ${Scss.messengerContainer} d-none width-auto height-auto`}
             >
               <div className="d-flex justify-content-between align-items-center">
@@ -346,8 +454,14 @@ export class RightNavbar extends Component {
               <div>
                 <div className={`${Scss.searchMenu} ${Scss.boxShadowNone} p-1`}>
                   <div className="search-input">
-                    <FontAwesomeIcon className="icon" icon={faSearch} />
-                    <input type="text" placeholder="Messenger'da Ara" />
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faSearch}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Messenger'da Ara"
+                    />
                   </div>
                 </div>
 
@@ -424,13 +538,21 @@ export class RightNavbar extends Component {
           </li>
 
           {/* NOTIFICATE */}
-          <li itemID="2" className="listItem">
-            <a href="#" onClick={this.onTabOpen}>
+          <li
+            itemID="2"
+            className="listItem"
+          >
+            <a
+              href="#"
+              onMouseOut={this.onOutTabClose}
+              onClick={this.onTabOpen}
+            >
               <FontAwesomeIcon icon={faBell} />
             </a>
             <div className={Scss.info}>Bildirimler</div>
 
             <div
+              onMouseLeave={this.onMouseLeave}
               className={`${Scss.menu} ${Scss.notificateContainer} d-none width-auto height-auto`}
             >
               <div className="d-flex justify-content-between align-items-center">
@@ -463,16 +585,25 @@ export class RightNavbar extends Component {
                   <div className="d-flex justify-content-between align-items-center px-2">
                     <div className={Scss.title}>Daha Öncekiler</div>
                     <div className={Scss.seeMore}>
-                      <a href="#" className="primary-link">
+                      <a
+                        href="#"
+                        className="primary-link"
+                      >
                         Tümünü Gör
                       </a>
                     </div>
                   </div>
 
-                  <div className={`${Scss.notificates}`} id="notificates">
+                  <div
+                    className={`${Scss.notificates}`}
+                    id="notificates"
+                  >
                     <ul>
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -490,7 +621,10 @@ export class RightNavbar extends Component {
                       </li>
 
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -508,7 +642,10 @@ export class RightNavbar extends Component {
                       </li>
 
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -526,7 +663,10 @@ export class RightNavbar extends Component {
                       </li>
 
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -546,7 +686,10 @@ export class RightNavbar extends Component {
 
                     <ul>
                       <li>
-                        <a href="#" className="text-decoration-none">
+                        <a
+                          href="#"
+                          className="text-decoration-none"
+                        >
                           <div className="d-flex justify-content-start align-items-center">
                             <div className={Scss.image}>
                               <img src="https://scontent.fesb3-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX8g0LaA&_nc_ht=scontent.fesb3-2.fna&oh=00_AT-YAFyR6cxMHJOd2A9BrsAFYypflWfb27k_xIkb852W-Q&oe=633D2A78" />
@@ -570,17 +713,28 @@ export class RightNavbar extends Component {
           </li>
 
           {/* USERS */}
-          <li itemID="3" className="listItem">
-            <a href="#" onClick={this.onTabOpen}>
+          <li
+            itemID="3"
+            className="listItem"
+          >
+            <a
+              href="#"
+              onMouseOut={this.onOutTabClose}
+              onClick={this.onTabOpen}
+            >
               <FontAwesomeIcon icon={faUser} />
             </a>
             <div className={Scss.info}>Hesap</div>
 
             <div
+              onMouseLeave={this.onMouseLeave}
               className={`${Scss.menu} ${Scss.userProfileContainer} d-none width-auto height-auto`}
             >
-              <div className="profileMenu">
-                <div className={Scss.profile}>
+              <div>
+                <div
+                  className={Scss.profile}
+                  id="profile"
+                >
                   <div
                     className={`${Scss.selectedProfile} px-2 py-05 d-flex justify-content-start align-items-center`}
                   >
@@ -595,8 +749,8 @@ export class RightNavbar extends Component {
                   </div>
                 </div>
 
-                <div className={`${Scss.profileMenu}`}>
-                  <ul>
+                <div className={`${Scss.profileMenu} profileMenu`}>
+                  <ul id="firstUl">
                     <li
                       onClick={this.onSettingsDetail}
                       itemID="0"
@@ -655,31 +809,52 @@ export class RightNavbar extends Component {
 
                     {/* MENU FOOTER */}
                     <li className={`${Scss.menuFooter}`}>
-                      <a href="#" className="light-link">
+                      <a
+                        href="#"
+                        className="light-link"
+                      >
                         Gizlilik
                       </a>
                       <div className="elips"></div>
-                      <a href="#" className="light-link">
+                      <a
+                        href="#"
+                        className="light-link"
+                      >
                         Koşullar
                       </a>
                       <div className="elips"></div>
-                      <a href="#" className="light-link">
+                      <a
+                        href="#"
+                        className="light-link"
+                      >
                         Reklam
                       </a>
                       <div className="elips"></div>
-                      <a href="#" className="light-link">
+                      <a
+                        href="#"
+                        className="light-link"
+                      >
                         Ad Choices
                       </a>
                       <div className="elips"></div>
-                      <a href="#" className="light-link">
+                      <a
+                        href="#"
+                        className="light-link"
+                      >
                         Çerezler
                       </a>
                       <div className="elips"></div>
-                      <a href="#" className="light-link">
+                      <a
+                        href="#"
+                        className="light-link"
+                      >
                         Diğer
                       </a>
                       <div className="elips"></div>
-                      <a href="#" className="light-link">
+                      <a
+                        href="#"
+                        className="light-link"
+                      >
                         Meta <FontAwesomeIcon icon={faCopyright} /> 2022
                       </a>
                     </li>
@@ -687,61 +862,149 @@ export class RightNavbar extends Component {
 
                   {/* ---- */}
 
-                  <ul>
-                    <li
-                      onClick={this.onSettingsDetail}
-                      itemID="0"
-                      className="additionalButton d-flex align-items-center"
-                    >
+                  <ul
+                    tabIndex="0"
+                    className={`${Scss.bottomProfileMenu} bottomProfileMenu`}
+                  >
+                    <li className={Scss.bottomProfilMenuBack}>
+                      <span onClick={this.userProfileBackMenu}>
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                      </span>
+                      <button className="btn">Ayarlar ve Gizlilik</button>
+                    </li>
+
+                    <li className="additionalButton d-flex align-items-center">
                       <span>
                         <FontAwesomeIcon icon={faGear} />
                       </span>
-                      <button>
-                        Ayarlar ve Gizlilik
-                        <FontAwesomeIcon icon={faChevronRight} />
-                      </button>
+                      <a
+                        href="#"
+                        className="light-link text-decoration-none"
+                      >
+                        Ayarlar
+                      </a>
                     </li>
 
-                    <li
-                      onClick={this.onSettingsDetail}
-                      itemID="1"
-                      className="additionalButton d-flex align-items-center"
-                    >
-                      <span>
-                        <FontAwesomeIcon icon={faCircleInfo} />
+                    <li className="additionalButton d-flex align-items-center">
+                      <span className="px-1 pr-0">
+                        <FontAwesomeIcon icon={faUserLock} />
                       </span>
-                      <button>
-                        Yardım ve Destek
-                        <FontAwesomeIcon icon={faChevronRight} />
-                      </button>
+                      <a
+                        href="#"
+                        className="light-link text-decoration-none"
+                      >
+                        Gizlilik Ayarı Kontrolü
+                      </a>
                     </li>
 
-                    <li
-                      onClick={this.onSettingsDetail}
-                      itemID="2"
-                      className="additionalButton d-flex align-items-center"
-                    >
+                    <li className="additionalButton d-flex align-items-center">
                       <span>
-                        <FontAwesomeIcon icon={faMoon} />
+                        <FontAwesomeIcon icon={faLock} />
                       </span>
-                      <button>
-                        Görünüm ve Erişebilirlik
-                        <FontAwesomeIcon icon={faChevronRight} />
-                      </button>
+                      <a
+                        href="#"
+                        className="light-link text-decoration-none"
+                      >
+                        Gizlilik Merkezi
+                      </a>
+                    </li>
+
+                    <li className="additionalButton d-flex align-items-center">
+                      <span>
+                        <FontAwesomeIcon icon={faArrowTurnRight} />
+                      </span>
+                      <a
+                        href="#"
+                        className="light-link text-decoration-none"
+                      >
+                        Hareket Dökümü
+                      </a>
+                    </li>
+
+                    <li className="additionalButton d-flex align-items-center">
+                      <span>
+                        <FontAwesomeIcon icon={faClipboardList} />
+                      </span>
+
+                      <a
+                        href="#"
+                        className="light-link text-decoration-none"
+                      >
+                        Akış Tercihleri
+                      </a>
+                    </li>
+
+                    <li className="additionalButton d-flex align-items-center">
+                      <span>
+                        <FontAwesomeIcon icon={faGlobe} />
+                      </span>
+
+                      <a
+                        className="light-link text-decoration-none"
+                        href="#"
+                      >
+                        Dil
+                      </a>
+                    </li>
+                  </ul>
+
+                  <ul
+                    tabIndex="1"
+                    className={`${Scss.bottomProfileMenu} bottomProfileMenu`}
+                  >
+                    <li className={Scss.bottomProfilMenuBack}>
+                      <span onClick={this.userProfileBackMenu}>
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                      </span>
+                      <button className="btn">Yardım ve Destek</button>
+                    </li>
+
+                    <li className="additionalButton d-flex align-items-center">
+                      <span>
+                        <FontAwesomeIcon icon={faQuestionCircle} />
+                      </span>
+                      <a
+                        href="#"
+                        className="light-link text-decoration-none"
+                      >
+                        Yardım Merkezi
+                      </a>
+                    </li>
+
+                    <li className="additionalButton d-flex align-items-center">
+                      <span className="px-1 pr-0">
+                        <FontAwesomeIcon icon={faMessage} />
+                      </span>
+                      <a
+                        href="#"
+                        className="light-link text-decoration-none"
+                      >
+                        Destek Gelen Kutusu
+                      </a>
                     </li>
 
                     <li className="additionalButton d-flex align-items-center">
                       <span>
                         <FontAwesomeIcon icon={faWarning} />
                       </span>
-                      <button>Görüş Bildir</button>
+                      <a
+                        href="#"
+                        className="light-link text-decoration-none"
+                      >
+                        Sorun Bildir
+                      </a>
                     </li>
+                  </ul>
 
-                    <li className="additionalButton d-flex align-items-center">
-                      <span>
-                        <FontAwesomeIcon icon={faDoorOpen} />
+                  <ul
+                    tabIndex="2"
+                    className={`${Scss.bottomProfileMenu} bottomProfileMenu`}
+                  >
+                    <li className={Scss.bottomProfilMenuBack}>
+                      <span onClick={this.userProfileBackMenu}>
+                        <FontAwesomeIcon icon={faChevronLeft} />
                       </span>
-                      <button>Çıkış Yap</button>
+                      <button className="btn">Görünüm ve Erişebilirlik</button>
                     </li>
                   </ul>
                 </div>
