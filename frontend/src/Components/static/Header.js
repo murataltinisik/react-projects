@@ -1,5 +1,6 @@
 // ? MODULE SCSS
 import Scss from './style.module.scss';
+import Responsive from './responsive.module..scss';
 
 // ? ASSETS SCSS
 import '../assets/Button/button.scss';

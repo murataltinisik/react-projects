@@ -1,0 +1,89 @@
+@import '../../../../assets/colors.scss';
+
+@mixin imageCss {
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// * MESSENGER
+.messengerContainer{
+    background-color: #fff !important;
+
+    // BOX SHADOW NONE
+    .boxShadowNone{
+        box-shadow: none !important;
+        margin: 0!important;
+    }
+
+    // NAVIGATE
+    .navigate{
+        li{
+            color: gray;
+            width: 2rem;
+            height: 2rem;
+            text-align: center;
+            line-height: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            a{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                display: block;
+                color: gray;
+            }
+        }:hover{
+            background-color: $colorSecondary;
+        }
+    }
+
+    // BODY
+    .body{
+
+        > div:hover{
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        div.image{
+            @include imageCss;
+        }
+
+        div.name{
+            font-size: .9rem;
+            font-weight: 500;
+        }
+
+        div.message{
+            font-size: .75rem;
+            div.content{
+                color: $colorBlue;
+            }
+
+            div.createDate{
+            font-size: .65rem;
+            color: gray;
+            }
+        }
+
+        div.isSee{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: $colorBlue;
+        }
+    }
+
+    // FOOT
+    .foot{
+        border-top: 1px solid #eee;
+    }
+
+}

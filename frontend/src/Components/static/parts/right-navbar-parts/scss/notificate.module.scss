@@ -1,0 +1,87 @@
+@import '../../../../assets/colors.scss';
+
+@mixin imageCss {
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+// * NOTIFICATE
+.notificateContainer{
+    width: 22.8rem !important;
+    background-color: #fff !important;
+
+    .container{
+        position: relative;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        // LIST
+        .shown li{
+            font-size: .8rem;
+            padding: 8px;
+            border-radius: 20px;
+        }
+        
+        .shown li.notActive{
+            color: gray;
+            background-color: transparent;
+        }
+
+        // PREV NOTIFICATE
+        .prevNotificate{
+
+            div.title{
+                font-weight: 500;
+                font-size: .9rem;
+            }
+
+            // NOTIFICATE
+            .notificates{                    
+                ul li {
+                    a{
+                        padding: 10px;
+                        display: block;
+                        width: 100%;
+                    }
+
+                    a:hover{
+                        background-color: #eee
+                    }
+                }
+
+                div.image{
+                    @include imageCss;
+                }
+
+                div.message{
+                    font-size: .80rem;
+                    color: gray;
+
+                    b{
+                        color: #000;
+                    }
+                }
+
+                div.createDate{
+                    font-size: .75rem;
+                    color: gray;
+                }
+
+                div.isSee{
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    background-color: $colorBlue;
+                }
+            }
+        }
+    }
+}
