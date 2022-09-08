@@ -64,14 +64,20 @@ export class RightNavbar extends Component {
 
     for (let i = 0; i < this.state.element.length; i++) {
       this.state.element[i].childNodes[2].style.display = 'none';
+      this.state.element[i].childNodes[0].childNodes[0].style.color = '#000';
+      this.state.element[i].childNodes[0].style.backgroundColor = '#eee';
     }
     this.state.element[id].childNodes[2].style.display = 'block';
+    this.state.element[id].childNodes[0].childNodes[0].style.color = '#1877F2';
+    this.state.element[id].childNodes[0].style.backgroundColor = '#1877F210';
   };
 
   // ? ON MOVE TAB CLOSE
   onMouseLeave = () => {
     for (let i = 0; i < this.state.element.length; i++) {
       this.state.element[i].childNodes[2].style.display = 'none';
+      this.state.element[i].childNodes[0].childNodes[0].style.color = '#000';
+      this.state.element[i].childNodes[0].style.backgroundColor = '#eee';
     }
 
     // * PROFILE MENU CONTAINER

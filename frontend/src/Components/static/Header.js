@@ -1,6 +1,6 @@
 // ? MODULE SCSS
 import Scss from './style.module.scss';
-import Responsive from './responsive.module..scss';
+import './responsive.scss';
 
 // ? ASSETS SCSS
 import '../assets/Button/button.scss';
@@ -18,7 +18,7 @@ import RightNavbar from './parts/RightNavbar';
 function Header() {
   return (
     <>
-      <div id={Scss.HeaderContainer} className="px-1">
+      <div id={Scss.HeaderContainer} className="HeaderContainer px-1">
         <header className="d-flex justify-content-between align-items-center">
           {/* TITLE */}
           <Title />

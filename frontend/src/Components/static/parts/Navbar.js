@@ -7,6 +7,7 @@ import {
   faTv,
   faStore,
   faPeopleGroup,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -17,7 +18,7 @@ export class Navbar extends Component {
   render() {
     return (
       <div
-        className={`${Scss.navbar} d-flex justify-content-between align-items-center`}
+        className={`${Scss.navbar} navbar d-flex justify-content-between align-items-center`}
       >
         <ul className="d-flex justify-content-between align-items-center">
           <li className={Scss.active}>
