@@ -3,7 +3,7 @@ import React from 'react';
 function shipment({ Scss }) {
   return (
     <div>
-      <div className={Scss.shipment}>
+      <div className={`${Scss.shipment} shipmentResp`}>
         <div className={`${Scss.head} d-flex align-items-center`}>
           <img
             className={Scss.userImage}

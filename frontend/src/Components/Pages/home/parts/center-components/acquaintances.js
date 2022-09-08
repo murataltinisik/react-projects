@@ -136,7 +136,10 @@ class acquaintances extends Component {
 
   render() {
     return (
-      <div className={`${Scss.acquaintances} px-2 p-1`} id="Acquaintances">
+      <div
+        className={`${Scss.acquaintances} acquaintancesResp px-2 p-1`}
+        id="Acquaintances"
+      >
         {/* HEAD */}
         <div
           className={`${Scss.head} d-flex  justify-content-between align-items-center`}

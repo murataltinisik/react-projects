@@ -35,7 +35,7 @@ function send({ Scss, menuListShow, setMenuListShow }) {
   };
 
   return (
-    <div className={Scss.sendContainer}>
+    <div className={`${Scss.sendContainer} sendResp`}>
       <div className={Scss.send}>
         <div className="d-flex justity-content-between align-items-start">
           {/* USER */}
@@ -198,7 +198,7 @@ function send({ Scss, menuListShow, setMenuListShow }) {
             Murat Altınışık Deneme Gönderisi Atılıd :) .....
           </div>
           <div className="hr mb-0 mt-1"></div>
-          <div className={Scss.image}>
+          <div className={`${Scss.image} sendImage`}>
             <img src="https://www.netzwoche.ch/sites/default/files/styles/np8_full/public/media/2022/07/25/radowan-nakif-rehan-cYyqhdbJ9TI-unsplash.jpg?itok=I1hQDNhD" />
           </div>
         </div>

@@ -17,13 +17,9 @@ function Center() {
   const [menuListShow, setMenuListShow] = useState(false);
 
   return (
-    <div id={Scss.CenterContainer}>
+    <div id={Scss.CenterContainer} className="centerContainerResp">
       {/* TOP OF */}
-      <TopOf
-        Scss={Scss}
-        active={active}
-        setActive={setActive}
-      />
+      <TopOf Scss={Scss} active={active} setActive={setActive} />
 
       {/* SHIPMENT OPERATION */}
       <Shipment Scss={Scss} />

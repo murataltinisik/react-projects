@@ -2,6 +2,7 @@ import React from 'react';
 
 // ? MODULE CSS
 import Scss from './style.module.scss';
+import './responsive.scss';
 
 // * PARTS
 import Left from './parts/Left';

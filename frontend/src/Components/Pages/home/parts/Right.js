@@ -9,7 +9,7 @@ function Right() {
   return (
     <div
       id={Scss.RightContainer}
-      className="d-flex direction-column justify-content-end align-items-end"
+      className="rightContainerResp d-flex direction-column justify-content-end align-items-end"
     >
       <div className={Scss.head}>
         <h3 className={Scss.title}>Grup Konuşmaları</h3>

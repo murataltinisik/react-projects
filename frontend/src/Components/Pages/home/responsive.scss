@@ -1,0 +1,40 @@
+@media only screen and (max-width: 479px) {
+    // * LEFT CONTAINER
+    .leftContainerResp{
+        display: none;
+    }
+
+    // * CENTER CONTAINER
+    .centerContainerResp{
+        width: 100%;
+        .topOfResp{
+            width: 100%;
+            display: none;
+        }
+
+        .shipmentResp{
+            width: 100% !important;
+            border-radius: 0 !important;
+        }
+
+        .acquaintancesResp{
+            display: none;
+        }
+
+        .sendResp{
+            width: 100% !important;
+            border-radius: 0 !important;
+            box-shadow: 0 !important;
+            margin: 0 !important;
+
+            .sendImage{
+                height: 20rem !important;
+            }
+        }
+    }
+
+    // * RIGHT CONTAINER
+    .rightContainerResp{
+        display: none;
+    }
+}
