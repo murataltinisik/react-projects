@@ -16,9 +16,13 @@ import Navbar from './parts/Navbar';
 import RightNavbar from './parts/RightNavbar';
 
 function Header() {
+  alert(window.innerWidth);
   return (
     <>
-      <div id={Scss.HeaderContainer} className="HeaderContainer px-1">
+      <div
+        id={Scss.HeaderContainer}
+        className="HeaderContainer px-1"
+      >
         <header className="d-flex justify-content-between align-items-center">
           {/* TITLE */}
           <Title />

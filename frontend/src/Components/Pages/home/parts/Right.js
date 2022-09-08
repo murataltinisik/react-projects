@@ -11,11 +11,11 @@ function Right() {
       id={Scss.RightContainer}
       className="rightContainerResp d-flex direction-column justify-content-end align-items-end"
     >
-      <div className={Scss.head}>
+      <div className={`${Scss.head} head`}>
         <h3 className={Scss.title}>Grup Konuşmaları</h3>
       </div>
 
-      <div className={Scss.groups}>
+      <div className={`${Scss.groups} groupsResp`}>
         <ul>
           <li className="additionalButton private-btn">
             <button>

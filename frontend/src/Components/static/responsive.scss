@@ -1,78 +1,37 @@
 @import '../assets/colors.scss';
 
-// PHONE
-@media only screen and (max-width: 835px) {
-    // * HEADER CONTAINER
-    .HeaderContainer {
-        header{
-            width: 100%;
-            flex-direction: column;
-            z-index: 999999;
-            background-color: #fff !important;
-            position: absolute;
-            left: 0;
-        }
-
+@media only screen and (min-width: 768px) and (max-width: 900px){
+    .HeaderContainer{
+        // * TITLE
         #title{
-            padding: 5px 1rem;
-            width: 100%;
-            // * SEARCH INPUT
-            .search-input {
-                padding-right: 15px !important;
-                input{
-                    display: none;
-                    background-color: red !important;
-                }   
-            }
-
-            .search-input.d-none {
-                display: block !important;
-            }
-
-            img{
+            .search-input:nth-child(1){padding-right: 15px;}
+            .search-input:nth-child(1) input{
                 display: none;
             }
 
-            #siteTitle{
-                font-size: .8rem;
-                color: $colorBlue;
+        }
+    }  
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    .HeaderContainer{
+        // * TITLE
+        #title{
+            .search-input:nth-child(1){padding-right: 15px;}
+            .search-input:nth-child(1) input{
+                display: none;
+            }
+
+            .search-input.d-none{
                 display: block;
+                padding-right: 15px;
             }
         }
 
         // * NAVBAR
         .navbar{
-            width: 100%;
-            justify-content: center !important;
-            margin-top: -10px !important;
-
-            ul{
-                justify-content: space-between !important;
-                width: 100%;
-                padding: 0 1.2rem;
-                border-bottom: 1px solid #ccc;
-                li{
-                    width: 5rem;
-                    border: none !important;
-                    a{
-                        width: 5rem !important;
-                        height: 2rem !important;
-                        line-height: 2rem !important;
-                        font-size: 18px !important;
-                    }
-                }
-            }
-        }
-
-        #rightNavbarContainer{
             display: none;
         }
-    }
-
-    
-
-
-
-
-
+    }   
 }

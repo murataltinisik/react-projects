@@ -1,36 +1,86 @@
-@media only screen and (max-width: 479px) {
+
+@media only screen and (min-width: 768px) and (max-width: 900px){
     // * LEFT CONTAINER
     .leftContainerResp{
-        display: none;
+        display: none !important;
     }
 
-    // * CENTER CONTAINER
+     // * CENTER CONTAINER
     .centerContainerResp{
         width: 100%;
+        margin-left: 2rem;
+        overflow: hidden;
+
+        > div{
+            width: 95% !important;
+        }
+
         .topOfResp{
-            width: 100%;
-            display: none;
+            ul li{
+                font-size: .8rem !important;
+            }
         }
 
         .shipmentResp{
             width: 100% !important;
-            border-radius: 0 !important;
         }
 
         .acquaintancesResp{
-            display: none;
-        }
-
-        .sendResp{
-            width: 100% !important;
-            border-radius: 0 !important;
-            box-shadow: 0 !important;
-            margin: 0 !important;
-
-            .sendImage{
-                height: 20rem !important;
+            #friendContainer{
+                > div{
+                    width: 11.7rem !important;
+                    height: 17.4rem !important;
+                }
             }
         }
+
+
+    }
+
+    // * RIGHT CONTAINER
+    .rightContainerResp{
+        width: auto !important;
+    
+        .head{
+            margin-right: -5rem;
+        }
+
+        .groupsResp{
+            width: 14rem !important;
+        }
+    }
+}
+
+// LAPTOP
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    // * LEFT CONTAINER
+    .leftContainerResp{
+        display: none !important;
+    }
+        
+    // * CENTER CONTAINER
+    .centerContainerResp{
+        width: 100%;
+        overflow: hidden;
+
+        > div{
+            width: 100% !important;
+        }
+
+        .shipmentResp{
+            width: 100% !important;
+        }
+
+        .acquaintancesResp{
+            #friendContainer{
+                > div{
+                    width: 11.7rem !important;
+                    height: 17.4rem !important;
+                }
+            }
+        }
+
+
     }
 
     // * RIGHT CONTAINER
