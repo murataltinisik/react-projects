@@ -1,5 +1,57 @@
+<<<<<<< HEAD
 
 @media only screen and (min-width: 768px) and (max-width: 900px){
+=======
+// LAPTOP
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    // * LEFT CONTAINER
+    .leftContainerResp{
+        display: none;
+    }
+
+    // * CENTER CONTAINER
+    .centerContainerResp{
+        margin: 0 1rem;
+        margin-left: 2rem;
+
+        .topOfResp{
+            width: 37rem !important;
+        }
+
+        .shipmentResp{
+            width: 100% !important;
+            width: 37rem !important;
+        }
+
+        .acquaintancesResp{
+            width: 37rem !important;
+        
+            #friendContainer > div{
+                width: 10.45rem !important;
+                height: 17.5rem !important;
+                
+                .username{
+                    font-size: .8rem !important;
+                }
+            }
+        }
+
+        .sendResp{
+            width: 37rem !important;
+        }
+    }
+    
+    // * RIGHT CONTAINER
+    .rightContainerResp{
+        width: 100% !important;
+    }
+}
+
+// TABLET
+
+// MOBILE
+@media only screen and (max-width: 479px) {
+>>>>>>> 6a14e78 (RESPONSIVE EDITTING)
     // * LEFT CONTAINER
     .leftContainerResp{
         display: none !important;

@@ -57,6 +57,12 @@ export class Navbar extends Component {
             </a>
             <div className={Scss.info}>Grup</div>
           </li>
+
+          <li>
+            <a href="#">
+              <FontAwesomeIcon icon={faBars} />
+            </a>
+          </li>
         </ul>
       </div>
     );

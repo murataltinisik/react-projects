@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 
 import Scss from '../../style.module.scss';
+import './scss/responsive/menu-responsive.scss';
 
 class Menu extends Component {
   constructor({ onMouseLeave, onTabOpen }) {
@@ -32,17 +33,17 @@ class Menu extends Component {
         <div className={Scss.info}>Menü</div>
 
         <div
-          className={`${Scss.menu} d-none`}
+          className={`${Scss.menu} menu d-none`}
           onMouseLeave={this.state.onMouseLeave}
         >
           <div
-            className={`${Scss.head} d-flex justify-content-between align-items-center p-1 px-2`}
+            className={`${Scss.head} headResp d-flex justify-content-between align-items-center p-1 px-2-important`}
           >
             <h4 className={Scss.title}>Menü</h4>
           </div>
 
           <div className="d-flex justify-content-between align-items-start">
-            <div className={`${Scss.searchMenu} p-1 px-2`}>
+            <div className={`${Scss.searchMenu} searchMenu p-1 px-2`}>
               <div className="search-input">
                 <FontAwesomeIcon className="icon" icon={faSearch} />
                 <input type="text" placeholder="Menü Ara" />
@@ -139,7 +140,7 @@ class Menu extends Component {
               </div>
             </div>
 
-            <div className={`${Scss.builderMenu}`}>
+            <div className={`${Scss.builderMenu} builderMenu`}>
               <h5>Oluştur</h5>
 
               <ul>

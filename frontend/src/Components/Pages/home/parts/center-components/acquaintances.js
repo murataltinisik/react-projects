@@ -137,7 +137,7 @@ class acquaintances extends Component {
   render() {
     return (
       <div
-        className={`${Scss.acquaintances} acquaintancesResp px-2 p-1`}
+        className={`${Scss.acquaintances} acquaintancesResp px-2-important p-1`}
         id="Acquaintances"
       >
         {/* HEAD */}
@@ -177,7 +177,7 @@ class acquaintances extends Component {
             />
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 1</p>
+              <p className={`${Scss.name} username`}>Murat Altınışık 1</p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle

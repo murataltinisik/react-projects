@@ -1,8 +1,58 @@
 @import '../assets/colors.scss';
 
-@media only screen and (min-width: 768px) and (max-width: 900px){
-    .HeaderContainer{
+// LAPTOP
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    // * HEADER CONTAINER
+    .HeaderContainer {
+        header{
+            width: 100%;
+            height: auto !important;
+        }
+
         // * TITLE
+        #title{
+            // * SEARCH INPUT
+            .search-input {
+                padding-right: 15px !important;
+                input{
+                    display: none;
+                }   
+            }
+        }
+
+        // * NAVBAR
+        .navbar{
+            width: 100%;
+            justify-content: center !important;
+
+            ul{
+                width: 80%;
+                li{
+                    width: 5rem !important;
+                    a{
+                        width: 2rem !important;
+                        height: 2rem !important;
+                        line-height: 2rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// TABLET
+@media only screen and (min-width:480px) and (max-width: 767px) {
+    // * HEADER CONTAINER
+    .HeaderContainer {
+        header{
+            width: 100%;
+            flex-direction: column;
+            z-index: 999999;
+            background-color: #fff !important;
+            position: absolute;
+            left: 0;
+        }
+
         #title{
             .search-input:nth-child(1){padding-right: 15px;}
             .search-input:nth-child(1) input{
@@ -11,27 +61,4 @@
 
         }
     }  
-}
-
-
-@media only screen and (min-width: 480px) and (max-width: 767px){
-    .HeaderContainer{
-        // * TITLE
-        #title{
-            .search-input:nth-child(1){padding-right: 15px;}
-            .search-input:nth-child(1) input{
-                display: none;
-            }
-
-            .search-input.d-none{
-                display: block;
-                padding-right: 15px;
-            }
-        }
-
-        // * NAVBAR
-        .navbar{
-            display: none;
-        }
-    }   
 }
