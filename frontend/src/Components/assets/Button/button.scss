@@ -49,6 +49,23 @@
     background-color: $colorGreen;
 }
 
+// * WHITE BTN
+.white-btn{
+    width: auto;
+    color: #000 !important;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    box-shadow: 0 0 3px #ccc;
+    cursor: pointer;
+    transition: all .1s ease;
+}
+
+.white-btn:hover{
+    background-color: #eee;
+}
+
 // * PRIVATE BTN
 .private-btn{
     width: 100%;
@@ -90,13 +107,12 @@
 
 // * FACEBOOK BTN
 .facebook-btn{
-    width: 90%;
+    width: auto;
     padding: 8px;
     border-radius: 5px;
     color: $colorDarkBlue;
     background-color: $colorBlueOpacity;  
-    position: absolute;
-    bottom: 1rem;  
+    border: none;
     font-size: .8rem;
     font-weight: 600;  
     cursor: pointer;

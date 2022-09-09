@@ -4,7 +4,8 @@
 #HeaderContainer{
     height: 3.6rem;
     background-color: #fff;
-    box-shadow: 0 0 6px rgb(179, 179, 179);
+    box-shadow: 0 0 6px #ccc;
+    position: relative;
 
     // * TITLE
     .title{

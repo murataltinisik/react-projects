@@ -1,12 +1,10 @@
 @import "../../../../assets/colors.scss";
-body{
-    height: 300rem !important;
-}
 
 // TODO: CENTER CONTAINER
 #CenterContainer{
     padding-top: 1.5rem;
     width: 42.5rem;
+    padding-bottom: 3rem;
 
     @mixin centerCss {
         width: 100%;
@@ -652,6 +650,12 @@ body{
                     text-align: left;
                     width: 100%;
                     font-size: .9rem;
+                }
+
+                button{
+                    position: absolute;
+                    bottom: 1rem;
+                    width: 80%;
                 }
             }:last-child{
                 margin-right: 0;
