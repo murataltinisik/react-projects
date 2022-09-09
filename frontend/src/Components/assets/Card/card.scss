@@ -1,0 +1,137 @@
+// TODO: CARD
+.cardContainer{
+    position: relative;
+    background-color: #fff;
+    height: auto !important;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #ccc;
+
+    // * HEAD
+    > div.head{
+        text-align: left;
+        padding: 0 1rem;
+        padding-top: 15px;
+
+        .menu{
+            cursor: pointer;
+        }
+    }
+
+    // * CARDS
+    div.cards{
+        width: fit-content;
+        padding: 1rem;
+
+        // GROUP
+        .group{
+            margin-right: 1rem;
+        }
+
+        .group:last-child{
+            margin-right: 0;
+        }
+
+        // CARD
+        .card{
+            width: 13rem;
+            height: 17rem;
+            margin-left: 1rem;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 0 3px #ccc;
+            position: relative;
+
+            $size : 2rem;
+
+            // HEAD
+            .head{
+                color: #fff;
+                cursor: pointer;
+                border-radius: 50%;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                width: $size;
+                height: $size;
+                text-align: center;
+                line-height: $size;
+                background-color: #00000050;
+                transition: background-color .2s ease;
+            }
+
+            .head:hover{
+                background-color: #00000080;
+            }
+
+            // IMAGE
+            div.image{
+                width: 100%;
+                height: 10rem;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            // CONTENT
+            div.content{
+                padding: 10px;
+                font-size: .85rem;
+            }
+
+            // FOOT
+            div.foot{
+                position: absolute;
+                bottom: 1rem;
+                width: 100%;
+                text-align: center;
+
+                button{
+                    width: 90%;
+                }
+            }
+        }
+
+        .card:first-child{
+            margin: 0;
+        }
+    }
+
+    // * NAVIGATION
+    div.navigation{
+        position: absolute;
+        top: 45%;width: 100%;
+
+        $size: 3rem;
+
+        @mixin btn {
+            background-color: #fff;
+            box-shadow: 0 0 6px #ccc;
+            border: none;
+            width: $size;
+            height: $size;
+            line-height: $size;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #next{
+            position: absolute;
+            right: 1rem;
+            @include btn;
+        }
+        
+        #prev{
+            position: absolute;
+            left: 1rem;
+            @include btn;
+        }
+
+        button:active{
+            background-color: #eee !important;
+        }
+    }
+}
