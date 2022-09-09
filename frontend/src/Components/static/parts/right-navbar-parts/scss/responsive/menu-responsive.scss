@@ -1,4 +1,77 @@
+// LAPTOP
 @media only screen and (min-width: 768px) and (max-width: 1024px){
+    #ListContainer .menu{
+        background-color: #fff !important;
+        width: 17rem !important;
+        height: auto !important;
+        overflow: hidden !important;
+
+        .headResp{
+            display: none;
+        }
+
+        // * SEARCH MENU
+        .searchMenu{
+            display: none;
+        }
+
+        // * BUILDER MENU
+        .builderMenu{
+            padding: 8px;
+            padding-top: 0;
+            width: 100% !important;
+            box-shadow: none !important;
+            margin-right: 0 !important;
+            h5{
+                font-size: large !important;
+            }
+
+            ul{
+                padding: 0 !important;
+            }
+        }
+
+    }
+}
+
+// TABLET
+@media only screen and (min-width:480px) and (max-width: 767px) {
+    #ListContainer .menu{
+        background-color: #fff !important;
+        width: 17rem !important;
+        height: auto !important;
+        overflow: hidden !important;
+
+        .headResp{
+            display: none;
+        }
+
+        // * SEARCH MENU
+        .searchMenu{
+            display: none;
+        }
+
+        // * BUILDER MENU
+        .builderMenu{
+            padding: 8px;
+            padding-top: 0;
+            width: 100% !important;
+            box-shadow: none !important;
+            margin-right: 0 !important;
+            h5{
+                font-size: large !important;
+            }
+
+            ul{
+                padding: 0 !important;
+            }
+        }
+
+    }
+}
+
+// PHONE
+@media only screen and (max-width:476px) {
     #ListContainer .menu{
         background-color: #fff !important;
         width: 17rem !important;

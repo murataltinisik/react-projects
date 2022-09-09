@@ -77,6 +77,10 @@
                 }
             }
 
+            li#responsiveOpenMenu{
+                display: none;
+            }
+
             li.active{
                 border-color: $colorDarkBlue;
 

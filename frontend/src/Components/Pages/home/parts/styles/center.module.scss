@@ -6,8 +6,10 @@ body{
 // TODO: CENTER CONTAINER
 #CenterContainer{
     padding-top: 1.5rem;
+    width: 42.5rem;
 
     @mixin centerCss {
+        width: 100%;
         border-radius: 10px;
         background-color: #fff;
         box-shadow: 0 0 3px #ccc;
@@ -15,7 +17,6 @@ body{
 
     // * TOP OF
     .topOf{
-        width: 42.5rem;
         @include centerCss;
         
         // HEAD
@@ -294,7 +295,6 @@ body{
 
     // * SHIPTMENTS
     .shipment{
-        width: 42.5rem;
         margin-top: .8rem;
         @include centerCss;
         padding: 1rem;
@@ -345,7 +345,6 @@ body{
 
     // * SEND AND OTHER
     .sendContainer{
-        width: 42.5rem;
         margin-top: .8rem;
         @include centerCss;
 
@@ -538,7 +537,6 @@ body{
 
     // * ACQUAINTANCES
     .acquaintances{
-        width: 42.5rem;
         margin-top: .8rem;
         position: relative;
         @include centerCss;

@@ -16,7 +16,6 @@ import Navbar from './parts/Navbar';
 import RightNavbar from './parts/RightNavbar';
 
 function Header() {
-  alert(window.innerWidth);
   return (
     <>
       <div
