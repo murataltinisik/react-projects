@@ -3,20 +3,28 @@ import React, { Component } from 'react';
 // ? CAROUSEL
 import '../../assets/Card/card.scss';
 import '../../assets/Card/card2.scss';
+import '../../assets/Card/send-card.scss';
 
 // ? FONT AWESOME
 import {
+  faBars,
   faCamera,
   faChevronDown,
   faChevronLeft,
   faChevronRight,
   faCirclePlus,
+  faClock,
   faClose,
   faEdit,
   faEllipsis,
   faGear,
+  faGrip,
+  faMessage,
+  faShare,
   faSliders,
+  faThumbsUp,
   faUserPlus,
+  faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -103,10 +111,7 @@ class Section extends Component {
               >
                 <div className={Scss.image}>
                   <img src="https://scontent.fesb4-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=_k1JGnPK0ssAX8fryJI&_nc_ht=scontent.fesb4-1.fna&oh=00_AT87hiFH0GgsZJT0fvgNfPW7ppcCqpa5eYL8QgPjQ5uY5Q&oe=63411EF8" />
-                  <FontAwesomeIcon
-                    className={Scss.icon}
-                    icon={faCamera}
-                  />
+                  <FontAwesomeIcon className={Scss.icon} icon={faCamera} />
                 </div>
                 <div className={Scss.name}>Murat Altınışık</div>
               </div>
@@ -130,50 +135,32 @@ class Section extends Component {
             >
               <ul className="d-flex justify-content-start align-items-center">
                 <li className={Scss.active}>
-                  <a
-                    href="#"
-                    className="private-btn text-decoration-none"
-                  >
+                  <a href="#" className="private-btn text-decoration-none">
                     Gönderiler
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="private-btn text-decoration-none"
-                  >
+                  <a href="#" className="private-btn text-decoration-none">
                     Hakkında
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="private-btn text-decoration-none"
-                  >
+                  <a href="#" className="private-btn text-decoration-none">
                     Arkadaşlar
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="private-btn text-decoration-none"
-                  >
+                  <a href="#" className="private-btn text-decoration-none">
                     Fotoğraflar
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="private-btn text-decoration-none"
-                  >
+                  <a href="#" className="private-btn text-decoration-none">
                     Videolar
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="private-btn text-decoration-none"
-                  >
+                  <a href="#" className="private-btn text-decoration-none">
                     Yer Bildirimleri
                   </a>
                 </li>
@@ -183,10 +170,7 @@ class Section extends Component {
                     className="private-btn text-decoration-none"
                   >
                     Diğer
-                    <FontAwesomeIcon
-                      icon={faChevronDown}
-                      className="ml-1"
-                    />
+                    <FontAwesomeIcon icon={faChevronDown} className="ml-1" />
                   </a>
                 </li>
               </ul>
@@ -201,10 +185,7 @@ class Section extends Component {
         </div>
 
         {/* CAROUSEL */}
-        <div
-          id={Scss.Carousel}
-          className="cardContainer"
-        >
+        <div id={Scss.Carousel} className="cardContainer">
           {/* HEAD */}
           <div className="head d-flex justify-content-between align-items-center">
             <h5>Tanıyor Olabileceğin Kişiler</h5>
@@ -749,341 +730,14 @@ class Section extends Component {
                 </div>
               </div>
             </div>
-
-            <div className="group d-flex justify-content-start align-items-center">
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group d-flex justify-content-start align-items-center">
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group d-flex justify-content-start align-items-center">
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="head">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-
-                <div className="body">
-                  <div className="image">
-                    <img src="https://istanbulsinopspor.com/wp-content/uploads/1988/07/omerresimyok.jpg" />
-                  </div>
-
-                  <div className="content">Kübra Altınışık</div>
-
-                  <div className="foot">
-                    <button className="facebook-btn">
-                      <FontAwesomeIcon icon={faUserPlus} />
-                      <span>Arkadaşı Ekle</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* NAVIGATION */}
           <div className="navigation">
-            <button
-              id="prev"
-              onClick={this.onPrev}
-            >
+            <button id="prev" onClick={this.onPrev}>
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
-            <button
-              id="next"
-              onClick={this.onNext}
-            >
+            <button id="next" onClick={this.onNext}>
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
           </div>
@@ -1118,10 +772,7 @@ class Section extends Component {
             <div className="card-2 mt-2">
               <div className="title">
                 Fotoğraflar
-                <a
-                  href="#"
-                  className="primary-link"
-                >
+                <a href="#" className="primary-link">
                   Tüm Fotoğrafları Göster
                 </a>
               </div>
@@ -1130,10 +781,7 @@ class Section extends Component {
             <div className="card-2 mt-2">
               <div className="title">
                 Arkadaşlar
-                <a
-                  href="#"
-                  className="primary-link"
-                >
+                <a href="#" className="primary-link">
                   Tüm Arkadaşları Göster
                 </a>
               </div>
@@ -1142,8 +790,10 @@ class Section extends Component {
 
           {/* RIGHT */}
           <div className={Scss.right}>
+            {/* SHIPMENT */}
             <Shipment Scss={ShipmentScss} />
 
+            {/* SUBMISSIONS */}
             <div className={`${Scss.submissions} card-2 mt-1`}>
               <div className="title">
                 Gönderiler
@@ -1160,10 +810,112 @@ class Section extends Component {
                 </ul>
               </div>
 
-              <div className="dark-hr"></div>
+              <div className="dark-hr mb-0"></div>
+
+              <ul
+                className={`${Scss.layoutSelection} d-flex justify-content-between`}
+              >
+                <li className={`${Scss.active} text-center width-50`}>
+                  <a href="#">
+                    <FontAwesomeIcon icon={faBars} />
+                    <span className="ml-1">Liste Görünümü</span>
+                  </a>
+                </li>
+                <li className="text-center width-50">
+                  <a href="#">
+                    <FontAwesomeIcon icon={faGrip} />
+                    <span className="ml-1">Izgara Görünümü</span>
+                  </a>
+                </li>
+              </ul>
             </div>
 
-            <div className={Scss.birthday}></div>
+            {/* BIRTHDAY */}
+            <div className={`${Scss.birthday} mt-1`}>
+              <div className="send-card">
+                {/* HEAD */}
+                <div className="head d-flex justify-content-between align-items-center">
+                  <div className="send">
+                    <div className="d-flex justify-content-start align-items-center">
+                      {/* IMAGE */}
+                      <div className="image">
+                        <img src="https://scontent.fesb10-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=_k1JGnPK0ssAX88Gqed&tn=U7RQGoxjCU6lu3jj&_nc_ht=scontent.fesb10-2.fna&oh=00_AT9sqJFCHxZOSZmehOdnPjTiF5vAlZ9ux63P3C1d2fYYhg&oe=63411EF8" />
+                      </div>
+
+                      {/* DETAIL */}
+                      <div className="ml-1 d-flex direction-column justify-content-start align-items-start">
+                        <div className="name">Murat Altınışık</div>
+
+                        <div className="other">
+                          <span>16 Şubat 1986</span>
+                          <div className="elips"></div>
+                          <span>
+                            <FontAwesomeIcon icon={faClock} />
+                          </span>
+                          <div className="elips"></div>
+                          <span>
+                            <FontAwesomeIcon icon={faUsers} />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="menu">
+                    <FontAwesomeIcon icon={faBars} />
+                  </div>
+                </div>
+
+                {/* BODY */}
+                <div className="body d-flex direction-column justify-content-center align-items-center">
+                  <div className={Scss.birthdayIcon}>
+                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yl/r/1SViyXWaRzP.png" />
+                  </div>
+                  <div className={`${Scss.date} mt-1`}>
+                    29 Aralık 2004 Tarihinde Doğdu
+                  </div>
+                </div>
+
+                {/* FOOT */}
+                <div className="foot">
+                  <ul className="d-flex  justify-content-between align-items-center">
+                    <li className="private-btn width-100">
+                      <FontAwesomeIcon icon={faThumbsUp} />
+                      <span className="ml-1">Beğen</span>
+                    </li>
+
+                    <li className="private-btn width-100">
+                      <FontAwesomeIcon icon={faMessage} />
+                      <span className="ml-1">Yorum Yap</span>
+                    </li>
+
+                    <li className="private-btn width-100">
+                      <FontAwesomeIcon icon={faShare} />
+                      <span className="ml-1">Paylaş</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* COMMENT */}
+                <div className="comment">
+                  <div className="input">
+                    <div className="image">
+                      <img src="https://scontent.fesb10-2.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p32x32&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=_k1JGnPK0ssAX88Gqed&tn=U7RQGoxjCU6lu3jj&_nc_ht=scontent.fesb10-2.fna&oh=00_AT9lJU5W_f7DmXOLZU6kNF-35VOacPG4OXjl7c2D7aKiVw&oe=63411EF8" />
+                    </div>
+
+                    <div className="input">
+                      <input
+                        type="text"
+                        placeholder="Yorum yaz..."
+                        className="search-input"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="info">Paylaşmak için enter tuşuna bas.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
