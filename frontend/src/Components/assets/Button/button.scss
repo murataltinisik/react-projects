@@ -40,13 +40,14 @@
 
 // * SECONDARY BTN
 .secondary-btn{
-    color: gray !important;
+    color: rgb(85, 85, 85) !important;
     background-color: $colorSecondary;
     @include name;
+    font-size: .8rem;
 }
 
 .secondary-btn:hover{
-    background-color: $colorGreen;
+    background-color: #ccc;
 }
 
 // * WHITE BTN

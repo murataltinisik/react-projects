@@ -5,7 +5,7 @@
     height: 300rem;
 
     @mixin commonCss {
-        width: 65%;
+        width: 65% !important;
         margin: 0 auto;
     }
 
@@ -168,6 +168,21 @@
         @include commonCss;
         margin-top: 1rem;
         margin-bottom: 1rem;
+    }
+
+    // * OTHER COMPONENTS
+    #OtherComponents{
+        @include commonCss;
+
+        // LEFT
+        .left{
+            width: 40%;
+        }
+
+        // RIGHT
+        .right{
+            width: 55%;
+        }
     }
 }
 

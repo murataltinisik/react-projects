@@ -1,0 +1,286 @@
+@import "../../../../../assets/colors.scss";
+
+
+@mixin centerCss {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 3px #ccc;
+}
+
+.topOf{
+    @include centerCss;
+    
+    // HEAD
+    .head{
+        padding-top: .3rem;
+        // UL
+        ul{
+            padding: 0 1rem;
+            li{
+                width: 30%;
+                height: 3.5rem;
+                line-height: 3.5rem;
+                text-align: center;
+                font-weight: 500;
+                font-size: .85rem;
+                border-bottom: 3px solid #fff;
+                cursor: pointer;
+            }.active{
+                color: $colorBlue;
+                border-color: $colorBlue;
+            }:not(.active):hover{
+                border-radius: 10px;
+                background-color: $colorDarkSecondaryOpacity;
+            }
+        }
+
+        @keyframes blink {
+            0% {opacity: 1;}
+            50% {opacity: .5;}
+            100% {opacity: 1;}
+        }
+
+        // CONTENT
+        .contents{
+            padding-bottom: 1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            overflow-x: hidden;
+
+            .content{
+                display: none;
+                transition: all .7s ease;
+
+                .contentInfo{
+                    margin-top: 2rem;
+                    margin-left: .5rem;
+                    ul{
+                        display: block;
+
+                        li{
+                            width: 100%;
+                            height: auto;
+                            line-height: normal;
+                            text-align: left;
+                            font-weight: normal;
+                            padding: 8px;
+                            cursor: initial;
+
+                            span{
+                                font-size: 1.2rem;
+                                color: gray;
+                            }
+                        }:hover{
+                            background-color: transparent;
+                        }
+                    }
+                }
+
+                // * STORIES
+                .stories{
+                    width: 7.1rem;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 10px;
+                    cursor: pointer;
+
+                    // IMAGE
+                    .image{
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        overflow: hidden;
+                        background-image: linear-gradient(gray, black);
+                        img{
+                            width: 100%;
+                            height: 8rem;
+                            opacity: .7;
+                        }
+                    }
+
+                    // FOOT
+                    .foot{
+                        text-align: center;
+                        position: relative;
+                        box-shadow: 0 0px 3px #ccc;
+                        border-bottom-left-radius: 10px;
+                        border-bottom-right-radius: 10px;
+
+                        a{
+                            color: #fff;
+                            padding: .5rem .6rem;
+                            border-radius: 50%;
+                            border: 5px solid #fff;
+                            background-color: $colorBlue;
+                            text-align: center;
+                            position: absolute;
+                            bottom: 3.4rem;
+                        }
+
+                        span{
+                            padding: 1rem;
+                            margin-top: .5rem;
+                            font-size: .8rem;
+                        }
+                    }
+                }
+
+                .stories:hover{
+                    animation: blink 1s ease infinite;
+                }
+
+                // * REELS
+                #reelsContainer{
+                    position: relative;
+                    .reels{
+                        height: 12.3rem;
+                        border-radius: 10px;
+                        width: 7rem;
+                        overflow: hidden;
+                        margin-right: .5rem;
+                        cursor: pointer;
+
+                        // IMAGE
+                        img{
+                            width: 100% !important;
+                            height: 100% !important;
+                            transition: all .2s linear;
+                        }
+
+                        // VIEWS 
+                        .views{
+                            position: absolute;
+                            bottom: .5rem;
+                            height: auto;
+                            display: flex;
+                            font-size: .75rem;
+                            color: #fff;
+                            font-weight: 600;
+                            align-items: center;
+
+                            svg{
+                                margin-left: .7rem;
+                                margin-right: .3rem !important;
+                            }
+                        }
+                    }:last-child{
+                        margin-right: 0 !important;
+                    }:hover{
+                        opacity: .9;
+                        img{
+                            transform: scale(1.01);
+                        }
+                    }.moreReels{
+                        background-color: #fff;
+                        box-shadow: inset 0 0 9px rgb(198, 198, 198);
+                        transition: all .2s ease;
+
+                        > div{
+                            text-align: center;
+                            font-size: .85rem;
+                            padding: 0 .35rem;
+                        }
+                    }
+                    .moreReels:hover{
+                        box-shadow: inset 0 0 30px rgb(198, 198, 198);
+
+                    }
+
+                   
+                }
+
+                .nextBtn, .prevBtn{
+                    font-size: 1.2rem;
+                    color: gray;
+                    padding: .85rem 1.1rem;
+                    border-radius: 50%;
+                    box-shadow: 0 0 9px #00000050;
+                    background-color: #fff;
+                    border: none;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 4.5rem;
+                    transition: all .2s ease;
+                }
+                button.nextBtn{
+                    right: 20rem;
+                    opacity: 1;
+                    display: block;
+                }
+                button.prevBtn{
+                    left: 19rem;
+                    opacity: 0;
+                    display: none;
+                }
+
+                button:active{
+                    padding: .8rem 1.05rem;
+                    background-color: #eee;
+                }
+
+                // * ROOMS
+                .rooms{
+                    width: 16.2rem;
+                    height: 12rem;
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                    border-radius: 7px;
+                    border: 1px solid #ccc;
+                    position: relative;
+                    transition: all .2s ease;
+
+                    // ICON
+                    .icon{
+                        width: 3.5rem;
+                        height: 5.8rem;
+                        color: purple;
+                        border-radius: 50%;
+                        border: 1px solid #eee;
+                        box-shadow: 0 0 3px purple;
+                        transition: all .2s ease;
+                    }
+
+                    // FOOT
+                    .foot{
+                        margin-top: 1rem;
+                        // P
+                        p{
+                            font-weight: 600;
+                            font-size: .85rem;
+                        }
+
+                        // BUTTON
+                        button{
+                            width: 90%;
+                            padding: .4rem 0;
+                            color: $colorBlue;
+                            font-weight: 500;
+                            border-radius: 5px;
+                            box-shadow: 0 0 3px $colorBlue;
+                            position: absolute;
+                            bottom: .8rem;
+                            cursor: pointer;
+                        }
+
+                        button:hover{
+                            background-color: #fff;
+                        }
+
+                    }
+                }
+
+                .rooms:hover{
+                    background-color: #eee;
+                }
+                
+            }:first-child{
+                display: flex;
+                justify-content: flex-start;
+            }.overflow{
+                width: fit-content;
+                position: relative;
+                left: 0;
+            }
+        }
+    }
+}

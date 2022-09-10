@@ -1,0 +1,58 @@
+@import "../../../../../assets/colors.scss";
+
+
+@mixin centerCss {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 3px #ccc;
+}
+
+// * SHIPTMENTS
+.shipment{
+    @include centerCss;
+    padding: 1rem;
+    padding-bottom: 8px;
+
+    // HEAD
+    .head{
+        margin-bottom: 1rem;
+        .userImage{
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .whatDoYouThink{
+            width: 100%;
+            padding: 8px 1rem;
+            font-size: .9rem;
+            background-color: $colorSecondary;
+            border-radius: 2rem;
+            cursor: pointer;
+        }:hover{
+            background-color: $colorDarkSecondary;
+        }
+    }
+
+    // FOOT
+    .foot{
+        color: gray;
+        font-size: .85rem;
+        font-weight: 600;
+
+        div{
+            width: 100%;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 8px;
+        }:hover{
+            background-color: $colorSecondary;
+        }
+    }
+}

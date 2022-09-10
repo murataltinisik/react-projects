@@ -22,6 +22,9 @@
     div.cards{
         width: fit-content;
         padding: 1rem;
+        position: relative;
+        left: 0;
+        transition: all .5s linear;
 
         // GROUP
         .group{
@@ -34,7 +37,7 @@
 
         // CARD
         .card{
-            width: 13rem;
+            width: 12.65rem;
             height: 17rem;
             margin-left: 1rem;
             overflow: hidden;
@@ -116,18 +119,23 @@
             text-align: center;
             border-radius: 50%;
             cursor: pointer;
+            transition: all .2s ease;
         }
 
         #next{
             position: absolute;
             right: 1rem;
             @include btn;
+            opacity: 1;
+            display: block;
         }
         
         #prev{
             position: absolute;
             left: 1rem;
             @include btn;
+            opacity: 0;
+            display: none;
         }
 
         button:active{
