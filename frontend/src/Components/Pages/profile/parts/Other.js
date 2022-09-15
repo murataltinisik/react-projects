@@ -6,6 +6,7 @@ import {
   faBars,
   faClock,
   faGear,
+  faGlobe,
   faGrip,
   faMessage,
   faShare,
@@ -23,6 +24,29 @@ import './styles/responsive/responsive.other.scss';
 import Shipment from '../../home/parts/center-components/shipment';
 
 class Other extends Component {
+  constructor() {
+    super();
+    this.state = {
+      biographyForm: document.getElementById('biographyForm'),
+      biographyBtn: document.getElementById('biographyBtn'),
+    };
+  }
+
+  componentDidMount() {
+    this.state.biographyForm = document.getElementById('biographyForm');
+    this.state.biographyBtn = document.getElementById('biographyBtn');
+  }
+
+  addBiography = () => {
+    this.state.biographyForm.style.display = 'block';
+    this.state.biographyBtn.style.display = 'none';
+  };
+
+  biographyCancel = () => {
+    this.state.biographyForm.style.display = 'none';
+    this.state.biographyBtn.style.display = 'block';
+  };
+
   render() {
     return (
       <div
@@ -31,12 +55,41 @@ class Other extends Component {
       >
         {/* LEFT */}
         <div className={`${Scss.left} leftResp`}>
-          <div className="card-2">
+          <div className={`${Scss.tags} card-2`}>
             <div className="title">Künye</div>
 
             <ul>
-              <li className="secondary-btn text-center mt-1 p-05">
-                Biyografi Ekle
+              <li onClick={this.addBiography}>
+                <div
+                  className="secondary-btn text-center mt-1 p-05"
+                  id="biographyBtn"
+                >
+                  Biyografi Ekle
+                </div>
+
+                <div className={Scss.hide} id="biographyForm">
+                  <textarea placeholder="Kim olduğunu anlat"></textarea>
+                  <div className={Scss.detail}>
+                    <div className={Scss.characterCount}>
+                      100 Karakter kaldı.
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className={Scss.tagStatus}>
+                        <FontAwesomeIcon icon={faGlobe} />
+                        <span>Herkese Açık</span>
+                      </div>
+                      <div className="d-flex">
+                        <button
+                          className="secondary-btn mr-1"
+                          onMouseDown={this.biographyCancel}
+                        >
+                          İptal
+                        </button>
+                        <button className="secondary-btn">Kaydet</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li className="secondary-btn text-center mt-1 p-05">
                 Detayları Düzenle
