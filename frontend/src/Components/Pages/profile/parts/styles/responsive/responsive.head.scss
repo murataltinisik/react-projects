@@ -1,0 +1,129 @@
+// * LAPTOP
+@media only screen and (min-width:780px) and (max-width:1024px){
+    .profileContainerResp{
+        width: 100% !important;
+    }
+
+    // * CONTAINER
+    .containerResp{
+
+        // COVER
+        .coverResp{
+            width: 100% !important;
+            height: 40vh !important;
+            border-radius: 0 !important;
+            
+            span{
+                display: none;
+            }
+        }
+
+    }
+}
+
+// * TABLET
+@media only screen and (min-width:480px) and (max-width:767px){
+    .profileContainerResp{
+        width: 100% !important;
+    }
+
+    // * CONTAINER
+    .containerResp{
+
+        // COVER
+        .coverResp{
+            width: 100% !important;
+            height: 30vh !important;
+            border-radius: 0 !important;
+            
+            span{
+                display: none;
+            }
+        }
+
+        // USER AND BUTTON GROUP
+        .userAndButtonGroupResp{
+            flex-direction: column;
+
+            .userResp{
+                margin-top: -5.5rem !important;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .userOperationResp{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                margin-top: -1rem !important;
+                margin-bottom: 1rem;
+            }
+        }
+
+        // MENU
+        .menu{
+            ul{
+                li:nth-child(6){
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+// * MOBILE
+@media only screen and (max-width:479px){
+    .profileContainerResp{
+        width: 100% !important;
+    }
+
+    // * CONTAINER
+    .containerResp{
+
+        // COVER
+        .coverResp{
+            width: 100% !important;
+            height: 20vh !important;
+            border-radius: 0 !important;
+            
+            span{
+                display: none;
+            }
+        }
+
+        // USER AND BUTTON GROUP
+        .userAndButtonGroupResp{
+            flex-direction: column;
+
+            .userResp{
+                margin-top: -5.5rem !important;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .userOperationResp{
+                display: flex;
+                width: 100%;
+                margin-top: -1rem !important;
+                margin-bottom: 1rem;
+                button{
+                    width: 100% !important;
+                }
+            }
+        }
+
+        // MENU
+        .menu{
+            ul{
+                li:nth-child(3),
+                li:nth-child(4),
+                li:nth-child(5),
+                li:nth-child(6){
+                    display: none;
+                }
+            }
+        }
+    }
+}

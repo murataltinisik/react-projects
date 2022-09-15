@@ -1,0 +1,71 @@
+// * LAPTOP
+@media only screen and (min-width:780px) and (max-width: 1024px){
+    .otherComponentsResp{
+        margin-top: 0 !important;
+        width: 98% !important;
+
+        justify-content: center !important;
+
+        // LEFT RESP, RIGHT RESP
+        .leftResp, .rightResp{
+            width: 40% !important;
+        }
+
+        .rightResp{
+            margin-left: 1rem;
+            width: 55% !important;
+        }
+
+
+        // CARD
+        .card-2{
+            width: 100% !important;
+        }
+    }
+}
+
+// * TABLET
+@media only screen and (min-width:480px) and (max-width: 767px){
+    .otherComponentsResp{
+        margin-top: 1rem !important;
+        flex-direction: column !important;
+
+        // LEFT RESP, RIGHT RESP
+        .leftResp, .rightResp{
+            width: 100% !important;
+        }
+
+        .rightResp{
+            margin-top: 1.5rem;
+        }
+
+
+        // CARD
+        .card-2{
+            width: 100% !important;
+        }
+    }
+}
+
+// * MOBILE
+@media only screen and (max-width:479px){
+    .otherComponentsResp{
+        margin-top: 1rem !important;
+        flex-direction: column !important;
+
+        // LEFT RESP, RIGHT RESP
+        .leftResp, .rightResp{
+            width: 100% !important;
+        }
+
+        .rightResp{
+            margin-top: 1.5rem;
+        }
+
+
+        // CARD
+        .card-2{
+            width: 100% !important;
+        }
+    }
+}
