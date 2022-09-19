@@ -15,6 +15,55 @@ import Scss from './styles/carousel.module.scss';
 import './styles/responsive/responsive.carousel.scss';
 
 class Carousel extends Component {
+  constructor() {
+    super();
+    this.state = {
+      counter: 0,
+    };
+  }
+
+  onNext = () => {
+    let counter = this.state.counter++;
+    const cards = document.querySelectorAll('.cards')[0];
+    const length = document.querySelectorAll('.cards .group').length;
+
+    if (counter < 0) {
+      counter = 0;
+    }
+
+    if (counter < length) {
+      cards.style.left = `-${98.75 * counter}%`;
+
+      // * SET TIME OUT
+      setTimeout(() => {
+        document.getElementById('prev').style.opacity = '1';
+      }, 500);
+      document.getElementById('prev').style.display = 'block';
+    } else if (counter === length) {
+      setTimeout(() => {
+        document.getElementById('next').style.opacity = '0';
+      }, 500);
+      document.getElementById('next').style.display = 'none';
+    }
+  };
+
+  onPrev = () => {
+    let counter = --this.state.counter;
+    const cards = document.querySelectorAll('.cards')[0];
+
+    if (counter >= 0) {
+      cards.style.left = `-${98.75 * counter}%`;
+    }
+
+    if (counter === 0) {
+      // * SET TIME OUT
+      setTimeout(() => {
+        document.getElementById('prev').style.opacity = '0';
+      }, 500);
+      document.getElementById('prev').style.display = 'none';
+    }
+  };
+
   render() {
     return (
       <div id={Scss.Carousel} className="cardContainer carouselContainerResp">

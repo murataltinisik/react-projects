@@ -226,4 +226,31 @@
             }
         }
     }
+
+    // * PROFILE EDIT CONTAINER
+    .profile-edit-container{
+
+        // USER IMAGE
+        .userImage{
+            text-align: center;
+        
+            img{
+                border-radius: 50%;
+            }
+        }
+
+        // COVER IMAGE
+        .coverImage{
+            .coverView{
+                margin: 1rem auto;
+                margin-bottom: 0;
+                width: 70%;
+                height: 10rem;
+                border-radius: 5px;
+                box-shadow: 0 2px 6px #eee, 0 1px 3px #ccc;
+                background-color: #eee;
+            }
+        }
+
+    }
 }

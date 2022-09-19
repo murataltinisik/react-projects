@@ -1,0 +1,22 @@
+@import '../colors.scss';
+
+// TODO: DROPDOWN
+.dropdown{
+    width: 22rem;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    top: 2.5rem;
+    box-shadow: 0 0 6px #ccc;
+    border-radius: 5px;
+    display: none;
+    z-index: 999;
+
+    ul{
+        padding: 8px;
+        width: 100% !important;
+        li{
+            text-align: left;
+        }
+    }
+}
