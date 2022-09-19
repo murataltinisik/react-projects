@@ -28,6 +28,7 @@ import '../../../assets/PopUp/popup.scss';
 // ? TOP
 import Shipment from '../../home/parts/center-components/shipment';
 
+let selections = [];
 class Other extends Component {
   constructor() {
     super();
@@ -50,6 +51,12 @@ class Other extends Component {
   biographyCancel = () => {
     this.state.biographyForm.style.display = 'none';
     this.state.biographyBtn.style.display = 'block';
+  };
+
+  // * SELECTION HOBIES
+  selectionHobie = e => {
+    selections.push(e.target.getAttribute('itemRef'));
+    e.target.setAttribute('class', 'selection');
   };
 
   // * POPUP
@@ -217,16 +224,36 @@ class Other extends Component {
               {/* CONTENT */}
               <div className="content">
                 <ul>
-                  <li>Kitap Okuma</li>
-                  <li className="selection">Müzik Dinleme</li>
-                  <li>Seyahat</li>
-                  <li className="selection">Film İzleme</li>
-                  <li>Doğa Yürüyüşü</li>
-                  <li>Alışveriş</li>
-                  <li className="selection">Yürüyüş</li>
-                  <li>Doğa Fotoğrafçılığı</li>
-                  <li>Yemek Pişirme</li>
-                  <li>Araba Sürme</li>
+                  <li itemRef="0" onClick={this.selectionHobie}>
+                    Kitap Okuma
+                  </li>
+                  <li itemRef="1" onClick={this.selectionHobie}>
+                    Müzik Dinleme
+                  </li>
+                  <li itemRef="2" onClick={this.selectionHobie}>
+                    Seyahat
+                  </li>
+                  <li itemRef="3" onClick={this.selectionHobie}>
+                    Film İzleme
+                  </li>
+                  <li itemRef="4" onClick={this.selectionHobie}>
+                    Doğa Yürüyüşü
+                  </li>
+                  <li itemRef="5" onClick={this.selectionHobie}>
+                    Alışveriş
+                  </li>
+                  <li itemRef="6" onClick={this.selectionHobie}>
+                    Yürüyüş
+                  </li>
+                  <li itemRef="7" onClick={this.selectionHobie}>
+                    Doğa Fotoğrafçılığı
+                  </li>
+                  <li itemRef="8" onClick={this.selectionHobie}>
+                    Yemek Pişirme
+                  </li>
+                  <li itemRef="9" onClick={this.selectionHobie}>
+                    Araba Sürme
+                  </li>
                   <li className="search">Başka Ara</li>
                 </ul>
               </div>
@@ -334,6 +361,7 @@ class Other extends Component {
               >
                 Hobi Ekle
               </li>
+
               <li
                 className="secondary-btn text-center mt-1 p-05"
                 id="editFeaturedContainer"
