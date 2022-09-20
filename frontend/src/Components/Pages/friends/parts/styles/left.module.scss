@@ -1,0 +1,102 @@
+@import '../../../../assets/colors.scss';
+
+// TODO: LEFT CONTAINER
+#LeftContainer{
+    width: 23rem;
+    height: 93.7vh;
+    background-color: #fff;
+    box-shadow: 0 0 3px #ccc;
+
+    // * HEAD
+    .head{
+        padding-top: 8px !important;
+        padding: 0 1rem;
+
+        // SETTINGS
+        .settings{
+            position: relative;
+
+            > svg{
+                padding: 10px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            > svg:hover{
+                background-color: #eee;
+            }
+
+            > svg:active{
+                background-color: #ccc;
+            }
+
+            // MENU
+            .menu{
+                padding: 8px 10px;
+                position: absolute;
+                z-index: 999;
+                right: 0;
+                width: 22rem;
+                background-color: #fff;
+                box-shadow: 0 0 5px #ccc;
+                border-radius: 7px;
+                display: none;
+
+                // TITLE
+                .title{
+                    font-weight: 600;
+                }
+
+                // DESCRIPTION
+                .description{
+                    margin-bottom: 5px;
+                    font-size: .7rem;
+                    opacity: .5;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    // * MENU
+    .menu{
+        ul{
+            padding: 0 1rem;
+            li{
+                padding: 5px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                span{
+                    width: 3.3rem;
+                    height: 2.7rem;
+                    text-align: center;
+                    padding: 0;
+                    line-height: 2.7rem;
+                }
+
+                a{
+                    text-decoration: none;
+                    color: #000;
+                    display: block;
+                    position: relative;
+
+                    .arrow{
+                        position: absolute;
+                        right: 1rem;
+                        top: 5px;
+                    }
+                }
+            }
+
+            li.active{
+                span{
+                    color: #fff;
+                    background-color: $colorBlue !important;
+                }
+            }
+        }
+    }
+}

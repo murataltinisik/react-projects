@@ -50,6 +50,10 @@
     background-color: #ccc;
 }
 
+.secondary-btn.activeClass:active{
+    transform: scale(.95);
+}
+
 // * WHITE BTN
 .white-btn{
     width: auto;
@@ -100,9 +104,9 @@
         font-weight: 500;
         cursor: pointer;
     }
-}.btn-hover:hover{
+}.additionalButton:hover{
     background-color: #E4E6E9 !important;
-}.btn-hover:active{
+}.additionalButton:active{
     background-color: #ccc !important;
 }
 
@@ -122,4 +126,41 @@
 
 .facebook-btn:hover{
     background-color: $colorBlueOpacityHover;
+}
+
+// * STATUS BTN
+.status-btn{
+    cursor: pointer;
+    
+    p{
+        font-size: .9rem;
+    }
+
+    div:last-child{
+        width: 3rem;height: 1.6rem;
+        box-shadow: inset 0 0 3px #ccc;
+        border-radius: 1rem;
+        background-color: #eee;
+
+        .circle{
+            width: 1.4rem;
+            height: 1.4rem;
+            margin-top: 1.5px;
+            margin-left: 1.5px;
+            box-shadow: 0 0 3px #ccc;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+    }
+}
+
+.status-btn.status-active{
+    div:last-child{
+        background-color: $colorBlue;
+
+       .circle{
+        background-color: #fff;
+        box-shadow: none;
+       }
+    }
 }
