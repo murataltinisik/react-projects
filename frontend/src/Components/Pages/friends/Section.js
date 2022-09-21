@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 
 // ? ASSETS
-import '../../assets/Link/link.scss';
-import '../../assets/Display/flex.scss';
-import '../../assets/Button/button.scss';
 import '../../assets/Card/friend-card.scss';
-import '../../assets/MarginPadding/margin-padding.scss';
 
 // ? PARTS
 import Left from './parts/Left';

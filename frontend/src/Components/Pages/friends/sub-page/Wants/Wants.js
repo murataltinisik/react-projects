@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 // ? ASSETS
-import '../../assets/Card/friend-card.scss';
+import '../../../../assets/Card/friend-card.scss';
 
 // ? HEADER & SECTION
-import Header from '../../static/Header';
+import Header from '../../../../static/Header';
 import Section from './Section';
 
-class Friends extends Component {
+class Wants extends Component {
   render() {
     return (
       <div>
@@ -18,4 +18,4 @@ class Friends extends Component {
   }
 }
 
-export default Friends;
+export default Wants;

@@ -6,6 +6,7 @@ import Profile from './Components/Pages/profile/Profile';
 
 // TODO: FRIENDS
 import Friend from './Components/Pages/friends/Friends';
+import Wants from './Components/Pages/friends/sub-page/Wants/Wants';
 
 // TODO: AUTH
 import Login from './Components/Pages/Auth/Login';
@@ -15,7 +16,7 @@ import FindAccount from './Components/Pages/Auth/FindAccount';
 function App() {
   return (
     <div className="App">
-      <Friend />
+      <Wants />
     </div>
   );
 }
