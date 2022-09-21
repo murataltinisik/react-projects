@@ -2,10 +2,11 @@
 
 // TODO: LEFT CONTAINER
 #LeftContainer{
-    width: 23rem;
+    width: 23rem !important;
     height: 93.7vh;
     background-color: #fff;
     box-shadow: 0 0 3px #ccc;
+    margin-right: 2rem;
 
     // * HEAD
     .head{
@@ -35,7 +36,7 @@
                 padding: 8px 10px;
                 position: absolute;
                 z-index: 999;
-                right: 0;
+                left: -19.3rem;
                 width: 22rem;
                 background-color: #fff;
                 box-shadow: 0 0 5px #ccc;

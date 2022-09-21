@@ -14,7 +14,7 @@ import Content from './parts/Content';
 class Section extends Component {
   render() {
     return (
-      <div className="d-flex justify-content-between align-items-start">
+      <div className="d-flex align-items-start">
         <Left />
         <Content />
       </div>

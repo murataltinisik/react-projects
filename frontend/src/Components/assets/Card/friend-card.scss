@@ -1,6 +1,6 @@
 // TODO: FRIEND CARD
 .friend-card{
-    width: 12.65rem !important;
+    width: 12.5rem !important;
     height: 21rem;
     overflow: hidden;
     border-radius: 7px;
@@ -8,7 +8,6 @@
     box-shadow: 0 0 6px #eee, 0 0 3px #ccc;
     position: relative;
     margin-bottom: 1rem;
-    margin-left: .75rem;
 
     // * IMAGE
     .image{
@@ -44,8 +43,4 @@
         }
     }
 
-}
-
-.friend-card:first-child{
-    margin-left: 0;
 }

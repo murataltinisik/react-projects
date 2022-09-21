@@ -11,6 +11,9 @@ import React, { Component } from 'react';
 // ? MODULE SCSS
 import Scss from '../parts/styles/left.module.scss';
 
+// ? RESPONSIVE SCSS
+import './styles/responsive/responsive-left.scss';
+
 class Left extends Component {
   state = {
     isSettingMenuOpen: false,
@@ -30,16 +33,16 @@ class Left extends Component {
 
   render() {
     return (
-      <div id={Scss.LeftContainer}>
+      <div id={Scss.LeftContainer} className="LeftContainerResp">
         {/* HEAD */}
         <div
-          className={`${Scss.head} d-flex justify-content-between align-items-center`}
+          className={`${Scss.head} headResp d-flex justify-content-between align-items-center`}
         >
           {/* TITLE */}
           <h3 className={Scss.title}>Arkadaşlar</h3>
 
           {/* SETTINGS */}
-          <div className={Scss.settings}>
+          <div className={`${Scss.settings} settingsResp`}>
             <FontAwesomeIcon icon={faGear} onClick={this.onSettingMenuOpen} />
 
             {/* SETTINGS MENU */}

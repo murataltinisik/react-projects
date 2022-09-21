@@ -4,5 +4,11 @@
     height: 93.7vh;
     overflow: hidden;
     overflow-y: scroll;
-    margin: 0 1rem;
+
+    // * FRIENDS
+    .friends{
+        > div{
+            margin-right: .8rem;
+        }
+    }
 }
