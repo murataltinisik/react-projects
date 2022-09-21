@@ -1,0 +1,19 @@
+// TODO: CONTENT CONTAINER
+.contentContainer{
+    width: 78%;
+    height: 93.7vh;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    // * INFO
+    .info{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: gray;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+}

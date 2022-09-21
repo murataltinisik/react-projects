@@ -7,8 +7,8 @@ import Content from '../static/Content';
 function Section() {
   return (
     <div className="d-flex justify-content-between">
-      <Left title="Arkadaş İstekleri" />
-      <Content info="Arkadaşlık istekleri veya önerileri olduğunda, burada görünecekler." />
+      <Left title="Tüm Arkadaşlar" />
+      <Content info="Gösterilecek Arkadaş Yok" />
     </div>
   );
 }
