@@ -82,28 +82,29 @@ function StaticLeft({ title, menu, settingsMenu }) {
             </div>
 
             {/* NOTIFICATE */}
-            {settingsMenu.map((setting, i) => (
-              <div
-                className={`${
-                  setting.openAndClose && 'status-btn'
-                } additionalButton d-flex justify-content-between align-items-center`}
-                onClick={openAndCloseNotificate}
-                key={i}
-                itemID={i}
-              >
-                <span>
-                  <FontAwesomeIcon icon={setting.icon} />
-                </span>
+            {settingsMenu &&
+              settingsMenu.map((setting, i) => (
+                <div
+                  className={`mt-1 ${
+                    setting.openAndClose && 'status-btn'
+                  } additionalButton d-flex justify-content-start align-items-center`}
+                  onClick={openAndCloseNotificate}
+                  key={i}
+                  itemID={i}
+                >
+                  <span>
+                    <FontAwesomeIcon icon={setting.icon} />
+                  </span>
 
-                <p>{setting.title}</p>
+                  <p>{setting.title}</p>
 
-                {setting.openAndClose && (
-                  <div>
-                    <div className="circle"></div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  {setting.openAndClose && (
+                    <div>
+                      <div className="circle"></div>
+                    </div>
+                  )}
+                </div>
+              ))}
           </div>
         </div>
       </div>
@@ -111,17 +112,18 @@ function StaticLeft({ title, menu, settingsMenu }) {
       {/* MENU */}
       <div className={Scss.menu}>
         <ul>
-          {menu.map((item, i) => (
-            <li key={i} className={`${Scss.active} additionalButton`}>
-              <span>
-                <FontAwesomeIcon icon={item.icon} />
-              </span>
+          {menu &&
+            menu.map((item, i) => (
+              <li key={i} className={`${Scss.active} additionalButton`}>
+                <span>
+                  <FontAwesomeIcon icon={item.icon} />
+                </span>
 
-              <a href={item.link}>{item.name}</a>
+                <a href={item.link}>{item.name}</a>
 
-              {item.moreList && <FontAwesomeIcon icon={faChevronRight} />}
-            </li>
-          ))}
+                {item.moreList && <FontAwesomeIcon icon={faChevronRight} />}
+              </li>
+            ))}
         </ul>
       </div>
     </div>

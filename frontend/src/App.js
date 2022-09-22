@@ -11,6 +11,9 @@ import Suggestions from './Components/Pages/friends/sub-page/Suggestions/Suggest
 import AllFriends from './Components/Pages/friends/sub-page/AllFriends/AllFriends';
 import CustomLists from './Components/Pages/friends/sub-page/CustomLists/CustomLists';
 
+// TODO: WATCH
+import Watch from './Components/Pages/watch/Watch';
+
 // TODO: AUTH
 import Login from './Components/Pages/Auth/Login';
 import Register from './Components/Pages/Auth/Register';
@@ -19,7 +22,7 @@ import FindAccount from './Components/Pages/Auth/FindAccount';
 function App() {
   return (
     <div className="App">
-      <Wants />
+      <Watch />
     </div>
   );
 }
