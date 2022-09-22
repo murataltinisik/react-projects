@@ -180,45 +180,56 @@ class Head extends Component {
         <div id={Scss.Profile} className="profileContainerResp">
           {/* COVER */}
           <div className={`${Scss.cover} coverResp`}>
-            <div className={Scss.coverAddBtn}>
-              <button
-                className="white-btn"
-                id="cover-dropdown-menu"
-                onClick={this.openDropdownMenu}
-              >
-                <FontAwesomeIcon icon={faCamera} />
-                <span className="ml-1">Kapak Fotoğrafı Ekle</span>
-
-                <div
-                  className="dropdown"
-                  aria-label="#cover-dropdown-menu"
-                  onMouseLeave={() =>
-                    (document.getElementsByClassName(
-                      'dropdown'
-                    )[0].style.display = 'none')
-                  }
+            {this.props.whereFrom === 'FriendContainer' || (
+              <div className={Scss.coverAddBtn}>
+                <button
+                  className="white-btn"
+                  id="cover-dropdown-menu"
+                  onClick={this.openDropdownMenu}
                 >
-                  <ul>
-                    <li className="private-btn">
-                      <FontAwesomeIcon icon={faImages} className="mr-1" />
-                      Fotoğraf Seç
-                    </li>
+                  <FontAwesomeIcon icon={faCamera} />
+                  <span className="ml-1">Kapak Fotoğrafı Ekle</span>
 
-                    <li className="private-btn">
-                      <FontAwesomeIcon icon={faUpload} className="mr-1" />
-                      Fotoğraf Yükle
-                    </li>
-                  </ul>
-                </div>
-              </button>
-            </div>
+                  <div
+                    className="dropdown"
+                    aria-label="#cover-dropdown-menu"
+                    onMouseLeave={() =>
+                      (document.getElementsByClassName(
+                        'dropdown'
+                      )[0].style.display = 'none')
+                    }
+                  >
+                    <ul>
+                      <li className="private-btn">
+                        <FontAwesomeIcon icon={faImages} className="mr-1" />
+                        Fotoğraf Seç
+                      </li>
+
+                      <li className="private-btn">
+                        <FontAwesomeIcon icon={faUpload} className="mr-1" />
+                        Fotoğraf Yükle
+                      </li>
+                    </ul>
+                  </div>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* USER & BUTTON GROUP */}
-          <div className="userAndButtonGroupResp d-flex justify-content-between align-items-center px-4">
+          <div
+            className={`userAndButtonGroupResp d-flex align-items-center px-4 justify-content-between ${
+              this.props.whereFrom === 'FriendContainer' && 'direction-column'
+            }`}
+          >
             {/* USER */}
             <div
-              className={`${Scss.user} userResp d-flex justify-content-start align-items-end`}
+              className={`${
+                Scss.user
+              } userResp d-flex justify-content-start align-items-end ${
+                this.props.whereFrom === 'FriendContainer' &&
+                'direction-column align-items-center justify-content-center'
+              } `}
             >
               <div className={Scss.image}>
                 <img
@@ -234,6 +245,17 @@ class Head extends Component {
                 />
               </div>
               <div className={Scss.name}>Murat Altınışık</div>
+              {this.props.whereFrom === 'FriendContainer' && (
+                <div
+                  style={{
+                    marginTop: '-1rem',
+                    marginRight: '1.85rem',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  500 Arkadaş
+                </div>
+              )}
             </div>
 
             {/* BUTTON GROUP */}

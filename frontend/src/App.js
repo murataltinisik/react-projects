@@ -19,7 +19,7 @@ import FindAccount from './Components/Pages/Auth/FindAccount';
 function App() {
   return (
     <div className="App">
-      <CustomLists />
+      <Wants />
     </div>
   );
 }
