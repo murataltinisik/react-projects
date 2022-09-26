@@ -13,6 +13,7 @@ import CustomLists from './Components/Pages/friends/sub-page/CustomLists/CustomL
 
 // TODO: WATCH
 import Watch from './Components/Pages/watch/Watch';
+import RecordedVideos from './Components/Pages/watch/RecordedVideos';
 
 // TODO: AUTH
 import Login from './Components/Pages/Auth/Login';
@@ -22,7 +23,7 @@ import FindAccount from './Components/Pages/Auth/FindAccount';
 function App() {
   return (
     <div className="App">
-      <Watch />
+      <RecordedVideos />
     </div>
   );
 }

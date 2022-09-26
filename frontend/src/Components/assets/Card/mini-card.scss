@@ -1,0 +1,83 @@
+// TODO: MINI CARD
+.mini-card{
+    width: 27rem !important;
+    height: 12rem;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    padding: 10px 12px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px #ccc, 0 0 6px #eee;
+    position: relative;
+
+    // * IMAGE
+    > div.image{
+        width: 15rem;
+        height: 10rem;
+        overflow: hidden;
+        border-radius: 5px;
+        margin-right: 1rem;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    // * OWNER
+    .owner{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        // IMAGE
+        .image{
+            width: 2.5rem;
+            height: 2.5rem;
+            overflow: hidden;
+            border-radius: 50%;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        // NAME
+        .name{
+            font-weight: 500;
+            opacity: .5;
+            font-size: .85rem;
+        }
+    }
+
+    // * DETAIL
+    .detail{
+        // NAME
+        .name{
+            font-weight: 500;
+        }
+    }
+
+    // * CLOSED
+    .delete{
+        position: absolute;
+        top: 1rem;
+        z-index: 1;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        background-color: #eee;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 2rem;
+        cursor: pointer;
+    }
+
+    .delete:active{
+        background-color: #ccc;
+    }
+
+}   

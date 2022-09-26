@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 // ? HEADER & SECTION
 import Header from '../../static/Header';
-import Section from './sections/WatchSection';
+import Section from './sections/RecordedSection';
 
-class Watch extends Component {
+export class RecordedVideos extends Component {
   render() {
     return (
       <div>
@@ -15,4 +15,4 @@ class Watch extends Component {
   }
 }
 
-export default Watch;
+export default RecordedVideos;

@@ -1,12 +1,15 @@
 // TODO: USER CARD
 .send-card{
-    background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 1px 4px #ccc;
+    background-color: #fff !important;
+    margin-bottom: 2rem;
 
     // * HEAD
     .head{
         padding: 1rem 1.5rem;
+
+        // SEND
         .send{
             // IMAGE
             div.image{
@@ -36,6 +39,62 @@
             }
     
         }
+
+        // OPTIONS
+        .options{
+            position: relative;
+            
+            .options-menu{
+                display: none;
+                position: absolute;
+                right: 0;
+                width: 20rem;
+                z-index: 999;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 3px 6px rgb(86, 86, 86);
+
+                ul{
+                    li{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        padding: 13px 15px;
+                        cursor: pointer;
+
+                        svg{
+                            width: 1.3rem;
+                            height: 1.3rem;
+                            color: gray;
+                            margin-right: 10px;
+                        }
+
+                        div{
+                            display: flex;
+                            flex-direction: column;
+
+                            b{
+                                font-size: .85rem;
+                            }
+
+                            small{
+                                font-weight: 500;
+                                font-size: .8rem;
+                                color: gray;
+                            }
+                        }
+                    }
+
+                    li:hover{
+                        background-color: #eee;
+                    }
+
+                    .hr{
+                        margin: 0;
+                    }
+                }
+            }
+        }
     }
 
     // * BODY
@@ -60,7 +119,7 @@
 
     // * FOOT
     .foot{
-        padding-bottom: 5px;
+        padding-bottom: 7px;
         ul{ 
             width: 100%;
             padding: 0 10px;
@@ -77,8 +136,10 @@
 
     // * COMMENT
     .comment{
-        margin-top: 10px;
         padding: 0 1rem;
+        display: none;
+        padding-bottom: 7px;
+
         .input{
             display: flex;
             justify-content: flex-start;
@@ -110,5 +171,52 @@
             font-size: .8rem;
             color: gray;
         }
+
+        // COMMENTER & ANSWERING
+        .comments{
+            margin: 10px 0;
+            border-left: 1px solid #eee;
+
+            .commenter, .answering{
+                display: flex;
+                padding: 10px;
+    
+                // IMAGE
+                .image{
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    overflow: hidden;
+                    margin-right: 10px;
+                    border-radius: 50%;
+                    
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+    
+                // DETAIL
+                .detail{
+                    background-color: #eee;
+                    border-radius: 1rem;
+                    padding: 8px 15px;
+                    width: 90%;
+    
+                    .name{
+                        font-size: .9rem;
+                        font-weight: 500;
+                    }
+    
+                    .description{
+                        font-size: .8rem;
+                    }
+                }
+            }
+    
+            .answering{
+                margin-left: 2.5rem;
+            }
+        }
+
     }
 }

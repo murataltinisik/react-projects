@@ -1,0 +1,23 @@
+// TODO: LAPTOP
+@media only screen and (min-width: 768px) and (max-width: 1027px){
+    .ContentContainerResp{
+        padding-right: 2rem;
+        
+        // * SEND CARD
+        .send-card{
+            width: 90% !important;
+        }   
+    }
+}
+
+// TODO: TABLET
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    .ContentContainerResp{
+        padding-right: 2rem;
+
+        // * SEND CARD
+        .send-card{
+            width: 100% !important;
+        }   
+    }
+}

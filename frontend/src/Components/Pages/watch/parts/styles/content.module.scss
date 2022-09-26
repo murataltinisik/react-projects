@@ -1,6 +1,13 @@
 // TODO: CONTENT CONTAINER
 #ContentContainer{
-    width: 55%;
+    width: 80%;
     height: 93.7vh;
-    margin-right: 2rem;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    > div{
+        width: 50%;
+        margin: 2rem auto;
+    }
+
 }
