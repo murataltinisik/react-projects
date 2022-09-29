@@ -4,6 +4,18 @@ import Home from './Components/Pages/home/Home';
 // TODO: PROFILE
 import Profile from './Components/Pages/profile/Profile';
 
+// TODO: STORIES
+import Strories from './Components/Pages/stories/Stories';
+
+// TODO: AUTH
+import Login from './Components/Pages/Auth/Login';
+import Register from './Components/Pages/Auth/Register';
+import FindAccount from './Components/Pages/Auth/FindAccount';
+
+// TODO: WATCH
+import Watch from './Components/Pages/watch/Watch';
+import RecordedVideos from './Components/Pages/watch/RecordedVideos';
+
 // TODO: FRIENDS
 import Friend from './Components/Pages/friends/Friends';
 import Wants from './Components/Pages/friends/sub-page/Wants/Wants';
@@ -11,19 +23,10 @@ import Suggestions from './Components/Pages/friends/sub-page/Suggestions/Suggest
 import AllFriends from './Components/Pages/friends/sub-page/AllFriends/AllFriends';
 import CustomLists from './Components/Pages/friends/sub-page/CustomLists/CustomLists';
 
-// TODO: WATCH
-import Watch from './Components/Pages/watch/Watch';
-import RecordedVideos from './Components/Pages/watch/RecordedVideos';
-
-// TODO: AUTH
-import Login from './Components/Pages/Auth/Login';
-import Register from './Components/Pages/Auth/Register';
-import FindAccount from './Components/Pages/Auth/FindAccount';
-
 function App() {
   return (
     <div className="App">
-      <RecordedVideos />
+      <Strories />
     </div>
   );
 }

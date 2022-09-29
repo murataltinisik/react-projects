@@ -1,0 +1,30 @@
+// TODO: TABLET
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    #StoriesSection{
+        height: 90vh;
+        margin: 0 !important;
+        padding: 0 !important;
+        justify-content: center;
+
+        > div:nth-child(1){
+            display: none;
+        }
+    }
+}
+
+// TODO: MOBILE
+@media only screen and (max-width: 479px){
+    #StoriesSection{
+        height: 90vh;
+        margin: 0 !important;
+        padding: 0 !important;
+        justify-content: center;
+
+        > div:nth-child(1){
+            display: none;
+        }
+    }
+    .contentContainerResp{
+        margin: 0 !important;
+    }
+}

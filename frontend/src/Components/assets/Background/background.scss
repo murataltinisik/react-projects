@@ -1,4 +1,55 @@
+@import '../colors.scss';
+
 // TODO: BACKGROUND
+.bg-blue{
+    background-color: $colorBlue;   
+}
+
+.bg-red{
+    background-color: red;   
+}
+
+.bg-black{
+    background-color: black;   
+}
+
+.bg-yellow{
+    background-color: yellow;   
+}
+
+.bg-green{
+    background-color: green;
+}
+
+.bg-orange{
+    background-color: orange;
+}
+
 .bg-gray{
     background-color: #ccc !important;
+}
+
+// TODO: BACKGROUND GRADIENT
+.bg-blue-gradient{
+    background-image: linear-gradient(to top left, $colorBlue, $colorLightBlue) !important;
+}
+
+.bg-red-gradient{
+    background-image: linear-gradient(to top left, orange, red) !important;
+}
+
+.bg-black-gradient{
+    background-image: linear-gradient(to top left, gray, black) !important;
+}
+
+.bg-yellow-gradient{
+    background-image: linear-gradient(to top left, yellowgreen, yellow) !important;
+}
+
+.bg-green-gradient{
+    background-image: linear-gradient(to top left, yellowgreen, green) !important;
+}
+
+.bg-orange-gradient{
+    background-image: linear-gradient(to top left, red, orange) !important;
 }
