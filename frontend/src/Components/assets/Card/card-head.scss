@@ -1,0 +1,151 @@
+// TODO: CARD HEAD
+.cardHead{
+    position: relative;
+    padding: 8px 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999999;
+
+    // * HEAD
+    .head{
+        display: flex;
+
+        // IMAGE
+        .image{
+            width: 2.3rem;
+            height: 2.3rem;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }    
+
+        // DETAIL
+        .detail{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: .8rem;
+
+            // TITLE
+            .title{
+                font-size: .85rem;
+                font-weight: 600;
+            }
+        }
+
+        // ACCESS
+        .access{
+            font-size: .8rem;
+            color: gray;
+
+            span{
+                margin-left: 5px;
+            }
+        }
+    }
+
+    // OPTIONS
+    .options{
+        position: relative;
+
+        // OPTION BTN
+        .option-btn{
+            position: relative;
+            cursor: pointer;
+            width: 1.8rem;
+            height: 1.8rem;
+            text-align: center;
+            line-height: 1.8rem;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+
+            // INFO
+            .info{
+                position: absolute;
+                top: 2.5rem;
+                display: none;
+                padding: 3px 5px;
+                border-radius: 5px;
+                width: max-content;
+                font-size: .7rem;
+                background-color: #151515;
+                box-shadow: 0 0 6px #151515;
+            }
+        }
+
+        .option-btn:hover{
+            background-color: #000;
+
+            .info{
+                display: block;
+            }
+        }
+
+        .videoPause{
+            display: none;
+        }
+
+        .videoMuted{
+            display: none;
+        }
+
+        // MENU
+        .menu{
+            position: absolute;
+            right: 0;
+            width: 18.5rem;
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 3px gray;
+            display: none;
+
+            li{
+                color: #000;
+                border-radius: 5px;
+                padding: 8px;
+                cursor: pointer;
+            
+                div{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                
+                    svg{
+                        color: gray;
+                    }
+
+                    p{
+                        margin-left: 10px;
+                        font-weight: 500;
+                        font-size: .83rem;
+                    }
+                }
+
+                span{
+                    color: gray;
+                    font-size: .7rem;
+                }
+            }
+
+            li:hover{
+                background-color: #eee;
+            }
+
+            li:active{
+                background-color: #ccc;
+            }
+        }
+    }
+    
+}

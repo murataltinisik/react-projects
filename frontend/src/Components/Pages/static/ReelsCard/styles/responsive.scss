@@ -1,0 +1,49 @@
+// * TABLET
+@media only screen and (min-width: 480px) and (max-width: 550px){
+    .ReelsCardContainerResp{
+        height: 75vh;
+
+        .ReelsCardResp{
+            width: 20rem !important;
+            height: 50vh !important;
+    
+            .white-link, .elips {
+                display: none;
+            }
+
+            .rightResp{
+                width: auto;
+                bottom: -12.5rem !important;
+
+                div:nth-child(1){
+                    top: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+// * MOBILE
+@media only screen and (max-width: 479px){
+    .ReelsCardContainerResp{
+        height: 75vh;
+
+        .ReelsCardResp{
+            width: 20rem !important;
+            height: 50vh !important;
+    
+            .white-link, .elips {
+                display: none;
+            }
+
+            .rightResp{
+                width: auto;
+                bottom: -12.5rem !important;
+
+                div:nth-child(1){
+                    top: 0 !important;
+                }
+            }
+        }
+    }
+}

@@ -7,6 +7,9 @@ import Profile from './Components/Pages/profile/Profile';
 // TODO: STORIES
 import Strories from './Components/Pages/stories/Stories';
 
+// TODO: REELS
+import Reels from './Components/Pages/reels/Reels';
+
 // TODO: AUTH
 import Login from './Components/Pages/Auth/Login';
 import Register from './Components/Pages/Auth/Register';
@@ -26,7 +29,7 @@ import CustomLists from './Components/Pages/friends/sub-page/CustomLists/CustomL
 function App() {
   return (
     <div className="App">
-      <Strories />
+      <Reels />
     </div>
   );
 }

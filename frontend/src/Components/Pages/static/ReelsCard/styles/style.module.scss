@@ -1,0 +1,85 @@
+// TODO: REELS CARD
+#ReelsCardContainer{
+    margin-top: -1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    // * REELS CARD
+    .ReelsCard{
+        width: 30rem;
+        height: 88vh;
+        border-radius: 7px;
+        background-color: #101010;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+
+        // BODY
+        .body{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        // FOOT
+        .foot{
+            width: 70%;
+            font-size: .85rem;
+            padding: 8px 1rem;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        // RIGHT
+        .right{
+            width: auto;
+            height: 100%;
+            position: absolute;
+            right: -4rem;
+            bottom: 2rem;
+            display: flex;
+            align-items: flex-end;
+
+            // ACTIONS
+            ul{
+                li{
+                    width: 3rem;
+                    height: 3rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #10101050;
+                    border-radius: 50%;
+                    box-shadow: 0 0 6px #000;
+                    margin-top: 2.5rem;
+                    position: relative;
+                    cursor: pointer;
+                    transition: all .1s linear;
+
+                    span{
+                        position: absolute;
+                        top: 3.2rem;
+                        font-size: .85rem;
+                    }
+                }
+
+                li:hover{
+                    background-color: #454545;
+                }
+
+                li:active{
+                    background-color: #575757;
+                    transform: scale(.95);
+                }
+            }
+        }
+
+    }
+}
