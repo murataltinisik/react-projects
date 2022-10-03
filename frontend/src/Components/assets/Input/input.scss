@@ -1,17 +1,44 @@
 @import '../colors.scss';
-input:focus{
+input:focus, select:focus, textarea:focus{
     outline: none;
 }
+
 
 // TODO: INPUT COMPONENT
 .input-group{
     margin-top: 1rem;
+    position: relative;
 
     // INPUT GROUP TITLE
     .input-group-title{
         text-align: left;
         font-size: .7rem;
         color: gray;
+    }
+
+    // ERROR
+    > div{
+        position: relative;
+    }
+
+    .error{
+        position: absolute;
+        top: 5px;
+        font-size: .8rem;
+        color: #fff;
+        box-shadow: 0 0 3px rgb(62, 62, 62);
+        border-radius: 5px;
+        width: 5rem;
+        padding: 8px;
+        background-color: rgb(219, 0, 0);
+    }
+
+    .error-l{
+        left: -6rem;
+    }
+
+    .error-r{
+        right: -6rem;
     }
 
     // INPUT
