@@ -1,3 +1,6 @@
+import React, { Component } from 'react';
+
+// ? FONT AWESOME
 import {
   faArrowTurnRight,
   faChevronLeft,
@@ -17,8 +20,8 @@ import {
   faWarning,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { Component } from 'react';
 
+// ? STYLE
 import Scss from '../../style.module.scss';
 import UserScss from './scss/users.module.scss';
 

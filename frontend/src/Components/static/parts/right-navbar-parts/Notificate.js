@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+
+// ? FONT AWESOME
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
+// ? STYLE
 import Scss from '../../style.module.scss';
 import NotificateScss from './scss/notificate.module.scss';
 

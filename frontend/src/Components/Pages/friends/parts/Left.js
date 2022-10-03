@@ -1,5 +1,9 @@
-import { faBell, faUsers } from '@fortawesome/free-solid-svg-icons';
 import React, { Component } from 'react';
+
+// ? FONT AWESOME
+import { faBell, faUsers } from '@fortawesome/free-solid-svg-icons';
+
+// ? STATIC LEFT
 import StaticLeft from '../../static/StaticLeft/StaticLeft';
 
 class Left extends Component {

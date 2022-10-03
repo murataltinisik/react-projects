@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 
 // ? ASSETS
-import '../../../../assets/Link/link.scss';
-import '../../../../assets/Display/flex.scss';
-import '../../../../assets/Card/user-card-2.scss';
+import '../../../../assets/css/Link/link.scss';
+import '../../../../assets/css/Display/flex.scss';
+import '../../../../assets/css/Card/user-card-2.scss';
 
 // ? MODULE SCSS
 import Scss from './styles/left.module.scss';

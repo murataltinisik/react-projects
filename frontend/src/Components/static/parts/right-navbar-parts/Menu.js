@@ -1,3 +1,4 @@
+// ? FONT AWESOME
 import {
   faBagShopping,
   faBars,

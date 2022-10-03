@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Scss from './styles/content.module.scss';
 
 // ? ASSETS
-import '../../assets/PopUp/popup.scss';
+import '../../assets/css/PopUp/popup.scss';
 
 // ? FONT AWESOME
 import { faA, faImages } from '@fortawesome/free-solid-svg-icons';

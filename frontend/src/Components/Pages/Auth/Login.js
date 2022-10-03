@@ -7,11 +7,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 // ? ASSETS -> CSS
-import '../../assets/Input/input.scss';
-import '../../assets/Button/button.scss';
-import '../../assets/MarginPadding/margin-padding.scss';
-import '../../assets/Link/link.scss';
-import '../../assets/List/list.scss';
+import '../../assets/css/Link/link.scss';
+import '../../assets/css/List/list.scss';
+import '../../assets/css/Input/input.scss';
+import '../../assets/css/Button/button.scss';
+import '../../assets/css/MarginPadding/margin-padding.scss';
+
 // ? MODULE SCSS
 import Scss from './style.module.scss';
 

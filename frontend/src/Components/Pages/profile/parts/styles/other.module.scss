@@ -1,5 +1,4 @@
-@import '../../../../assets/colors.scss';
-
+@import '../../../../assets/css/colors.scss';
 
 @mixin commonCss {
     margin: 0 auto;
@@ -9,8 +8,6 @@
     background-color: #fff;
     box-shadow: 0 0 6px #eee;
 }
-
-
 
 // * OTHER COMPONENTS
 #OtherComponents{

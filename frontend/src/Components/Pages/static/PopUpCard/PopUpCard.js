@@ -5,7 +5,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // ? ASSETS
-import '../../../assets/color/color.scss';
+import '../../../assets/css/color/color.scss';
 
 export const onOpenPopUp = (e, label = null) => {
   const popups = document.getElementsByClassName('popup');

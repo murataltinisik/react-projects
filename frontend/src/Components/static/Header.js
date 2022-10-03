@@ -3,12 +3,13 @@ import Scss from './style.module.scss';
 import './responsive.scss';
 
 // ? ASSETS SCSS
-import '../assets/Button/button.scss';
-import '../assets/Link/link.scss';
-import '../assets/Display/flex.scss';
-import '../assets/MarginPadding/margin-padding.scss';
-import '../assets/WidthHeight/width-height.scss';
-import '../assets/Display/display.scss';
+import '../assets/main.scss';
+import '../assets/css/Link/link.scss';
+import '../assets/css/Display/flex.scss';
+import '../assets/css/Button/button.scss';
+import '../assets/css/Display/display.scss';
+import '../assets/css/WidthHeight/width-height.scss';
+import '../assets/css/MarginPadding/margin-padding.scss';
 
 // ? PARTS
 import Title from './parts/Title';

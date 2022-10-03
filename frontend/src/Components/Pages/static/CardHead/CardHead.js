@@ -17,7 +17,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 // ? ASSET
-import '../../../assets/Card/card-head.scss';
+import '../../../assets/css/Card/card-head.scss';
 
 function CardHead({ itemId }) {
   // * STATE

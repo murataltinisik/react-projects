@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // ? ASSETS
-import '../../assets/Card/friend-card.scss';
+import '../../assets/css/Card/friend-card.scss';
 
 // ? HEADER & SECTION
 import Header from '../../static/Header';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 // ? MINI CARD CSS
-import '../../../assets/Card/mini-card.scss';
+import '../../../assets/css/Card/mini-card.scss';
 
 // ? FONT AWESOME
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

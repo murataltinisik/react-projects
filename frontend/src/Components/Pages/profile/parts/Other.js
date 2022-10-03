@@ -22,9 +22,6 @@ import ShipmentScss from '../../home/parts/styles/component-css/shipment.module.
 import Scss from './styles/other.module.scss';
 import './styles/responsive/responsive.other.scss';
 
-// ? ASSETS
-import '../../../assets/PopUp/popup.scss';
-
 // ? TOP
 import Shipment from '../../home/parts/center-components/shipment';
 

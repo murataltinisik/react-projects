@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 // ? CAROUSEL
-import '../../assets/Card/card.scss';
-import '../../assets/Card/card2.scss';
-import '../../assets/Card/send-card.scss';
+import '../../assets/css/Card/card.scss';
+import '../../assets/css/Card/card2.scss';
+import '../../assets/css/Card/send-card.scss';
+import '../../assets/css/PopUp/popup.scss';
 
 // ? SCSS
 import Scss from './style.module.scss';

@@ -17,9 +17,7 @@ import {
 import Scss from './styles/head.style.module.scss';
 import './styles/responsive/responsive.head.scss';
 
-// ? ASSETS
-import '../../../assets/PopUp/popup.scss';
-import '../../../assets/Dropdown/dropdown.scss';
+import '../../../assets/css/Dropdown/dropdown.scss';
 
 class Head extends Component {
   // * POPUP

@@ -4,7 +4,7 @@ import React from 'react';
 import StaticLeft from '../static/StaticLeft/StaticLeft';
 
 // ? ASSETS
-import '../../assets/Background/background.scss';
+import '../../assets/css/Background/background.scss';
 
 // ? CONTENT
 import Content from './Content';
