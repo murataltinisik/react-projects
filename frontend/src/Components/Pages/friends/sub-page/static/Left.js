@@ -1,6 +1,8 @@
+import React, { Component } from 'react';
+
+// ? FONT AWESOME
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { Component } from 'react';
 
 // ? ASSETS
 import '../../../../assets/css/Link/link.scss';
@@ -8,7 +10,7 @@ import '../../../../assets/css/Display/flex.scss';
 import '../../../../assets/css/Card/user-card-2.scss';
 
 // ? MODULE SCSS
-import Scss from './styles/left.module.scss';
+import Scss from '../../../../assets/scss/friends-scss/static-scss/styles/left.module.scss';
 
 export class Left extends Component {
   render() {

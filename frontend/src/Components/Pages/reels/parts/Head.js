@@ -1,7 +1,7 @@
 import React from 'react';
 
 // ? SCSS
-import Scss from '../styles/head.module.scss';
+import Scss from '../../../assets/scss/reels-scss/head.module.scss';
 
 function Head() {
   return (

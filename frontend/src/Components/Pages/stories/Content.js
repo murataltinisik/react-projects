@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // ? STYLE
-import Scss from './styles/content.module.scss';
+import Scss from '../../assets/scss/stories-scss/content.module.scss';
 
 // ? ASSETS
 import '../../assets/css/PopUp/popup.scss';

@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Scss from '../styles/center.module.scss';
+import Scss from '../../../../assets/scss/home-scss/styles/component-css/acquaintances.module.scss';
 
 class acquaintances extends Component {
   constructor(props) {

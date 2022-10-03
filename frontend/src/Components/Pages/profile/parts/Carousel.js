@@ -11,8 +11,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // ? SCSS
-import Scss from './styles/carousel.module.scss';
-import './styles/responsive/responsive.carousel.scss';
+import Scss from '../../../assets/scss/profile-scss/carousel.module.scss';
+import '../../../assets/scss/profile-scss/responsive/responsive.carousel.scss';
 
 class Carousel extends Component {
   constructor() {

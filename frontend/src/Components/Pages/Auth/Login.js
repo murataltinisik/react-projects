@@ -14,7 +14,7 @@ import '../../assets/css/Button/button.scss';
 import '../../assets/css/MarginPadding/margin-padding.scss';
 
 // ? MODULE SCSS
-import Scss from './style.module.scss';
+import Scss from '../../assets/scss/auth-scss/style.module.scss';
 
 function Login() {
   const validationSchema = Yup.object({

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 // ? MODULE SCSS
-import Scss from './styles/right.module.scss';
+import Scss from '../../../assets/scss/home-scss/styles/right.module.scss';
 
 function Right() {
   return (

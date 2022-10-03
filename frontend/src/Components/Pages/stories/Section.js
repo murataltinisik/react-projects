@@ -1,19 +1,19 @@
 import React from 'react';
 
-// ? STATIC
-import StaticLeft from '../static/StaticLeft/StaticLeft';
+// ? CONTEXT
+import { useStory } from '../../Context/StorieSelectionContext';
 
 // ? ASSETS
 import '../../assets/css/Background/background.scss';
 
+// ? RESPONSIVE
+import '../../assets/scss/stories-scss/content.module.scss';
+
+// ? STATIC
+import StaticLeft from '../static/StaticLeft/StaticLeft';
+
 // ? CONTENT
 import Content from './Content';
-
-// ? RESPONSIVE
-import './styles/responsive.scss';
-
-// ? CONTEXT
-import { useStory } from '../../Context/StorieSelectionContext';
 
 function Section() {
   const {

@@ -1,8 +1,8 @@
 import React from 'react';
 
 // ? MODULE CSS
-import Scss from './style.module.scss';
-import './responsive.scss';
+import Scss from '../../assets/scss/home-scss/style.module.scss';
+import '../../assets/scss/home-scss/responsive.scss';
 
 // * PARTS
 import Left from './parts/Left';

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // ? MODULE SCSS
-import Scss from './styles/center.module.scss';
+import Scss from '../../../assets/scss/home-scss/styles/center.module.scss';
 
 // ? CENTER COMPONENT
 import TopOf from './center-components/topOf';

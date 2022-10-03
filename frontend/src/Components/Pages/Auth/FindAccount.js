@@ -15,7 +15,7 @@ import '../../assets/css/TextAlign/text-align.scss';
 import '../../assets/css/MarginPadding/margin-padding.scss';
 
 // ? MODULE SCSS
-import Scss from './style.module.scss';
+import Scss from '../../assets/scss/auth-scss/style.module.scss';
 
 function FindAccount() {
   const validationSchema = Yup.object({

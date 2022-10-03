@@ -7,7 +7,7 @@ import '../../assets/css/Card/send-card.scss';
 import '../../assets/css/PopUp/popup.scss';
 
 // ? SCSS
-import Scss from './style.module.scss';
+import Scss from '../../assets/scss/profile-scss/style.module.scss';
 
 // ? COMPONENTS
 import Head from './parts/Head';

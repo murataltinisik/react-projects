@@ -5,8 +5,8 @@ import SendCart from '../../static/SendCart/SendCart';
 import MiniCard from '../../static/MiniCard/MiniCard';
 
 // ? STYLE
-import Scss from './styles/content.module.scss';
-import './styles/responsive-content.scss';
+import Scss from '../../../assets/scss/watch-scss/content.module.scss';
+import '../../../assets/scss/watch-scss/responsive-content.scss';
 
 class Content extends Component {
   render() {

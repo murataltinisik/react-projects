@@ -16,8 +16,8 @@ import '../../assets/css/WidthHeight/width-height.scss';
 import '../../assets/css/MarginPadding/margin-padding.scss';
 
 // ? MODULE SCSS
-import Scss from './style.module.scss';
-import './responsive/responsive.scss';
+import Scss from '../../assets/scss/auth-scss/style.module.scss';
+import '../../assets/scss/auth-scss/responsive/responsive.scss';
 
 function Register() {
   // * DAYS

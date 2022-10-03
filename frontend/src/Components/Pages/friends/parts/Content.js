@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 // ? MODULE SCSS
-import Scss from './styles/content.module.scss';
+import Scss from '../../../assets/scss/friends-scss/content.module.scss';
 
 // ? RESPONSIVE SCSS
-import './styles/responsive/responsive-content.scss';
+import '../../../assets/scss/friends-scss/responsive/responsive-content.scss';
 
 class Content extends Component {
   render() {

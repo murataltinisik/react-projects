@@ -1,10 +1,9 @@
-import { faMessage, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 
 // ? MODULE SCSS
-import Scss from './styles/content.module.scss';
+import Scss from '../../../../assets/scss/friends-scss/content.module.scss';
 
+// ? PROFILE HEAD
 import Profile from '../../../profile/parts/Head';
 
 class Content extends Component {

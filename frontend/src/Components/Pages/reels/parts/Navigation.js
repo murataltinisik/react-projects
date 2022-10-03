@@ -1,7 +1,7 @@
 import React from 'react';
 
 // ? SCSS
-import Scss from '../styles/navigation.module.scss';
+import Scss from '../../../assets/scss/reels-scss/navigation.module.scss';
 
 // ? FONT AWESOME
 import {

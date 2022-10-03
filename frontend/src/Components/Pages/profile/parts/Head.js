@@ -14,9 +14,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 // ? SCSS
-import Scss from './styles/head.style.module.scss';
-import './styles/responsive/responsive.head.scss';
+import Scss from '../../../assets/scss/profile-scss/head.module.scss';
+import '../../../assets/scss/profile-scss/responsive/responsive.head.scss';
 
+// ? ASSETS
 import '../../../assets/css/Dropdown/dropdown.scss';
 
 class Head extends Component {

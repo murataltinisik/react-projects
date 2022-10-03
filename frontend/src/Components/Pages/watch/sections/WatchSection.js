@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 // ? STATIC LEFT
-import StaticLeft from '../../static/StaticLeft/StaticLeft';
 import Content from '../parts/Content';
+import StaticLeft from '../../static/StaticLeft/StaticLeft';
 
 // ? SECTION MENU
 import { menu, settingsMenu } from './SectionMenu';

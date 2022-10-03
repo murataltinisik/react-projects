@@ -1,7 +1,7 @@
 import React from 'react';
 
 // ? STYLE
-import Scss from './styles/style.module.scss';
+import Scss from '../../assets/scss/reels-scss/style.module.scss';
 
 // ? PARTS
 import Head from './parts/Head';

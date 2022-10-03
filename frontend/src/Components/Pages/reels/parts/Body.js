@@ -7,7 +7,7 @@ import Navigation from './Navigation';
 import ReelsCardList from '../../static/ReelsCard/ReelsCarsList';
 
 // ? SCSS
-import Scss from '../styles/body.module.scss';
+import Scss from '../../../assets/scss/reels-scss/body.module.scss';
 
 class Body extends Component {
   render() {

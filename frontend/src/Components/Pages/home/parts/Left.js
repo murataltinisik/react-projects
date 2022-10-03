@@ -5,14 +5,11 @@ import { faChevronDown, faCopyright } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // ? MODULE SCSS
-import Scss from './styles/left.module.scss';
+import Scss from '../../../assets/scss/home-scss/styles/left.module.scss';
 
 function Left() {
   return (
-    <div
-      className={`${Scss.left} leftContainerResp`}
-      id={Scss.LeftContainer}
-    >
+    <div className={`${Scss.left} leftContainerResp`} id={Scss.LeftContainer}>
       {/* LEFT MENU */}
       <ul id={Scss.leftMenu}>
         <li className="private-btn">
@@ -170,52 +167,31 @@ function Left() {
 
         {/* MENU FOOTER */}
         <li className={`${Scss.menuFooter}`}>
-          <a
-            href="#"
-            className="light-link"
-          >
+          <a href="#" className="light-link">
             Gizlilik
           </a>
           <div className="elips"></div>
-          <a
-            href="#"
-            className="light-link"
-          >
+          <a href="#" className="light-link">
             Koşullar
           </a>
           <div className="elips"></div>
-          <a
-            href="#"
-            className="light-link"
-          >
+          <a href="#" className="light-link">
             Reklam
           </a>
           <div className="elips"></div>
-          <a
-            href="#"
-            className="light-link"
-          >
+          <a href="#" className="light-link">
             Ad Choices
           </a>
           <div className="elips"></div>
-          <a
-            href="#"
-            className="light-link"
-          >
+          <a href="#" className="light-link">
             Çerezler
           </a>
           <div className="elips"></div>
-          <a
-            href="#"
-            className="light-link"
-          >
+          <a href="#" className="light-link">
             Diğer
           </a>
           <div className="elips"></div>
-          <a
-            href="#"
-            className="light-link"
-          >
+          <a href="#" className="light-link">
             Meta <FontAwesomeIcon icon={faCopyright} /> 2022
           </a>
         </li>
