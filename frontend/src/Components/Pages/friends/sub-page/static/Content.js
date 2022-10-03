@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // ? MODULE SCSS
-import Scss from '../../../../assets/scss/friends-scss/content.module.scss';
+import Scss from '../../../../assets/scss/friends-scss/static-scss/styles/content.module.scss';
 
 // ? PROFILE HEAD
 import Profile from '../../../profile/parts/Head';

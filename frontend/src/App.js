@@ -5,7 +5,7 @@ import Home from './Components/Pages/home/Home';
 import Profile from './Components/Pages/profile/Profile';
 
 // TODO: STORIES
-import Strories from './Components/Pages/stories/Stories';
+import Stories from './Components/Pages/stories/Stories';
 
 // TODO: REELS
 import Reels from './Components/Pages/reels/Reels';
@@ -29,7 +29,7 @@ import CustomLists from './Components/Pages/friends/sub-page/CustomLists/CustomL
 function App() {
   return (
     <div className="App">
-      <Register />
+      <AllFriends />
     </div>
   );
 }
