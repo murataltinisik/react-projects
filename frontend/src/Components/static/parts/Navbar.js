@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // ? SCSS
 import Scss from '../style.module.scss';
-
 export class Navbar extends Component {
   render() {
     return (
@@ -22,16 +21,10 @@ export class Navbar extends Component {
       >
         <ul className="d-flex justify-content-between align-items-center">
           <li className={Scss.active}>
-            <a
-              href="#"
-              className={Scss.activeLink}
-            >
+            <a href="#" className={Scss.activeLink}>
               <FontAwesomeIcon icon={faHome} />
             </a>
-            <div
-              className={Scss.info}
-              id="abc"
-            >
+            <div className={Scss.info} id="abc">
               Anasayfa
             </div>
           </li>
@@ -64,10 +57,7 @@ export class Navbar extends Component {
             <div className={Scss.info}>Grup</div>
           </li>
 
-          <li
-            id={Scss.responsiveOpenMenu}
-            className="responsiveOpenMenu"
-          >
+          <li id={Scss.responsiveOpenMenu} className="responsiveOpenMenu">
             <a href="#">
               <FontAwesomeIcon icon={faBars} />
             </a>

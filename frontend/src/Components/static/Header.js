@@ -15,6 +15,7 @@ import '../assets/css/MarginPadding/margin-padding.scss';
 import Title from './parts/Title';
 import Navbar from './parts/Navbar';
 import RightNavbar from './parts/RightNavbar';
+import NewMessage from './parts/NewMessage';
 
 function Header() {
   return (
@@ -29,6 +30,9 @@ function Header() {
 
           {/* RIGHT NAVBAR */}
           <RightNavbar />
+
+          {/* NEW MESSAGE */}
+          <NewMessage />
         </header>
       </div>
     </>
