@@ -13,10 +13,11 @@
         .send{
             // IMAGE
             div.image{
-                width: 2.6rem;height: 2.6rem;
+                width: 2.6rem !important;
+                height: 2.6rem !important;
                 border-radius: 50%;
                 overflow: hidden;
-                
+
                 img{
                     width: 100%;
                     height: 100%;
@@ -29,6 +30,7 @@
                 font-weight: 700;
             }
 
+            // OTHER
             div.other{
                 margin-top: -5px;
                 span{
@@ -43,20 +45,23 @@
         // OPTIONS
         .options{
             position: relative;
-            
+
             .options-menu{
                 display: none;
                 position: absolute;
                 right: 0;
                 width: 20rem;
                 z-index: 999;
+                height: max-content !important;
                 border-radius: 5px;
                 background-color: #fff;
                 box-shadow: 0 3px 6px rgb(86, 86, 86);
 
                 ul{
+                    padding: 8px;
                     li{
                         display: flex;
+                        border-radius: 5px;
                         justify-content: flex-start;
                         align-items: center;
                         padding: 13px 15px;
@@ -129,7 +134,7 @@
 
             li{
                 border-radius: 5px !important;
-                color: gray;
+                font-weight: 600;
             }
         }
     }

@@ -5,14 +5,18 @@ import Body from './parts/Body';
 import Foot from './parts/Foot';
 import Comment from './parts/Comment';
 
-function SendCart({ itemId }) {
+function SendCart({ itemId, head, body }) {
   return (
     <div className="send-card" itemID={itemId}>
       {/* HEAD */}
-      <Head />
+      <Head
+        who={head.who}
+        actions={head.actions}
+        actionIcon={head.actionIcon}
+      />
 
       {/* BODY */}
-      <Body />
+      <Body card={body.card} />
 
       {/* FOOT */}
       <Foot />

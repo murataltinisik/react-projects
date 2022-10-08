@@ -1,15 +1,17 @@
 import React from 'react';
 
-function Body() {
+function Body({ card }) {
   return (
     <div className="body">
       <div className="content">
-        <b>ALPARSLAN BÜYÜK SELÇUKLU</b>
-        <p>Bu Aksam Saat 21:00'da</p>
+        {card.title && <b>{card.title}</b>}
+        {card.description && <p>{card.description}</p>}
       </div>
-      <div className="image">
-        <img src="https://img.piri.net/resim/imagecrop/2021/11/08/10/20/resized_3cba4-8aad84e8alparslanpost8llp.jfif" />
-      </div>
+      {card.image && (
+        <div className="image">
+          <img src={card.image} alt={card.title && card.title} />
+        </div>
+      )}
     </div>
   );
 }

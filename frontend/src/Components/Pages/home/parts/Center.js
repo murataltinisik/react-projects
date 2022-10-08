@@ -32,11 +32,7 @@ function Center() {
       />
 
       {/* SEND AND OTHER */}
-      <Send
-        Scss={Scss}
-        menuListShow={menuListShow}
-        setMenuListShow={setMenuListShow}
-      />
+      <Send Scss={Scss} />
     </div>
   );
 }
