@@ -5,6 +5,9 @@ import React from 'react';
 // ? MODULE SCSS
 import Scss from '../../../assets/scss/home-scss/styles/right.module.scss';
 
+// ? SHARED
+import { messageContainerOpen } from '../../../static/shared/Shared';
+
 function Right() {
   return (
     <div
@@ -17,7 +20,10 @@ function Right() {
 
       <div className={`${Scss.groups} groupsResp`}>
         <ul>
-          <li className="additionalButton private-btn">
+          <li
+            className="additionalButton private-btn"
+            onClick={messageContainerOpen}
+          >
             <button>
               <span className="mr-1">
                 <FontAwesomeIcon icon={faPlus} />

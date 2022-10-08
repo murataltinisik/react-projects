@@ -9,12 +9,10 @@ import React, { Component } from 'react';
 // ? SCSS
 import Scss from '../style.module.scss';
 
-class NewMessage extends Component {
-  // * MESSAGE CONTAINER OPEN
-  messageContainerOpen = () => {
-    document.getElementById('messageContainer').style.display = 'block';
-  };
+// ? SHARED
+import { messageContainerOpen } from '../shared/Shared';
 
+class NewMessage extends Component {
   // * MESSAGE CONTAINER CLOSE
   messageContainerClose = () => {
     document.getElementById('messageContainer').style.display = 'none';
@@ -47,7 +45,7 @@ class NewMessage extends Component {
     return (
       <div className={Scss.newMessage}>
         {/* BUTTON */}
-        <div className={Scss.button} onClick={this.messageContainerOpen}>
+        <div className={Scss.button} onClick={messageContainerOpen}>
           <FontAwesomeIcon icon={faEdit} />
 
           {/* INFO */}
