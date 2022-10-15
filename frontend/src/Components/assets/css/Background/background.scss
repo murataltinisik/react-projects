@@ -1,6 +1,10 @@
 @import '../colors.scss';
 
 // TODO: BACKGROUND
+.bg-white{
+    background-color: #fff !important;   
+}
+
 .bg-blue{
     background-color: $colorBlue;   
 }
