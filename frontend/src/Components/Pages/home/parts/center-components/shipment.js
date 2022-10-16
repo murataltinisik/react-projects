@@ -3,28 +3,10 @@ import React from 'react';
 // * POP UP
 import PopUpCard, { onOpenPopUp } from '../../../static/PopUpCard/PopUpCard';
 
+// * CONTEXT
+import { ShipmentDataProvider } from '../../../../Context/ShipmentDataContext';
+
 function shipment({ Scss }) {
-  // * ON KEY DOWN
-  const onKeyDown = e => {
-    if (e.target.value.length > 0) {
-      document
-        .getElementsByClassName('share-post')[0]
-        .removeAttribute('disabled');
-
-      document.getElementsByClassName('share-post')[0].style.backgroundColor =
-        '#1877F2';
-      document.getElementsByClassName('share-post')[0].style.color = 'white';
-    } else {
-      document
-        .getElementsByClassName('share-post')[0]
-        .setAttribute('disabled', true);
-
-      document.getElementsByClassName('share-post')[0].style.backgroundColor =
-        '#eee';
-      document.getElementsByClassName('share-post')[0].style.color = 'initial';
-    }
-  };
-
   // * POPUP
   const head = {
     label: 'ShipmentPopUpContainer',
@@ -33,11 +15,10 @@ function shipment({ Scss }) {
 
   const body = {
     where: 'ShipmentContainer',
-    onKeyDown,
   };
 
   return (
-    <>
+    <ShipmentDataProvider>
       <PopUpCard head={head} body={body} />
       <div className="mt-1">
         <div className={`${Scss.shipment} shipmentResp`}>
@@ -149,7 +130,7 @@ function shipment({ Scss }) {
           </div>
         </div>
       </div>
-    </>
+    </ShipmentDataProvider>
   );
 }
 

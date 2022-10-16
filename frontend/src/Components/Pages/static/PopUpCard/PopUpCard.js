@@ -7,6 +7,7 @@ import {
   faFaceSmile,
   faFlag,
   faGlobe,
+  faImage,
   faImages,
   faLocation,
   faUserTag,
@@ -16,7 +17,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // ? ASSETS
 import '../../../assets/css/color/color.scss';
 import '../../../assets/css/PopUp/popup.scss';
+import { useShipment } from '../../../Context/ShipmentDataContext';
 
+// * ON OPEN POP UP
 export const onOpenPopUp = (e, label = null) => {
   const popups = document.getElementsByClassName('popup');
   let ariaLabel = '#' + (label ? label : e.target.id);
@@ -28,6 +31,9 @@ export const onOpenPopUp = (e, label = null) => {
 };
 
 function PopUpCard({ head, body, foot }) {
+  // * SHIPMENT DATAS
+  const { shipmentDatas, setShipmentDatas } = useShipment();
+
   // * POPUP
   const onClosePopUp = (e, isReload) => {
     let isSvg = e.target.tagName;
@@ -98,6 +104,83 @@ function PopUpCard({ head, body, foot }) {
       'unset';
   };
 
+  // * ON KEY DOWN
+  const onKeyUp = e => {
+    // * SET SHIPMENT DATAS
+    setShipmentDatas({
+      ...shipmentDatas,
+      shipment: {
+        message: e.target.value,
+        image: shipmentDatas.shipment.image,
+      },
+    });
+
+    // STYLE OPERATION
+    if (e.target.value.length > 0) {
+      document
+        .getElementsByClassName('share-post')[0]
+        .removeAttribute('disabled');
+
+      document.getElementsByClassName('share-post')[0].style.backgroundColor =
+        '#1877F2';
+      document.getElementsByClassName('share-post')[0].style.color = 'white';
+    } else {
+      document
+        .getElementsByClassName('share-post')[0]
+        .setAttribute('disabled', true);
+
+      document.getElementsByClassName('share-post')[0].style.backgroundColor =
+        '#eee';
+      document.getElementsByClassName('share-post')[0].style.color = 'initial';
+    }
+  };
+
+  // * ON IMAGE SOURCE
+  const showSelectedImageContainer = () => {
+    document.querySelector('#InputFile').style.display = 'block';
+  };
+
+  const selectedImage = () => {
+    document
+      .getElementById('imageSource')
+      .addEventListener('change', function () {
+        const reader = new FileReader();
+        reader.addEventListener('load', function () {
+          // PREVIEW
+          document.querySelector('#ImagePreview').style.display = 'block';
+          document.querySelectorAll('#ImagePreview img')[0].src = this.result;
+
+          // STATE
+          setShipmentDatas({
+            ...shipmentDatas,
+            shipment: {
+              message: shipmentDatas.shipment.message,
+              image: this.result,
+            },
+          });
+
+          // BODY FOOT
+          document.getElementsByClassName('tools')[0].style.display = 'none';
+          document.getElementById('InputFile').style.display = 'none';
+        });
+        reader.readAsDataURL(this.files[0]);
+      });
+  };
+
+  const deleteImage = () => {
+    // STATE
+    setShipmentDatas({
+      ...shipmentDatas,
+      shipment: { message: shipmentDatas.shipment.message, image: '' },
+    });
+
+    // PREVIEW
+    document.querySelectorAll('#ImagePreview img')[0].src = '';
+
+    // BODY FOOT
+    document.getElementsByClassName('tools')[0].style.display = 'flex';
+  };
+
   return (
     <div
       className="popup"
@@ -153,8 +236,33 @@ function PopUpCard({ head, body, foot }) {
               <div className="body-content">
                 <textarea
                   placeholder="Ne düşünüyorsun, Murat?"
-                  onKeyUp={body.onKeyDown}
+                  onKeyUp={onKeyUp}
                 ></textarea>
+
+                <div id="SelectedImage">
+                  {/* INPUT FILE */}
+                  <div className="input-file" id="InputFile">
+                    <label onClick={selectedImage}>
+                      <input type="file" id="imageSource" />
+
+                      <div className="d-flex direction-column justify-content-center align-items-center">
+                        <span>
+                          <FontAwesomeIcon icon={faImage} />
+                        </span>
+                        <p>Fotoğraflar / Videolar Ekle</p>
+                        <small>veya sürükle ve bırak</small>
+                      </div>
+                    </label>
+                  </div>
+
+                  {/* IMAGE SOURCE */}
+                  <div className="image-preview" id="ImagePreview">
+                    <span>
+                      <FontAwesomeIcon icon={faClose} onClick={deleteImage} />
+                    </span>
+                    <img src="" alt="" />
+                  </div>
+                </div>
               </div>
 
               {/* BODY FOOT */}
@@ -176,30 +284,67 @@ function PopUpCard({ head, body, foot }) {
                       </div>
                       <div
                         onClick={changeBgColor}
+                        onMouseUp={e =>
+                          setShipmentDatas({
+                            ...shipmentDatas,
+                            style: { bg: e.target.classList[1] },
+                          })
+                        }
                         className="bg-color bg-white"
                       ></div>
                       <div
                         onClick={changeBgColor}
+                        onMouseUp={e =>
+                          setShipmentDatas({
+                            ...shipmentDatas,
+                            style: { bg: e.target.classList[1] },
+                          })
+                        }
                         className="bg-color bg-blue-gradient"
                       ></div>
                       <div
                         onClick={changeBgColor}
+                        onMouseUp={e =>
+                          setShipmentDatas({
+                            ...shipmentDatas,
+                            style: { bg: e.target.classList[1] },
+                          })
+                        }
                         className="bg-color bg-red-gradient"
                       ></div>
                       <div
                         onClick={changeBgColor}
+                        onMouseUp={e =>
+                          setShipmentDatas({
+                            ...shipmentDatas,
+                            style: { bg: e.target.classList[1] },
+                          })
+                        }
                         className="bg-color bg-orange-gradient"
                       ></div>
                       <div
                         onClick={changeBgColor}
+                        onMouseUp={e =>
+                          setShipmentDatas({
+                            ...shipmentDatas,
+                            style: { bg: e.target.classList[1] },
+                          })
+                        }
                         className="bg-color bg-yellow-gradient"
                       ></div>
                       <div
                         onClick={changeBgColor}
+                        onMouseUp={e =>
+                          setShipmentDatas({
+                            ...shipmentDatas,
+                            style: { bg: e.target.classList[1] },
+                          })
+                        }
                         className="bg-color bg-green-gradient"
                       ></div>
                     </div>
                   </div>
+
                   <div className="faces">
                     <FontAwesomeIcon icon={faFaceSmile} />
                   </div>
@@ -211,7 +356,10 @@ function PopUpCard({ head, body, foot }) {
                   <div>
                     <ul>
                       <li>
-                        <FontAwesomeIcon icon={faImages} />
+                        <FontAwesomeIcon
+                          icon={faImages}
+                          onClick={showSelectedImageContainer}
+                        />
                       </li>
                       <li>
                         <FontAwesomeIcon icon={faUserTag} />
