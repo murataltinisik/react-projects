@@ -20,6 +20,7 @@ function shipment({ Scss }) {
   return (
     <ShipmentDataProvider>
       <PopUpCard head={head} body={body} />
+
       <div className="mt-1">
         <div className={`${Scss.shipment} shipmentResp`}>
           <div className={`${Scss.head} d-flex align-items-center`}>

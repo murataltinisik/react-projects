@@ -8,6 +8,7 @@ export const ShipmentDataProvider = ({ children }) => {
     shipment: {
       message: '',
       image: '',
+      tagUserId: 0,
     },
     style: {
       bg: '',
