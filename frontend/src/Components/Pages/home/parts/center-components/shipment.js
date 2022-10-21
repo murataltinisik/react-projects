@@ -71,6 +71,7 @@ function shipment({ Scss }) {
 
             <div
               className={`${Scss.imageOrVideo} d-flex justify-content-center align-items-center`}
+              onClick={e => onOpenPopUp(e, 'ShipmentPopUpContainer')}
             >
               <svg
                 fill="currentColor"
