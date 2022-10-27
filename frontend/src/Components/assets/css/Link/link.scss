@@ -7,13 +7,13 @@ a{
 // TODO: link
 // Primary Link
 a.primary-link{
-    font-size: .8rem;
-    text-decoration: none;
-    color: $colorBlue;
+    font-size: .8rem !important;
+    text-decoration: none !important;
+    color: $colorBlue !important;
 }
 
 a.primary-link:hover{
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 
 // Light Link

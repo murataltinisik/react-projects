@@ -1,0 +1,93 @@
+// TODO: CLASSIC SCSS 2
+#ProfileAndTagPageContent, #BlockPageContent, 
+#LanguageAndRegionPageContent, #StoriesPageContent{
+    position: relative;
+    padding: 8px;
+
+    // * BOX
+    .box{
+        padding: 8px;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 0 9px #ccc;
+        margin-top: 2rem;
+
+        // BOX TITLE
+        .boxTitle{
+            font-weight: 500;
+            padding: 5px 10px;
+        }
+
+        // SETTING MENU
+        .settingMenu{
+            li:first-child{
+                padding-top: 0;
+            }
+
+            li{
+                width: 100% !important;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 10px;
+                margin: 5px 0;
+                border-radius: 5px;
+                cursor: pointer;
+                border-bottom: 1px solid #ccc;
+                position: relative;
+                overflow: hidden;
+
+                div{
+                    width: 100%;
+
+                    li{
+                        border-radius: 0;
+                        border-color: #eee;
+                    }
+                }
+                
+                p{
+                    width: 65%;
+                    font-size: .8rem;
+                    font-weight: 500;
+                }
+
+                span{
+                    width: 95%;
+                    text-align: justify;
+                    color: gray;
+                    display: inline-block;
+                    font-size: .75rem;
+                }
+
+                button{
+                    width: auto;
+                    padding: 8px 10px;
+                    font-size: .7rem;
+                }
+
+                > svg{
+                    margin-right: 1rem;
+                }
+            }
+
+            li.clickable:hover{
+                background-color: #f1f1f1;
+            }
+
+            li.clickable:active{
+                background-color: #eee;
+            }
+
+            li:last-child{
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+        }
+        
+    }
+
+    .box:first-child{
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,169 @@
+@import '../../../css/colors.scss';
+
+// TODO: CLASSIC SCSS
+#GeneralPageContent, #FacebookInformationPageContent,
+#PrivacyPageContent, #PublicPostsPageContent{
+    position: relative;
+
+    ul#informations, 
+    ul.informations{
+        border-bottom: 1px solid gray;
+
+        @mixin pTitle {
+            width: 35%;
+            font-weight: 600;
+            font-size: .8rem;
+            text-transform: capitalize;
+        }
+
+        @mixin pInfo{
+            width: 60%;
+            font-weight: 700;
+            color: gray;
+
+            span{
+                font-weight: 500;
+                font-size: .75rem;
+            }
+        }
+
+        li{
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+
+            // A TAG
+            > a{
+                padding: 10px 8px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: .85rem;
+                color: #000;
+
+                // TITLE
+                p.title{
+                    @include pTitle;
+                }
+                
+                // INFO
+                p.info{
+                    @include pInfo;
+                }
+
+                // ACTION
+                button.action{
+                    width: 7rem;
+                    border: none;
+                    background-color: unset;
+                    color: $colorBlue;
+                    font-weight: 500;
+                    position: relative;
+
+                    svg{
+                        color: gray;
+                        margin-right: 10px;
+                        position: absolute;
+                        top: 2px;
+                        left: 0;
+                        display: none;
+                    }
+                }
+            }
+
+            > a:not(.notHover):hover{
+                background-color: #f6f6f6;
+            }
+
+            // MULTI SETTING
+            .multiSetting{
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 8px;
+
+                // TITLE
+                > p.title{
+                    @include pTitle;
+                    width: 30%;
+                }
+                
+                // SETTINGS
+                .settings{
+                    width: 100%;
+
+                    li{
+                        padding: 0 !important;
+                        a{
+                            padding: 8px 5px !important;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            cursor: pointer;
+
+                            .title{
+                                font-size: .75rem;
+                                font-weight: 500;
+                            }
+
+                            // INFO
+                            .info{
+                                width: 100%;
+
+                                span{
+                                    font-size: .65rem;
+                                }
+                            }
+
+                            // ACTION
+                            .action{
+                                width: auto;
+
+                                svg{
+                                    left: -1.3rem;
+                                    top: 3px;
+                                    display: none;
+                                }
+
+                                span{
+                                    font-size: .7rem;
+                                }
+                            }
+
+                        }
+                    }
+
+                    li:hover{
+                        .action{
+                            svg{
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        li:hover{
+            button.action{
+                svg{
+                    display: block;
+                }
+            }
+        }
+
+        li:last-child{
+            border-bottom: none;
+        }
+    }
+
+    ul.informations:first-child{
+        border-top: 1px solid gray;
+    }
+
+    ul.informations:last-child{
+        border-bottom: none !important;
+    }
+}

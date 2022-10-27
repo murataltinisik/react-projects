@@ -1,0 +1,61 @@
+// TODO: NOTIFICATION PAGE CONTENT
+#NotificationPageContent{
+    position: relative;
+
+    ul{
+        border: 1px solid rgb(240, 240, 240);
+        border-radius: 5px;
+        padding: 8px;
+
+        li{
+            cursor: pointer;
+            padding: 10px 8px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            transition: all .2s ease;
+            position: relative;
+
+            // SVG
+            svg{
+                color: #ccc;
+            }
+
+            // DETAIL
+            .detail{
+                margin-left: 1rem;
+
+                // TITLE
+                .title{
+                    font-weight: 600;
+                    font-size: .95rem;
+                }
+
+                // INFO
+                .info{
+                    font-weight: 400;
+                    font-size: .75rem;
+                    color: gray;
+                }
+            }
+
+            // ICON
+            .icon{
+                position: absolute;
+                right: 1rem;
+                color: gray;
+            }
+        }
+
+        li:hover{
+            background-color: #f6f6f6;
+        }
+
+        li:active{
+            background-color: #f3f3f3;
+        }
+    }
+}

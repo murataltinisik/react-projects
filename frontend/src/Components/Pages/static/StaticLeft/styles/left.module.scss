@@ -4,6 +4,7 @@
 #LeftContainer{
     width: 23rem !important;
     height: 93.7vh;
+    overflow-y: scroll;
     background-color: #fff;
     box-shadow: 3px 0 9px #ccc;
     margin-right: 2rem;
@@ -62,10 +63,11 @@
 
     // * MENU
     .menu{
-        
         // UL
         ul{
             padding: 0 1rem;
+
+            // LI
             li{
                 padding: 5px;
                 cursor: pointer;
@@ -95,6 +97,43 @@
                 }
             }
 
+            li:last-child{
+                margin-bottom: 1rem;
+            }
+
+            // HR
+            .hr{
+                height: 1.5px;
+                margin: 3px 0;
+                background-color: #ccc;
+            }
+
+            // NORMAL LINK
+            li.normalLink{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 9px;
+                border-radius: 8px;
+                color: rgb(55, 55, 55);
+
+                span{
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    text-align: center;
+                    line-height: 1.5rem;
+                }
+
+                a{
+                    font-weight: 500;
+                }
+            }
+
+            li.normalLink:hover{
+                background-color: #f1f1f1;
+            }
+
+            // ACTIVE
             li.active{
                 span{
                     color: #fff;
@@ -102,6 +141,13 @@
                 }
             }
 
+            li.normalLinkActive{
+                span{
+                    background-color: unset !important;
+                }
+            }
+
+            // ILLUSTRATED
             li.illustrated{
                 justify-content: left;
 
@@ -218,4 +264,21 @@
             }
         }
     }
+}
+
+#LeftContainer:hover::-webkit-scrollbar-thumb{
+    background-color: #f1f1f1;
+}
+
+#LeftContainer::-webkit-scrollbar{
+    width: 10px;
+}
+
+#LeftContainer::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: #fff;
+}
+
+#LeftContainer::-webkit-scrollbar-track{
+    width: 10px;
 }

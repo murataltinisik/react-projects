@@ -13,6 +13,7 @@ import './styles/responsive-left.scss';
 
 function StaticLeft({
   title,
+  menuStyle,
   menu,
   settingsMenu,
   storyType,
@@ -131,7 +132,7 @@ function StaticLeft({
                 <div
                   className={`mt-1 ${
                     setting.openAndClose && 'status-btn'
-                  } additionalButton d-flex justify-content-start align-items-center`}
+                  }  additionalButton d-flex justify-content-start align-items-center`}
                   onClick={openAndCloseNotificate}
                   key={i}
                   itemID={i}
@@ -158,30 +159,40 @@ function StaticLeft({
         <ul>
           {menu &&
             menu.map((item, i) => (
-              <li
-                key={i}
-                className={`${Scss.active} ${
-                  item.image && Scss.illustrated
-                } additionalButton`}
-              >
-                {!item.image ? (
-                  <>
-                    <span>
-                      <FontAwesomeIcon icon={item.icon} />
-                    </span>
-                    <a href={item.link}>{item.name}</a>
-                  </>
-                ) : (
-                  <>
-                    <div className={Scss.image}>
-                      <img src={item.image[1]} />
-                    </div>
-                    <p className="ml-1">{item.name}</p>
-                  </>
-                )}
+              <>
+                <li
+                  key={i}
+                  className={`${
+                    menuStyle === 'normal-link'
+                      ? Scss.normalLinkActive
+                      : Scss.active
+                  } ${item.image && Scss.illustrated} ${
+                    menuStyle === 'normal-link'
+                      ? Scss.normalLink
+                      : 'additionalButton'
+                  }`}
+                >
+                  {!item.image ? (
+                    <>
+                      <span>
+                        <FontAwesomeIcon icon={item.icon} />
+                      </span>
+                      <a href={item.link}>{item.name}</a>
+                    </>
+                  ) : (
+                    <>
+                      <div className={Scss.image}>
+                        <img src={item.image[1]} />
+                      </div>
+                      <p className="ml-1">{item.name}</p>
+                    </>
+                  )}
 
-                {item.moreList && <FontAwesomeIcon icon={faChevronRight} />}
-              </li>
+                  {item.moreList && <FontAwesomeIcon icon={faChevronRight} />}
+                </li>
+
+                {item.isHere && <div className={Scss.hr} />}
+              </>
             ))}
         </ul>
 
