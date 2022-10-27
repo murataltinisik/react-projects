@@ -32,7 +32,7 @@ import CustomLists from './Components/Pages/friends/sub-page/CustomLists/CustomL
 function App() {
   return (
     <div className="App">
-      <Settings />
+      <Home />
     </div>
   );
 }
