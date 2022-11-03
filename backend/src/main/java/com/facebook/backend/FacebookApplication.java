@@ -1,4 +1,4 @@
-package com.altinisik.facebook;
+package com.facebook.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

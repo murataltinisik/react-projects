@@ -8,13 +8,13 @@
 		<version>2.7.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.altinisik</groupId>
-	<artifactId>facebook</artifactId>
+	<groupId>com.facebook</groupId>
+	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>facebook</name>
-	<description>This is a Facebook Project. Made by Murat Altınışık.</description>
+	<name>Facebook</name>
+	<description>This is a Facebook Project. Made By Murat Altınışık.</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

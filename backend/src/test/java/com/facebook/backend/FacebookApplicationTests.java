@@ -1,4 +1,4 @@
-package com.altinisik.facebook;
+package com.facebook.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
