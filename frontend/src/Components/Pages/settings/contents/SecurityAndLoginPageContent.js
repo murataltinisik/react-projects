@@ -26,9 +26,25 @@ import {
 import { NavLink } from 'react-router-dom';
 
 class SecurityAndLoginPageContent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      password: {
+        old: '',
+        new: '',
+        newAgain: '',
+      },
+    };
+  }
+
   componentDidUpdate() {
     onRunUpdateComponent(this.props.location.search);
   }
+
+  onSubmitNewPassword = e => {
+    console.log(this.state.password);
+    e.preventDefault();
+  };
 
   render() {
     return (
@@ -129,19 +145,39 @@ class SecurityAndLoginPageContent extends Component {
                   </NavLink>
 
                   <div className={Scss.changeProperty}>
-                    Yeni Adınız*
-                    <div className="mb-1 mt-1">
-                      <input type="password" placeholder="Eski Şifre" />
-                    </div>
-                    <div className="mb-1">
-                      <input type="password" placeholder="Yeni Şifre" />
-                    </div>
-                    <div>
-                      <input type="password" placeholder="Yeni Şifre Tekrar" />
-                    </div>
-                    <button onClick={onSaveSettingProperty}>
-                      Değişiklikleri Kaydet
-                    </button>
+                    <form onSubmit={this.onSubmitNewPassword}>
+                      Yeni Adınız*
+                      <div className="mb-1 mt-1">
+                        <input
+                          type="password"
+                          onKeyUp={e =>
+                            (this.state.password.old = e.target.value)
+                          }
+                          placeholder="Eski Şifre"
+                        />
+                      </div>
+                      <div className="mb-1">
+                        <input
+                          type="password"
+                          onKeyUp={e =>
+                            (this.state.password.new = e.target.value)
+                          }
+                          placeholder="Yeni Şifre"
+                        />
+                      </div>
+                      <div>
+                        <input
+                          type="password"
+                          onKeyUp={e =>
+                            (this.state.password.newAgain = e.target.value)
+                          }
+                          placeholder="Yeni Şifre Tekrar"
+                        />
+                      </div>
+                      <button type="submit" onMouseUp={onSaveSettingProperty}>
+                        Değişiklikleri Kaydet
+                      </button>
+                    </form>
                   </div>
                 </li>
 

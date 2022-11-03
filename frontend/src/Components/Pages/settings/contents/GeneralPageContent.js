@@ -17,9 +17,34 @@ import {
 } from '../TabProperty/TabProperty';
 
 class GeneralPageContent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      username: '',
+      contact: '',
+    };
+  }
+
   componentDidUpdate() {
     onRunUpdateComponent(this.props.location.search);
   }
+
+  // *
+  onSubmitName = e => {
+    // return this.state.name;
+    e.preventDefault();
+  };
+
+  onSubmitUserName = e => {
+    // return this.state.username;
+    e.preventDefault();
+  };
+
+  onSubmitContact = e => {
+    // return this.state.contact;
+    e.preventDefault();
+  };
 
   render() {
     return (
@@ -41,9 +66,17 @@ class GeneralPageContent extends Component {
               </NavLink>
 
               <div className={Scss.changeProperty}>
-                Yeni Adınız*
-                <input type="text" placeholder="Adınızı Değiştirin" />
-                <button onClick={onSaveSettingProperty}>Kaydet</button>
+                <form onSubmit={this.onSubmitName}>
+                  Yeni Adınız*
+                  <input
+                    type="text"
+                    onKeyUp={e => (this.state.name = e.target.value)}
+                    placeholder="Adınızı Değiştirin"
+                  />
+                  <button type="submit" onMouseUp={onSaveSettingProperty}>
+                    Kaydet
+                  </button>
+                </form>
               </div>
             </li>
 
@@ -58,8 +91,17 @@ class GeneralPageContent extends Component {
               </NavLink>
 
               <div className={Scss.changeProperty}>
-                Kullanıcı Adı* <input type="text" placeholder="Kullanızı Adı" />
-                <button onClick={onSaveSettingProperty}>Kaydet</button>
+                <form onSubmit={this.onSubmitUserName}>
+                  Kullanıcı Adı*
+                  <input
+                    type="text"
+                    onKeyUp={e => (this.state.username = e.target.value)}
+                    placeholder="Kullanızı Adı"
+                  />
+                  <button type="submit" onMouseUp={onSaveSettingProperty}>
+                    Kaydet
+                  </button>
+                </form>
               </div>
             </li>
 
@@ -77,8 +119,17 @@ class GeneralPageContent extends Component {
               </NavLink>
 
               <div className={Scss.changeProperty} id="contact">
-                İletişim* <input type="text" placeholder="E-Posta Adresiniz" />
-                <button onClick={onSaveSettingProperty}>Kaydet</button>
+                <form onSubmit={this.onSubmitContact}>
+                  İletişim*
+                  <input
+                    type="text"
+                    onKeyUp={e => (this.state.contact = e.target.value)}
+                    placeholder="E-Posta Adresiniz"
+                  />
+                  <button type="submit" onMouseUp={onSaveSettingProperty}>
+                    Kaydet
+                  </button>
+                </form>
               </div>
             </li>
 
