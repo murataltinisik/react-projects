@@ -16,11 +16,21 @@ import Scss from '../style.module.scss';
 
 // ? SHARED
 import { messageContainerOpen } from '../shared/Shared';
+import { withRouter } from 'react-router-dom';
 
 class NewMessage extends Component {
+  // DID MOUNT
+  componentDidUpdate() {
+    if (this.props.location.search) {
+      this.selectUser();
+      document.getElementById('userResult').style.display = 'block';
+    }
+  }
+
   // * MESSAGE CONTAINER CLOSE
   messageContainerClose = () => {
     document.getElementById('messageContainer').style.display = 'none';
+    this.discardUser();
   };
 
   // * FIND USER
@@ -80,6 +90,7 @@ class NewMessage extends Component {
   };
 
   render() {
+    console.log();
     return (
       <div className={Scss.newMessage}>
         {/* BUTTON */}
@@ -327,4 +338,4 @@ class NewMessage extends Component {
   }
 }
 
-export default NewMessage;
+export default withRouter(NewMessage);

@@ -9,6 +9,10 @@
     margin-top: .8rem;
     @include centerCss;
 
+    > div > div{
+        width: 100%;
+    }
+
     // SEND
     .send{
 

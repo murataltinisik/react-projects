@@ -10,15 +10,25 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+// * REACT ROUTER 5.2.0
+import { NavLink, useParams } from 'react-router-dom';
+
 function Navigation() {
+  let { id } = useParams();
+
   return (
     <div className={Scss.navigation}>
-      <div>
-        <FontAwesomeIcon icon={faChevronLeft} />
-      </div>
-      <div>
-        <FontAwesomeIcon icon={faChevronRight} />
-      </div>
+      <NavLink to={`/reels/${id < 1 ? 1 : --id}`}>
+        <div>
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </div>
+      </NavLink>
+
+      <NavLink to={`/reels/${(id += 2)}`}>
+        <div>
+          <FontAwesomeIcon icon={faChevronRight} />
+        </div>
+      </NavLink>
     </div>
   );
 }

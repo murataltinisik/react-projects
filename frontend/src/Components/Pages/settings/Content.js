@@ -20,11 +20,52 @@ import LanguageAndRegionPageContent from './contents/LanguageAndRegionPageConten
 import StoriesPageContent from './contents/StoriesPageContent';
 import NotificationPageContent from './contents/NotificationPageContent';
 
+// * REACT ROUTER 5.2.0
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import NotMatch from '../NotMatch/NotMatch';
+
 function Content() {
+  let { path } = useRouteMatch();
+
   return (
     <div id={Scss.ContentContainer} className="ContentContainerResp">
-      {/* CONTENT */}
-      <NotificationPageContent />
+      <Switch>
+        <Route exact path={`${path}`} component={GeneralPageContent} />
+        <Route path={`${path}/generic`} component={GeneralPageContent} />
+        <Route
+          path={`${path}/security-and-login`}
+          component={SecurityAndLoginPageContent}
+        />
+
+        <Route
+          path={`${path}/facebook-info`}
+          component={FacebookInformationPageContent}
+        />
+
+        <Route path={`${path}/privacy`} component={PrivacyPageContent} />
+        <Route
+          path={`${path}/profile-and-tag`}
+          component={ProfileAndTagPageContent}
+        />
+        <Route
+          path={`${path}/public-posts`}
+          component={PublicPostsPageContent}
+        />
+
+        <Route path={`${path}/block`} component={BlockPageContent} />
+        <Route
+          path={`${path}/language-and-region`}
+          component={LanguageAndRegionPageContent}
+        />
+
+        <Route path={`${path}/stories`} component={StoriesPageContent} />
+        <Route
+          path={`${path}/notification`}
+          component={NotificationPageContent}
+        />
+
+        <Route path={`${path}/*`} component={NotMatch} />
+      </Switch>
     </div>
   );
 }

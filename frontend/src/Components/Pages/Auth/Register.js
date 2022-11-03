@@ -19,6 +19,9 @@ import '../../assets/css/MarginPadding/margin-padding.scss';
 import Scss from '../../assets/scss/auth-scss/style.module.scss';
 import '../../assets/scss/auth-scss/responsive/responsive.scss';
 
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
+
 function Register() {
   // * DAYS
   const days = [
@@ -334,9 +337,9 @@ function Register() {
                 </button>
               </div>
 
-              <a href="#" className="primary-link">
+              <NavLink to="/login" className="primary-link">
                 Hesabınız Zaten var mı?
-              </a>
+              </NavLink>
             </form>
           </div>
         </div>

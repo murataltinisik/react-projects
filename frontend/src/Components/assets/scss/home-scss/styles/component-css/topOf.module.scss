@@ -83,6 +83,9 @@
                     flex-direction: column;
                     border-radius: 10px;
                     cursor: pointer;
+                    text-decoration: none;
+                    color: #000;
+                    font-weight: 500;
 
                     // IMAGE
                     .image{
@@ -104,6 +107,7 @@
                         box-shadow: 0 0px 3px #ccc;
                         border-bottom-left-radius: 10px;
                         border-bottom-right-radius: 10px;
+                        height: 4rem;
 
                         a{
                             color: #fff;
@@ -118,7 +122,6 @@
 
                         span{
                             padding: 1rem;
-                            margin-top: .5rem;
                             font-size: .8rem;
                         }
                     }

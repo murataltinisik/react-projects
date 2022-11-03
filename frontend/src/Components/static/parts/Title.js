@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // ? SCSS
 import Scss from '../style.module.scss';
+import { NavLink } from 'react-router-dom';
 
 export class Title extends Component {
   // * SHOW SEARCH BOX
@@ -35,10 +36,12 @@ export class Title extends Component {
         id="title"
         className={`${Scss.title} d-flex justify-content-between align-items-center`}
       >
-        <img src="https://logosvector.net/wp-content/uploads/2022/02/facebook-icon-vector.png" />
-        <div id="siteTitle" className="d-none">
-          <h1>Facebook</h1>
-        </div>
+        <NavLink exact to="/">
+          <img src="https://logosvector.net/wp-content/uploads/2022/02/facebook-icon-vector.png" />
+          <div id="siteTitle" className="d-none">
+            <h1>Facebook</h1>
+          </div>
+        </NavLink>
 
         <div
           id={Scss.facebookSearchBox}

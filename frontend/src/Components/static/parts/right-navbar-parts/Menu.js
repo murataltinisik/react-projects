@@ -17,6 +17,12 @@ import React, { Component } from 'react';
 import Scss from '../../style.module.scss';
 import './scss/responsive/menu-responsive.scss';
 
+// * MESSAGE CONTAINER OPEN
+import { messageContainerOpen } from '../../shared/Shared';
+
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
+
 class Menu extends Component {
   constructor({ onMouseLeave, onTabOpen }) {
     super(onMouseLeave, onTabOpen);
@@ -28,7 +34,7 @@ class Menu extends Component {
   render() {
     return (
       <li itemID="0" className="listItem">
-        <a href="#" onClick={this.state.onTabOpen}>
+        <a href="javascript:void(0)" onClick={this.state.onTabOpen}>
           <FontAwesomeIcon icon={faBars} />
         </a>
         <div className={Scss.info}>Menü</div>
@@ -146,7 +152,11 @@ class Menu extends Component {
 
               <ul>
                 <li className="additionalButton btn-hover">
-                  <a href="#" className="text-decoration-none dark-link">
+                  <a
+                    href="javascript:void(0)"
+                    onClick={messageContainerOpen}
+                    className="text-decoration-none dark-link"
+                  >
                     <span>
                       <FontAwesomeIcon icon={faEdit} />
                     </span>
@@ -155,68 +165,86 @@ class Menu extends Component {
                 </li>
 
                 <li className="additionalButton btn-hover">
-                  <a href="#" className="text-decoration-none dark-link">
+                  <NavLink
+                    to="/stories"
+                    className="text-decoration-none dark-link"
+                  >
                     <span>
                       <FontAwesomeIcon icon={faBook} />
                     </span>
                     Hikaye
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="additionalButton btn-hover">
-                  <a href="#" className="text-decoration-none dark-link">
+                  <NavLink
+                    to="/room"
+                    className="text-decoration-none dark-link"
+                  >
                     <span>
                       <FontAwesomeIcon icon={faVideoCamera} />
                     </span>
                     Oda
-                  </a>
+                  </NavLink>
                 </li>
 
                 <div className="hr mx-1 mt-05 mb-05"></div>
 
                 <li className="additionalButton btn-hover">
-                  <a href="#" className="text-decoration-none dark-link">
+                  <NavLink
+                    to="/page"
+                    className="text-decoration-none dark-link"
+                  >
                     <span>
                       <FontAwesomeIcon icon={faFlag} />
                     </span>
                     Sayfa
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="additionalButton btn-hover">
-                  <a href="#" className="text-decoration-none dark-link">
+                  <NavLink to="/ads" className="text-decoration-none dark-link">
                     <span>
                       <FontAwesomeIcon icon={faBullhorn} />
                     </span>
                     Reklam
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="additionalButton btn-hover">
-                  <a href="#" className="text-decoration-none dark-link">
+                  <NavLink
+                    to="/group"
+                    className="text-decoration-none dark-link"
+                  >
                     <span>
                       <FontAwesomeIcon icon={faUsers} />
                     </span>
                     Grup
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="additionalButton btn-hover">
-                  <a href="#" className="text-decoration-none dark-link">
+                  <NavLink
+                    to="/activity"
+                    className="text-decoration-none dark-link"
+                  >
                     <span>
                       <FontAwesomeIcon icon={faImagePortrait} />
                     </span>
                     Etkinlik
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="additionalButton btn-hover">
-                  <a href="#" className="text-decoration-none dark-link">
+                  <NavLink
+                    to="/marketplaces"
+                    className="text-decoration-none dark-link"
+                  >
                     <span>
                       <FontAwesomeIcon icon={faBagShopping} />
                     </span>
                     Marketplace İlanı
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>

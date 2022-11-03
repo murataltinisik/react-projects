@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 // ? HEADER & SECTION
-import Header from '../../../../static/Header';
-import Section from './Section';
+import Section from '../static/Section';
 
 class Suggestions extends Component {
   render() {
     return (
-      <div>
-        <Header />
-        <Section />
-      </div>
+      <Section
+        title="Öneriler"
+        info="Profillerinin önizlemesini görmek için kişilerin adlarını seç.
+    "
+      />
     );
   }
 }

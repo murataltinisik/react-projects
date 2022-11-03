@@ -10,6 +10,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Scss from '../../../../assets/scss/home-scss/styles/component-css/acquaintances.module.scss';
+import { NavLink } from 'react-router-dom';
 
 class acquaintances extends Component {
   constructor(props) {
@@ -171,13 +172,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={`${Scss.name} username`}>Murat Altınışık 1</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 1
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -190,13 +201,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 2</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 2
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -209,13 +230,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 3</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 3
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -228,13 +259,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 4</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 4
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -247,13 +288,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 5</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 5
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -266,13 +317,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 6</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 6
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -285,13 +346,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 7</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 7
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -304,13 +375,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 8</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 8
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -323,13 +404,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 9</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 9
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -342,13 +433,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 10</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 10
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -361,13 +462,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 11</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 11
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle
@@ -380,13 +491,23 @@ class acquaintances extends Component {
               <FontAwesomeIcon icon={faClose} />
             </div>
 
-            <img
-              className={Scss.image}
-              src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
-            />
+            <NavLink
+              to="/friends/suggestions?user=5"
+              className={Scss.ImageLink}
+            >
+              <img
+                className={Scss.image}
+                alt=""
+                src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png"
+              />
+            </NavLink>
 
             <div className="px-2 d-flex direction-column align-items-center">
-              <p className={Scss.name}>Murat Altınışık 12</p>
+              <p className={Scss.name}>
+                <NavLink to="/friends/suggestions?user=5">
+                  Murat Altınışık 12
+                </NavLink>
+              </p>
 
               <button className="facebook-btn btn">
                 <FontAwesomeIcon icon={faUserPlus} /> Arkadaş Ekle

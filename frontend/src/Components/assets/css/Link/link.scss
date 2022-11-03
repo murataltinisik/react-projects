@@ -44,6 +44,17 @@ a.white-link{
     font-weight: bold;
 }
 
+// Success Link
+.success-link{
+    text-decoration: none;
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 500;
+    background-color: $colorGreen;
+    border-radius: 5px;
+    padding: .8rem;
+}
+
 // TEXT DECORATION NONE
 a.text-decoration-none{
     font-weight: 500;

@@ -86,6 +86,19 @@
 
                 }
 
+                li.link{    
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    a{
+                        text-decoration: none;
+                        color: #000;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+
                 // MORE INFO
                 li.moreInfo{
                     cursor: pointer;
@@ -104,6 +117,79 @@
                 li:last-child{
                     border-bottom: none;
                 }
+            }
+        }
+
+       // CHANGE PROPERTY
+       .changeProperty{
+            background-color: #f9f9f9;
+            padding: 1rem;
+            font-size: .85rem;
+            position: relative;
+            border-radius: 5px;
+            display: none;
+            width: 100%;
+            margin-top: 1rem;
+
+            > a{
+                width: 50%;
+                flex-direction: column;
+                align-items: flex-start !important;
+                background-color: #fff;
+                padding: 8px;
+                border-radius: 5px ;
+                box-shadow: 1px 2px 3px #ccc;
+                margin-bottom: 1rem;
+                margin: 1rem auto;
+
+                .infoTitle{
+                    font-weight: 700;
+                }
+
+                .infoDescription{
+                    text-align: justify;
+                    font-weight: 500;
+                    color: gray;
+                    font-size: .8rem !important;
+                }
+            }
+
+            > a:hover{
+                background-color: #f9f9f9;
+            }
+
+            > a:first-child{
+                margin-top: 0;
+            }
+
+            > a:last-child{
+                margin-bottom: 0;
+            }
+
+            input{
+                margin-left: 10px;
+                border: 1px solid #ccc;
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+            button{
+                margin-left: 10px;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: $colorBlue;
+                color: #fff;
+                border: none;
+                box-shadow: 0 0 3px $colorBlue;
+                font-size: .75rem;
+                margin-top: 1rem;
+                cursor: pointer;
+            }
+
+            button:active{
+                background-color: $colorDarkBlue;
+                box-shadow: inset 0 0 6px $colorBlue;
+
             }
         }
     }

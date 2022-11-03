@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import { faEllipsis, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
+
 function Head({ who, actions, actionIcon }) {
   const [whichSendCard, setWhichSendCard] = useState(null);
 
@@ -48,9 +51,9 @@ function Head({ who, actions, actionIcon }) {
               <div className="name">
                 {who && who.name}
                 <div className="elips mx-1"></div>
-                <a href="#" className="primary-link">
+                <NavLink to="/profile/2" className="primary-link">
                   Takip Et
-                </a>
+                </NavLink>
               </div>
               {/* OTHER */}
               <div className="other">

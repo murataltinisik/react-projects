@@ -433,7 +433,7 @@ class Other extends Component {
 
           {/* BIRTHDAY */}
           <div className={`${Scss.birthday} mt-1`}>
-            <div className="send-card">
+            <div className="send-card width-100">
               {/* HEAD */}
               <div className="head d-flex justify-content-between align-items-center">
                 <div className="send">

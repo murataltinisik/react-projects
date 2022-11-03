@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
 // ? HEADER & SECTION
-import Header from '../../../../static/Header';
-import Section from './Section';
+import Section from '../static/Section';
 
 class CustomLists extends Component {
   render() {
     return (
-      <div>
-        <Header />
-        <Section />
-      </div>
+      <Section title="Özel Listeler" info="Gösterilecek Özel Bir liste yok" />
     );
   }
 }

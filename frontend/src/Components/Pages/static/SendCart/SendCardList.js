@@ -69,8 +69,9 @@ class SendCardList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="d-flex direction-column justify-content-start align-items-center">
         <SendCart itemId="0" head={this.head} body={this.body} />
+        <SendCart itemId="1" head={this.head} body={this.body} />
       </div>
     );
   }

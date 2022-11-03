@@ -11,6 +11,7 @@ import '../../../../assets/css/Card/user-card-2.scss';
 
 // ? MODULE SCSS
 import Scss from '../../../../assets/scss/friends-scss/static-scss/styles/left.module.scss';
+import { Link } from 'react-router-dom';
 
 export class Left extends Component {
   render() {
@@ -20,9 +21,13 @@ export class Left extends Component {
         <div
           className={`${Scss.head} d-flex justify-content-start align-items-center`}
         >
-          <a href="#" className="light-link pl-1" style={{ fontSize: 'unset' }}>
+          <Link
+            to="/friends"
+            className="light-link pl-1"
+            style={{ fontSize: 'unset' }}
+          >
             <FontAwesomeIcon icon={faArrowLeft} />
-          </a>
+          </Link>
 
           <div className="pl-1">
             <a href="#" className="light-link">

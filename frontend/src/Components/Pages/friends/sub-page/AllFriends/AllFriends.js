@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 
 // ? HEADER & SECTION
-import Header from '../../../../static/Header';
-import Section from './Section';
+import Section from '../static/Section';
 
 class AllFriends extends Component {
   render() {
-    return (
-      <div>
-        <Header />
-        <Section />
-      </div>
-    );
+    return <Section title="Tüm Arkadaşlar" info="Gösterilecek Arkadaş Yok" />;
   }
 }
 

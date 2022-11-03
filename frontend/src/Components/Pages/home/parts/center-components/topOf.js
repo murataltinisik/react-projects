@@ -1,5 +1,6 @@
 import React from 'react';
 
+// ? FONT AWESOME
 import {
   faChevronLeft,
   faChevronRight,
@@ -14,6 +15,9 @@ import {
   faVideoCamera,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
 
 function topOf({ Scss, active, setActive }) {
   // * ACTIVE TAB
@@ -95,19 +99,20 @@ function topOf({ Scss, active, setActive }) {
         <div className={`${Scss.contents} contents`}>
           {/* STORIES */}
           <div className={`${Scss.content}`}>
-            <div className={Scss.stories}>
+            <NavLink to="/stories" className={Scss.stories}>
               <div className={Scss.image}>
                 <img src="https://scontent.fesb10-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=dst-png_p160x160&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=_8ak1Gi-hKwAX_yS4pc&_nc_ht=scontent.fesb10-1.fna&oh=00_AT9Q5dLtDBN2nSgZJ2BGQ97nINX8t_yH_3VnSdEoDrQcsw&oe=63314CF8" />
               </div>
+
               <div
                 className={`${Scss.foot} d-flex direction-column align-items-center`}
               >
-                <a href="#">
+                <a href="javascript:void(0)">
                   <FontAwesomeIcon icon={faPlus} />
                 </a>
                 <span>Hikaye Oluştur</span>
               </div>
-            </div>
+            </NavLink>
 
             {/* STORY INFO */}
             <div className={Scss.contentInfo}>
@@ -137,53 +142,60 @@ function topOf({ Scss, active, setActive }) {
           {/* REELS */}
           <div id="reels" className={`${Scss.content} ${Scss.overflow} d-flex`}>
             <div id={Scss.reelsContainer}>
-              <div className={Scss.reels}>
+              <NavLink to="/reels/1" className={Scss.reels}>
                 <img src="https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6" />
                 <div className={Scss.views}>
                   <FontAwesomeIcon icon={faPlay} />
                   980 B
                 </div>
-              </div>
-              <div className={Scss.reels}>
+              </NavLink>
+
+              <NavLink to="/reels/2" className={Scss.reels}>
                 <img src="https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6" />
                 <div className={Scss.views}>
                   <FontAwesomeIcon icon={faPlay} />
                   1.2 M
                 </div>
-              </div>
-              <div className={Scss.reels}>
+              </NavLink>
+
+              <NavLink to="/reels/3" className={Scss.reels}>
                 <img src="https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6" />
                 <div className={Scss.views}>
                   <FontAwesomeIcon icon={faPlay} />
                   128 B
                 </div>
-              </div>
-              <div className={Scss.reels}>
+              </NavLink>
+
+              <NavLink to="/reels/4" className={Scss.reels}>
                 <img src="https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6" />
                 <div className={Scss.views}>
                   <FontAwesomeIcon icon={faPlay} />
                 </div>
-              </div>
-              <div className={Scss.reels}>
+              </NavLink>
+
+              <NavLink to="/reels/5" className={Scss.reels}>
                 <img src="https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6" />
                 <div className={Scss.views}>
                   <FontAwesomeIcon icon={faPlay} />
                   900 B
                 </div>
-              </div>
-              <div className={Scss.reels}>
+              </NavLink>
+
+              <NavLink to="/reels/6" className={Scss.reels}>
                 <img src="https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6" />
                 <div className={Scss.views}>
                   <FontAwesomeIcon icon={faPlay} />
                   589 B
                 </div>
-              </div>
-              <div className={Scss.reels}>
+              </NavLink>
+
+              <NavLink to="/reels/7" className={Scss.reels}>
                 <img src="https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-comin.jpg?ver=6" />
                 <div className={Scss.views}>
                   <FontAwesomeIcon icon={faPlay} />5 M
                 </div>
-              </div>
+              </NavLink>
+
               <div className={`${Scss.reels} ${Scss.moreReels}`}>
                 <div className="d-flex direction-column justify-content-center align-items-center">
                   <FontAwesomeIcon icon={faCircleArrowRight} />

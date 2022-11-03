@@ -13,6 +13,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // ? SCSS
 import Scss from '../style.module.scss';
+
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
+
 export class Navbar extends Component {
   render() {
     return (
@@ -20,47 +24,47 @@ export class Navbar extends Component {
         className={`${Scss.navbar} navbar d-flex justify-content-between align-items-center`}
       >
         <ul className="d-flex justify-content-between align-items-center">
-          <li className={Scss.active}>
-            <a href="#" className={Scss.activeLink}>
+          <li>
+            <NavLink exact to="/" activeClassName={Scss.activeLink}>
               <FontAwesomeIcon icon={faHome} />
-            </a>
+            </NavLink>
             <div className={Scss.info} id="abc">
               Anasayfa
             </div>
           </li>
 
           <li>
-            <a href="#">
+            <NavLink to="/friends" activeClassName={Scss.activeLink}>
               <FontAwesomeIcon icon={faUsers} />
-            </a>
+            </NavLink>
             <div className={Scss.info}>Arkadaşlar</div>
           </li>
 
           <li>
-            <a href="#">
+            <NavLink to="/watch" activeClassName={Scss.activeLink}>
               <FontAwesomeIcon icon={faTv} />
-            </a>
+            </NavLink>
             <div className={Scss.info}>Watch</div>
           </li>
 
           <li>
-            <a href="#">
+            <NavLink to="/marketplace" activeClassName={Scss.activeLink}>
               <FontAwesomeIcon icon={faStore} />
-            </a>
+            </NavLink>
             <div className={Scss.info}>Marketplace</div>
           </li>
 
           <li>
-            <a href="#">
+            <NavLink to="/group" activeClassName={Scss.activeLink}>
               <FontAwesomeIcon icon={faPeopleGroup} />
-            </a>
+            </NavLink>
             <div className={Scss.info}>Grup</div>
           </li>
 
           <li id={Scss.responsiveOpenMenu} className="responsiveOpenMenu">
-            <a href="#">
+            <NavLink to="/bookmarks" activeClassName={Scss.activeLink}>
               <FontAwesomeIcon icon={faBars} />
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

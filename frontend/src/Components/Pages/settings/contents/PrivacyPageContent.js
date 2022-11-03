@@ -5,7 +5,20 @@ import React, { Component } from 'react';
 // ? CLASSIC SCSS
 import Scss from '../../../assets/scss/settings-scss/contents-scss/classic.module.scss';
 
+// * ON SAVE SETTING PROPERTY
+import {
+  onChangeSettingProperty,
+  onRunUpdateComponent,
+} from '../TabProperty/TabProperty';
+
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
+
 export class PrivacyPageContent extends Component {
+  componentDidUpdate() {
+    onRunUpdateComponent(this.props.location.search);
+  }
+
   render() {
     return (
       <>
@@ -73,8 +86,11 @@ export class PrivacyPageContent extends Component {
 
                 {/* SETTINGS */}
                 <ul className={Scss.settings}>
-                  <li>
-                    <a href="#" className="direction-row">
+                  <li id="publicPostStatus">
+                    <NavLink
+                      to={`${this.props.match.url}?section=publicPostStatus`}
+                      className="direction-row"
+                    >
                       <p className={Scss.info}>
                         <span>
                           İleride Paylaşacağın gönderileri kimler görebilir?
@@ -85,7 +101,14 @@ export class PrivacyPageContent extends Component {
                         <FontAwesomeIcon icon={faPencil} />
                         <span>Düzenle</span>
                       </button>
-                    </a>
+                    </NavLink>
+
+                    <div className={Scss.changeProperty}>
+                      <select onChange={onChangeSettingProperty}>
+                        <option value="0">Herkese Açık</option>
+                        <option value="1">Arkadaşlar</option>
+                      </select>
+                    </div>
                   </li>
 
                   <li>
@@ -125,8 +148,11 @@ export class PrivacyPageContent extends Component {
                     </a>
                   </li>
 
-                  <li>
-                    <a href="#" className="direction-row">
+                  <li id="subscribedto">
+                    <NavLink
+                      to={`${this.props.match.url}?section=subscribedto`}
+                      className="direction-row"
+                    >
                       <p className={Scss.info}>
                         <span>
                           Takip ettiğin kişileri, sayfaları ve listeleri kimler
@@ -138,7 +164,15 @@ export class PrivacyPageContent extends Component {
                         <FontAwesomeIcon icon={faPencil} />
                         <span>Düzenle</span>
                       </button>
-                    </a>
+                    </NavLink>
+
+                    <div className={Scss.changeProperty}>
+                      <select onChange={onChangeSettingProperty}>
+                        <option value="0">Herkese Açık</option>
+                        <option value="1">Arkadaşlar</option>
+                        <option value="2">Sadece Ben</option>
+                      </select>
+                    </div>
                   </li>
                 </ul>
               </div>

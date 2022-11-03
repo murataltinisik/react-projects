@@ -16,7 +16,20 @@ import {
 // ? SECURITY AND LOGIN SCSS
 import Scss from '../../../assets/scss/settings-scss/contents-scss/security-and-login.module.scss';
 
+// * ON SAVE SETTING PROPERTY
+import {
+  onSaveSettingProperty,
+  onRunUpdateComponent,
+} from '../TabProperty/TabProperty';
+
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
+
 class SecurityAndLoginPageContent extends Component {
+  componentDidUpdate() {
+    onRunUpdateComponent(this.props.location.search);
+  }
+
   render() {
     return (
       <>
@@ -101,24 +114,67 @@ class SecurityAndLoginPageContent extends Component {
             {/* DESCRIPTION */}
             <div className={Scss.description}>
               <ul>
-                <li>
-                  <FontAwesomeIcon icon={faKey} />
-                  <div className={Scss.detail}>
-                    <b>Şifreyi Değiştir</b>
-                    <p>
-                      Başka bir yerde kullanmadığın güçlü bir şifre kullanmak
-                      iyi bir fikirdir.
-                    </p>
+                <li id="changePassword" className={`${Scss.link} parentTab`}>
+                  <NavLink
+                    to={`${this.props.match.url}?section=changePassword`}
+                  >
+                    <FontAwesomeIcon icon={faKey} />
+                    <div className={Scss.detail}>
+                      <b>Şifreyi Değiştir</b>
+                      <p>
+                        Başka bir yerde kullanmadığın güçlü bir şifre kullanmak
+                        iyi bir fikirdir.
+                      </p>
+                    </div>
+                  </NavLink>
+
+                  <div className={Scss.changeProperty}>
+                    Yeni Adınız*
+                    <div className="mb-1 mt-1">
+                      <input type="password" placeholder="Eski Şifre" />
+                    </div>
+                    <div className="mb-1">
+                      <input type="password" placeholder="Yeni Şifre" />
+                    </div>
+                    <div>
+                      <input type="password" placeholder="Yeni Şifre Tekrar" />
+                    </div>
+                    <button onClick={onSaveSettingProperty}>
+                      Değişiklikleri Kaydet
+                    </button>
                   </div>
                 </li>
 
-                <li>
-                  <FontAwesomeIcon icon={faCircleUser} />
-                  <div className={Scss.detail}>
-                    <b>Giriş Bilgilerini kaydet</b>
-                    <p>
-                      Sadece seçtiğin tarayıcılarda ve cihazlarda kaydedilecek.
-                    </p>
+                <li id="loginInfoLog" className={`${Scss.link} parentTab`}>
+                  <NavLink to={`${this.props.match.url}?section=loginInfoLog`}>
+                    <FontAwesomeIcon icon={faCircleUser} />
+                    <div className={Scss.detail}>
+                      <b>Giriş Bilgilerini kaydet</b>
+                      <p>
+                        Sadece seçtiğin tarayıcılarda ve cihazlarda
+                        kaydedilecek.
+                      </p>
+                    </div>
+                  </NavLink>
+
+                  <div className={Scss.changeProperty}>
+                    <NavLink to="">
+                      <div className={Scss.infoTitle}>
+                        Giriş Bilgileri Kaydet
+                      </div>
+                      <div className={Scss.infoDescription}>
+                        Bu tarayıcıda yeniden giriş yaparken şifreni girmen
+                        gerekmeyecek.
+                      </div>
+                    </NavLink>
+
+                    <NavLink to="">
+                      <div className={Scss.infoTitle}>Hesabı Kaldır</div>
+                      <div className={Scss.infoDescription}>
+                        Bir sonraki girişinde e-postanı veya telefon numaranı
+                        girmen gerekecek.
+                      </div>
+                    </NavLink>
                   </div>
                 </li>
               </ul>

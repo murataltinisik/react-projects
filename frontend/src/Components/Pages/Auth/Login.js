@@ -16,6 +16,9 @@ import '../../assets/css/MarginPadding/margin-padding.scss';
 // ? MODULE SCSS
 import Scss from '../../assets/scss/auth-scss/style.module.scss';
 
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
+
 function Login() {
   const validationSchema = Yup.object({
     emailOrNumber: Yup.string()
@@ -107,16 +110,19 @@ function Login() {
               <div className="input-group">
                 <button className="primary-btn">Giriş Yap</button>
                 <div className="br"></div>
-                <a href="#" className="primary-link">
+                <NavLink to="/find-account" className="primary-link">
                   Şifreni mi Unuttun?
-                </a>
+                </NavLink>
               </div>
 
               <div className="input-group">
                 <div className="hr"></div>
-                <button className={`success-btn ${Scss.btnWidth}`}>
+                <NavLink
+                  to="/register"
+                  className={`success-link ${Scss.btnWidth}`}
+                >
                   Yeni Hesap Oluştur
-                </button>
+                </NavLink>
               </div>
             </form>
           </div>

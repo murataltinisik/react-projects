@@ -25,6 +25,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Scss from '../../style.module.scss';
 import UserScss from './scss/users.module.scss';
 
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
+
 class Users extends Component {
   constructor({
     onTabOpen,
@@ -44,7 +47,7 @@ class Users extends Component {
   render() {
     return (
       <li itemID="3" className="listItem">
-        <a href="#" onClick={this.state.onTabOpen}>
+        <a href="javascript:void(0)" onClick={this.state.onTabOpen}>
           <FontAwesomeIcon icon={faUser} />
         </a>
         <div className={Scss.info}>Hesap</div>
@@ -55,12 +58,13 @@ class Users extends Component {
         >
           <div>
             <div className={UserScss.profile} id="profile">
-              <div
-                className={`${UserScss.selectedProfile} px-2 py-05 d-flex justify-content-start align-items-center`}
+              <NavLink
+                to="/profile"
+                className={`${UserScss.selectedProfile} dark-link text-decoration-none px-2 py-05 d-flex justify-content-start align-items-center`}
               >
                 <img src="https://scontent.fesb4-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p60x60&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX9V38AS&_nc_ht=scontent.fesb4-1.fna&oh=00_AT9daDbbsXxh0Fbrq5zuH8FOZJo5nyZHr6TeJavbEbLiHA&oe=633D2A78" />
                 <span className="ml-1">Murat Altınışık</span>
-              </div>
+              </NavLink>
               <div className="hr mb-0"></div>
               <div
                 className={`${UserScss.allProfileSee} private-btn text-left`}
@@ -176,27 +180,36 @@ class Users extends Component {
                   <span>
                     <FontAwesomeIcon icon={faGear} />
                   </span>
-                  <a href="#" className="light-link text-decoration-none">
+                  <NavLink
+                    to="/settings"
+                    className="light-link text-decoration-none"
+                  >
                     Ayarlar
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="additionalButton d-flex align-items-center">
                   <span className="px-1 pr-0">
                     <FontAwesomeIcon icon={faUserLock} />
                   </span>
-                  <a href="#" className="light-link text-decoration-none">
+                  <NavLink
+                    to="/settings"
+                    className="light-link text-decoration-none"
+                  >
                     Gizlilik Ayarı Kontrolü
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="additionalButton d-flex align-items-center">
                   <span>
                     <FontAwesomeIcon icon={faLock} />
                   </span>
-                  <a href="#" className="light-link text-decoration-none">
+                  <NavLink
+                    to="/settings/privacy"
+                    className="light-link text-decoration-none"
+                  >
                     Gizlilik Merkezi
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="additionalButton d-flex align-items-center">
@@ -223,9 +236,12 @@ class Users extends Component {
                     <FontAwesomeIcon icon={faGlobe} />
                   </span>
 
-                  <a className="light-link text-decoration-none" href="#">
+                  <NavLink
+                    to="/settings/language-and-region"
+                    className="light-link text-decoration-none"
+                  >
                     Dil
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
 

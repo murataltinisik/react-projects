@@ -1,17 +1,17 @@
 import React from 'react';
 
 // ? SUB COMPONENTS
-import Left from '../static/Left';
-import Content from '../static/Content';
+import Left from './Left';
+import Content from './Content';
 
 // ? SCSS
 import Scss from '../../../../assets/scss/friends-scss/content.module.scss';
 
-function Section() {
+function Section({ title, info }) {
   return (
     <div className="d-flex justify-content-between" id={Scss.ContentContainer}>
-      <Left title="Öneriler" />
-      <Content info="Profillerinin önizlemesini görmek için kişilerin adlarını seç." />
+      <Left title={title} />
+      <Content info={info} />
     </div>
   );
 }

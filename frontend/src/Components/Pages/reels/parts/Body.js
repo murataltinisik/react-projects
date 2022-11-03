@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Navigation from './Navigation';
 
 // ? STATIC
-import ReelsCardList from '../../static/ReelsCard/ReelsCarsList';
+import ReelsCard from '../../static/ReelsCard/ReelsCard';
 
 // ? SCSS
 import Scss from '../../../assets/scss/reels-scss/body.module.scss';
@@ -13,8 +13,7 @@ class Body extends Component {
   render() {
     return (
       <div className={Scss.body}>
-        {/* REELS CARD LIST */}
-        <ReelsCardList />
+        <ReelsCard />
 
         {/* NAVIGATION */}
         <Navigation />

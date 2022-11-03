@@ -20,6 +20,9 @@ import '../../../assets/scss/profile-scss/responsive/responsive.head.scss';
 // ? ASSETS
 import '../../../assets/css/Dropdown/dropdown.scss';
 
+// * REACT ROUTER 5.2.0
+import { NavLink, withRouter } from 'react-router-dom';
+
 class Head extends Component {
   // * POPUP
   onOpenPopUp = e => {
@@ -279,35 +282,60 @@ class Head extends Component {
             className={`${Scss.menu} menu d-flex justify-content-between align-items-center px-4`}
           >
             <ul className="d-flex justify-content-start align-items-center">
-              <li className={Scss.active}>
-                <a href="#" className="private-btn text-decoration-none">
+              <li>
+                <NavLink
+                  exact
+                  to={`${this.props.match.url}`}
+                  className="private-btn text-decoration-none"
+                  activeClassName={Scss.active}
+                >
                   Gönderiler
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#" className="private-btn text-decoration-none">
+                <NavLink
+                  to={`${this.props.match.url}/about`}
+                  className="private-btn text-decoration-none"
+                  activeClassName={Scss.active}
+                >
                   Hakkında
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#" className="private-btn text-decoration-none">
+                <NavLink
+                  to={`${this.props.match.url}/friends`}
+                  className="private-btn text-decoration-none"
+                  activeClassName={Scss.active}
+                >
                   Arkadaşlar
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#" className="private-btn text-decoration-none">
+                <NavLink
+                  to={`${this.props.match.url}/pictures`}
+                  className="private-btn text-decoration-none"
+                  activeClassName={Scss.active}
+                >
                   Fotoğraflar
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#" className="private-btn text-decoration-none">
+                <NavLink
+                  to={`${this.props.match.url}/videos`}
+                  className="private-btn text-decoration-none"
+                  activeClassName={Scss.active}
+                >
                   Videolar
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#" className="private-btn text-decoration-none">
+                <NavLink
+                  to={`${this.props.match.url}/location-notifications`}
+                  className="private-btn text-decoration-none"
+                  activeClassName={Scss.active}
+                >
                   Yer Bildirimleri
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -317,4 +345,4 @@ class Head extends Component {
   }
 }
 
-export default Head;
+export default withRouter(Head);

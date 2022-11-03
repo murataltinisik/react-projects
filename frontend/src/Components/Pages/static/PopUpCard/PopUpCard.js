@@ -124,11 +124,16 @@ function PopUpCard({ head, body, foot }) {
     >
       <div
         className={`container ${
+          body.where &&
           body.where === 'ShipmentContainer' &&
           'd-flex justify-content-between align-items-center'
         }`}
       >
-        <div id={`${body.where === 'ShipmentContainer' && 'main-popup'}`}>
+        <div
+          id={`${
+            body.where && body.where === 'ShipmentContainer' && 'main-popup'
+          }`}
+        >
           {/* HEAD */}
           <div className="head">
             <div className="title">{head.title}</div>
@@ -139,9 +144,11 @@ function PopUpCard({ head, body, foot }) {
 
           {/* BODY */}
           <div
-            className={`body ${body.where === 'ShipmentContainer' && 'p-0'}`}
+            className={`body ${
+              body.where && body.where === 'ShipmentContainer' && 'p-0'
+            }`}
           >
-            {body.where !== 'ShipmentContainer' ? (
+            {body.where && body.where !== 'ShipmentContainer' ? (
               <>
                 {/* TITLE & DESCRIPTION */}
                 <div>
@@ -337,7 +344,9 @@ function PopUpCard({ head, body, foot }) {
           {/* FOOT */}
           <div
             className={`foot ${
-              body.where === 'ShipmentContainer' && 'border-none p-0'
+              body.where &&
+              body.where === 'ShipmentContainer' &&
+              'border-none p-0'
             }`}
           >
             {foot && (
@@ -374,7 +383,7 @@ function PopUpCard({ head, body, foot }) {
               </>
             )}
 
-            {body.where === 'ShipmentContainer' && (
+            {body.where && body.where === 'ShipmentContainer' && (
               <button className="share-post" disabled>
                 Paylaş
               </button>
@@ -382,7 +391,7 @@ function PopUpCard({ head, body, foot }) {
           </div>
         </div>
 
-        {body.where === 'ShipmentContainer' && (
+        {body.where && body.where === 'ShipmentContainer' && (
           <div className="popup-pages" id="popup-pages">
             {/* HEAD */}
             <div className="head" style={{ width: '18rem' }}>

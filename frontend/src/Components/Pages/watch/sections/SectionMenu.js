@@ -12,22 +12,22 @@ export const menu = [
   {
     name: 'Ana Sayfa',
     icon: faVideo,
-    link: '#',
+    link: '/watch',
   },
   {
     name: 'Canlı',
     icon: faCamera,
-    link: '#',
+    link: '/watch/live',
   },
   {
     name: 'Programlar',
     icon: faFilm,
-    link: '#',
+    link: '/watch/programs',
   },
   {
     name: 'Kaydedilen Videolar',
     icon: faBookmark,
-    link: '#',
+    link: '/watch/recorded-videos',
   },
 ];
 

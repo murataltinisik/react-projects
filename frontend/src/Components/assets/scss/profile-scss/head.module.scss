@@ -132,19 +132,15 @@
                 }
             }
 
-            li.active:hover{
-                a{
-                    background-color: #fff !important;
-                }
+            a.active:hover{
+                background-color: #fff !important;
             }
 
-            li.active{
+            border-radius: 0;
+            a.active{
                 border-radius: 0;
-                a{
-                    border-radius: 0;
-                    color: $colorBlue;
-                    border-color: $colorBlue;
-                }
+                color: $colorBlue;
+                border-color: $colorBlue;
             }
         }
     }

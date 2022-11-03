@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { faA, faChevronRight, faGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// ? POPUP
-import PopUpCard, { onOpenPopUp } from '../PopUpCard/PopUpCard';
-
 // ? MODULE SCSS
 import Scss from './styles/left.module.scss';
 import './styles/responsive-left.scss';
+
+// * REACT ROUTER 5.2.0
+import { NavLink } from 'react-router-dom';
 
 function StaticLeft({
   title,
@@ -173,12 +173,25 @@ function StaticLeft({
                   }`}
                 >
                   {!item.image ? (
-                    <>
+                    <NavLink
+                      exact
+                      to={item.link}
+                      className={Scss.navLink}
+                      activeClassName={Scss.activeLink}
+                    >
                       <span>
                         <FontAwesomeIcon icon={item.icon} />
                       </span>
-                      <a href={item.link}>{item.name}</a>
-                    </>
+                      <b
+                        style={{
+                          marginLeft: '10px',
+                          fontWeight: '400',
+                          fontSize: '.95rem',
+                        }}
+                      >
+                        {item.name}
+                      </b>
+                    </NavLink>
                   ) : (
                     <>
                       <div className={Scss.image}>
@@ -265,19 +278,10 @@ function StaticLeft({
 
         {storyType && (
           <>
-            <PopUpCard
-              head={{ title: 'Hikayeyi Sil?', label: 'CancelStory' }}
-              body={{
-                description:
-                  'Bu Hikayeyi Silmek istediğinden emin misin? Hikayen kaydedilmeyecek.',
-              }}
-              foot={{ whereFromFoot: 'Story' }}
-            />
-
             <div className={Scss.storyActions}>
               <button
                 className="secondary-btn"
-                onClick={e => onOpenPopUp(e, 'CancelStory')}
+                onClick={() => window.location.reload()}
               >
                 Yok Say
               </button>

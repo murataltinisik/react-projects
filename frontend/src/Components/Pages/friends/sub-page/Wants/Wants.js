@@ -4,16 +4,15 @@ import React, { Component } from 'react';
 import '../../../../assets/css/Card/friend-card.scss';
 
 // ? HEADER & SECTION
-import Header from '../../../../static/Header';
-import Section from './Section';
+import Section from '../static/Section';
 
 class Wants extends Component {
   render() {
     return (
-      <div>
-        <Header />
-        <Section />
-      </div>
+      <Section
+        title="Arkadaş İstekleri"
+        info="Arkadaşlık istekleri veya önerileri olduğunda, burada görünecekler."
+      />
     );
   }
 }

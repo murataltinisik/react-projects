@@ -42,7 +42,7 @@ function FindAccount() {
       <div id={Scss.MainContainer} className="px-5">
         {/* HEADER */}
         <header className="d-flex justify-content-between align-items-center">
-          <div className={Scss.title}>MuratBook</div>
+          <div className={Scss.title}>Facebook</div>
 
           <div className="d-flex align-items-center">
             <form onSubmit={formik.handleSubmit}>
@@ -77,10 +77,6 @@ function FindAccount() {
                 Giriş Yap
               </button>
             </form>
-
-            <a href="#" className="primary-link">
-              Hesabını mı Unuttun?
-            </a>
           </div>
         </header>
 
