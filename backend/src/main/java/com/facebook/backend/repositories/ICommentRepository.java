@@ -1,2 +1,8 @@
-package com.facebook.backend.repositories;public interface ICommentRepository {
-}
+package com.facebook.backend.repositories;
+
+import com.facebook.backend.entities.Comment;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ICommentRepository extends JpaRepository<Comment, Long> {}

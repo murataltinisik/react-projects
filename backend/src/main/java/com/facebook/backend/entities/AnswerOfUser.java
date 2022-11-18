@@ -1,11 +1,10 @@
 package com.facebook.backend.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "answer_of_comment")
-public class AnswerOfComment {
+@Table(name = "answer_of_user")
+public class AnswerOfUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -15,4 +14,28 @@ public class AnswerOfComment {
 
     @ManyToOne
     private User user;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
