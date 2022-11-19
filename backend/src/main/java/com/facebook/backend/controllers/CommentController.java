@@ -5,6 +5,8 @@ import com.facebook.backend.entities.AnswerOfUser;
 import com.facebook.backend.entities.Comment;
 import com.facebook.backend.exceptions.commentException.CommentNotFoundException;
 import com.facebook.backend.services.ICommentService;
+import com.facebook.backend.services.IShipmentService;
+import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.CurrentTime;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +23,29 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
     @Autowired
     private ICommentService service;
 
+    @Autowired
+    private IShipmentService shipmentService;
+
+    @Autowired
+    private IUserService userService;
+
     @Override
     @PostMapping
     public ResponseEntity<Comment> store(@RequestBody CommentRequestObject o) {
         try{
-            Comment comment = new Comment();
-            comment.setMessage(o.getMessage());
-            comment.setUser(o.getUser());
-            comment.setShipment(o.getShipment());
-            comment.setCreatedAt(CurrentTime.currentTimeStamp());
-            return ResponseEntity.ok(service.save(comment));
+            if(
+                    shipmentService.findByIdAndDeletedAtNull(o.getShipment().getId()).isPresent()
+                    &&
+                    userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()
+            ){
+                Comment comment = new Comment();
+                comment.setMessage(o.getMessage());
+                comment.setUser(o.getUser());
+                comment.setShipment(o.getShipment());
+                comment.setCreatedAt(CurrentTime.currentTimeStamp());
+                return ResponseEntity.ok(service.save(comment));
+            }
+            return null;
         }catch (Exception e){
             throw e;
         }

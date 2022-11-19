@@ -1,10 +1,12 @@
 package com.facebook.backend.entities;
 
+import com.facebook.backend.utilities.AuditModel;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -27,14 +29,12 @@ public class User {
     @Column(name = "role")
     private int role;
 
-    @Column(name = "created_at")
-    private String createdAt;
-
-    @Column(name = "updated_at")
-    private String updatedAt;
-
     @Column(name = "deleted_at")
     private String deletedAt;
+
+    public User(){
+        super();
+    }
 
     public long getId() {
         return id;
@@ -84,20 +84,12 @@ public class User {
         this.emailPhone = emailPhone;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
     public int getRole() {
         return role;
     }
 
     public void setRole(int role) {
         this.role = role;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
     }
 
     public String getDeletedAt() {
@@ -108,11 +100,4 @@ public class User {
         this.deletedAt = deletedAt;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

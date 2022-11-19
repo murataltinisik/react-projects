@@ -10,8 +10,6 @@ public class ShipmentRequestObject {
     private String description;
     private String styleBg;
     private long tagUserId;
-    private String createdAt;
-    private String updatedAt;
     private String deletedAt;
 
     public long getId() {
@@ -68,22 +66,6 @@ public class ShipmentRequestObject {
 
     public void setTagUserId(long tagUserId) {
         this.tagUserId = tagUserId;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getDeletedAt() {

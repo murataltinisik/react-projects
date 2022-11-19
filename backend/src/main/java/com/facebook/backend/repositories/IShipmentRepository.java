@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Repository
 public interface IShipmentRepository extends JpaRepository<Shipment, Long> {
@@ -12,7 +13,9 @@ public interface IShipmentRepository extends JpaRepository<Shipment, Long> {
 
     long countByDeletedAtNull();
 
-    ArrayList<Shipment> findByUserId(long userId);
+    Optional<Shipment> findByIdAndDeletedAtNull(long id);
 
-    long countByUserId(long userId);
+    ArrayList<Shipment> findByUserIdAndDeletedAtNull(long userId);
+
+    long countByUserIdAndDeletedAtNull(long userId);
 }

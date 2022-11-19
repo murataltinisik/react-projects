@@ -5,6 +5,7 @@ import com.facebook.backend.repositories.IShipmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public interface IShipmentService extends IShipmentRepository {
@@ -15,8 +16,11 @@ public interface IShipmentService extends IShipmentRepository {
     long countByDeletedAtNull();
 
     @Override
-    ArrayList<Shipment> findByUserId(long userId);
+    Optional<Shipment> findByIdAndDeletedAtNull(long id);
 
     @Override
-    long countByUserId(long userId);
+    ArrayList<Shipment> findByUserIdAndDeletedAtNull(long userId);
+
+    @Override
+    long countByUserIdAndDeletedAtNull(long userId);
 }

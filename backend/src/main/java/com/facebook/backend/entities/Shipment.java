@@ -1,15 +1,12 @@
 package com.facebook.backend.entities;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.lang.Nullable;
+import com.facebook.backend.utilities.AuditModel;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "shipments")
-public class Shipment {
-
+public class Shipment extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -32,14 +29,12 @@ public class Shipment {
     @Column(name = "tag_user_id")
     private long tagUserId;
 
-    @Column(name = "created_at")
-    private String createdAt;
-
-    @Column(name = "updated_at")
-    private String updatedAt;
-
     @Column(name = "deleted_at")
     private String deletedAt;
+
+    public Shipment(){
+        super();
+    }
 
     public long getId() {
         return id;
@@ -95,22 +90,6 @@ public class Shipment {
 
     public void setTagUserId(long tagUserId) {
         this.tagUserId = tagUserId;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getDeletedAt() {

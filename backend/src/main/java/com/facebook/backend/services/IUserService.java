@@ -5,6 +5,7 @@ import com.facebook.backend.repositories.IUserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public interface IUserService extends IUserRepository {
@@ -14,6 +15,9 @@ public interface IUserService extends IUserRepository {
 
     @Override
     User findByEmailPhone(String emailPhone);
+
+    @Override
+    Optional<User> findByIdAndDeletedAtNull(long id);
 
     @Override
     long countByDeletedAtNull();

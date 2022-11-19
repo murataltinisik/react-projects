@@ -3,6 +3,7 @@ package com.facebook.backend.controllers;
 import com.facebook.backend.controllers.requestObjects.AnswerOfUserRequestObject;
 import com.facebook.backend.entities.AnswerOfUser;
 import com.facebook.backend.services.IAnswerOfUserService;
+import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,14 +19,20 @@ public class AnswerOfUserController implements ICrudUtility<AnswerOfUser, Answer
     @Autowired
     private IAnswerOfUserService service;
 
+    @Autowired
+    private IUserService userService;
+
     @Override
     @PostMapping(name = "/")
     public ResponseEntity<AnswerOfUser> store(@RequestBody AnswerOfUserRequestObject o) {
         try{
-            AnswerOfUser answer = new AnswerOfUser();
-            answer.setAnswer(o.getAnswer());
-            answer.setUser(o.getUser());
-            return ResponseEntity.ok(service.save(answer));
+            if(userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()) {
+                AnswerOfUser answer = new AnswerOfUser();
+                answer.setAnswer(o.getAnswer());
+                answer.setUser(o.getUser());
+                return ResponseEntity.ok(service.save(answer));
+            }
+            return null;
         }catch (Exception e){
             throw e;
         }

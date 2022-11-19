@@ -41,8 +41,6 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
                 user.setPassword(hashing.encoder(o.getPassword()));
                 user.setEmailPhone(o.getEmailPhone());
                 user.setRole(UserRole.MEMBER.ordinal());
-                user.setCreatedAt(String.valueOf(new Timestamp(System.currentTimeMillis())));
-                user.setUpdatedAt(String.valueOf(new Timestamp(System.currentTimeMillis())));
                 user.setDeletedAt(o.getDeletedAt());
                 return ResponseEntity.ok(service.save(user));
             }catch (UserAlreadyExistsException e){
@@ -67,7 +65,6 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
                     user.get().setUsername(o.getUsername());
                     user.get().setPassword(o.getPassword());
                     user.get().setEmailPhone(o.getEmailPhone());
-                    user.get().setUpdatedAt(String.valueOf(new Timestamp(System.currentTimeMillis())));
                     return ResponseEntity.ok(service.save(user.get()));
                 }
             }else{

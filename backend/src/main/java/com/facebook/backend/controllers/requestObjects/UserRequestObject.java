@@ -9,8 +9,6 @@ public class UserRequestObject {
     private String emailPhone;
     private int role;
     private String password;
-    private String createdAt;
-    private String updatedAt;
     private String deletedAt;
 
     public int getId() {
@@ -69,27 +67,11 @@ public class UserRequestObject {
         this.password = password;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public String getDeletedAt() {
         return deletedAt;
     }
 
     public void setDeletedAt(String deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }
