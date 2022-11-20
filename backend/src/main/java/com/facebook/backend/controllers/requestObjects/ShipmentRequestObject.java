@@ -1,5 +1,6 @@
 package com.facebook.backend.controllers.requestObjects;
 
+import com.facebook.backend.entities.Comment;
 import com.facebook.backend.entities.User;
 
 public class ShipmentRequestObject {

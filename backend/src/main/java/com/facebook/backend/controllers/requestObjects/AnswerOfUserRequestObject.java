@@ -4,6 +4,7 @@ import com.facebook.backend.entities.User;
 
 public class AnswerOfUserRequestObject {
     private long id;
+    private long commentId;
     private String answer;
     private User user;
 
@@ -13,6 +14,14 @@ public class AnswerOfUserRequestObject {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(long commentId) {
+        this.commentId = commentId;
     }
 
     public String getAnswer() {

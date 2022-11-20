@@ -3,6 +3,7 @@ package com.facebook.backend.controllers;
 import com.facebook.backend.controllers.requestObjects.CommentRequestObject;
 import com.facebook.backend.entities.AnswerOfUser;
 import com.facebook.backend.entities.Comment;
+import com.facebook.backend.entities.User;
 import com.facebook.backend.exceptions.commentException.CommentNotFoundException;
 import com.facebook.backend.services.ICommentService;
 import com.facebook.backend.services.IShipmentService;
@@ -33,11 +34,7 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
     @PostMapping
     public ResponseEntity<Comment> store(@RequestBody CommentRequestObject o) {
         try{
-            if(
-                    shipmentService.findByIdAndDeletedAtNull(o.getShipment().getId()).isPresent()
-                    &&
-                    userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()
-            ){
+            if(userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()){
                 Comment comment = new Comment();
                 comment.setMessage(o.getMessage());
                 comment.setUser(o.getUser());
@@ -100,5 +97,11 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
     @GetMapping(value = "/count")
     public ResponseEntity<Long> count() {
         return ResponseEntity.ok(service.count());
+    }
+
+    /** COMMENT OF SHIPMENT **/
+    @GetMapping(name = "/", value = "/ofShipments/{id}")
+    public ResponseEntity<List<Comment>> findAllCommentsOfShipmentId(@PathVariable long id){
+        return ResponseEntity.ok(service.findByShipmentId(id));
     }
 }

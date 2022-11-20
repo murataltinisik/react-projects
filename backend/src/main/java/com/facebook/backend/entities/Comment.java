@@ -1,6 +1,7 @@
 package com.facebook.backend.entities;
 
 import javax.persistence.*;
+import java.net.spi.URLStreamHandlerProvider;
 
 @Entity
 @Table(name = "comments")
