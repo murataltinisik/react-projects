@@ -3,6 +3,7 @@ package com.facebook.backend.controllers;
 import com.facebook.backend.controllers.requestObjects.CommentRequestObject;
 import com.facebook.backend.entities.AnswerOfUser;
 import com.facebook.backend.entities.Comment;
+import com.facebook.backend.entities.Shipment;
 import com.facebook.backend.entities.User;
 import com.facebook.backend.exceptions.commentException.CommentNotFoundException;
 import com.facebook.backend.services.ICommentService;
@@ -73,23 +74,80 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
     @Override
     @GetMapping(value = "{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
-        try {
+        try{
+            // GET USER
             Optional<Comment> comment = service.findById(id);
-            return ResponseEntity.ok(comment);
+
+            // MESSAGE
+            String message = comment.get().getMessage();
+
+            // USER
+            User user = new User(comment.get().getUser().getName(), comment.get().getUser().getSurname());
+
+            // SHIPMENT
+            Shipment shipment = new Shipment();
+            shipment.setImage(comment.get().getShipment().getImage());
+            shipment.setMessage(comment.get().getShipment().getMessage());
+            shipment.setDescription(comment.get().getShipment().getDescription());
+            shipment.setStyleBg(comment.get().getShipment().getStyleBg());
+            shipment.setTagUserId(comment.get().getShipment().getTagUserId());
+            shipment.setUser(new User(comment.get().getShipment().getUser().getName(), comment.get().getShipment().getUser().getSurname()));
+
+            // ANSWER OF USER
+            AnswerOfUser answer = new AnswerOfUser(comment.get().getAnswer().getAnswer(),new User(comment.get().getAnswer().getUser().getName(), comment.get().getAnswer().getUser().getSurname()));
+
+            // COMMENT
+            Comment restrictedData = new Comment(message, user, shipment, answer);
+
+            return ResponseEntity.ok(restrictedData);
         }catch (CommentNotFoundException e){
-            return ResponseEntity.ok(e.getMessage());
+            throw e;
         }catch (Exception e){
-            return ResponseEntity.ok(e.getMessage());
+            throw e;
         }
     }
 
     @Override
     @GetMapping
     public ResponseEntity<List<Comment>> findAll() {
-        if(service.findAll().size() > 0){
-            ArrayList<Comment> comments = (ArrayList<Comment>) service.findAll();
-            return ResponseEntity.ok(comments);
+        ArrayList<Comment> comments = (ArrayList<Comment>) service.findAll();
+
+        if(comments.size() > 0){
+            ArrayList<Comment> restrictedDatas = new ArrayList<>();
+
+            for(Comment comment : comments){
+                // MESSAGE
+                String message = comment.getMessage();
+
+                // USER
+                User user = new User(comment.getUser().getName(), comment.getUser().getSurname());
+
+                // SHIPMENT
+                Shipment shipment = new Shipment();
+                shipment.setImage(comment.getShipment().getImage());
+                shipment.setMessage(comment.getShipment().getMessage());
+                shipment.setDescription(comment.getShipment().getDescription());
+                shipment.setStyleBg(comment.getShipment().getStyleBg());
+                shipment.setTagUserId(comment.getShipment().getTagUserId());
+                shipment.setUser(new User(comment.getShipment().getUser().getName(), comment.getShipment().getUser().getSurname()));
+
+                // ANSWER OF USER
+                AnswerOfUser answer;
+                if(comment.getAnswer() != null){
+                    answer = new AnswerOfUser(comment.getAnswer().getAnswer(), new User(comment.getAnswer().getUser().getName(), comment.getAnswer().getUser().getSurname()));
+                }else{
+                    answer = new AnswerOfUser();
+                }
+
+                // COMMENT
+                Comment newComment = new Comment(message, user, shipment, answer);
+
+                restrictedDatas.add(newComment);
+            }
+
+            return ResponseEntity.ok(restrictedDatas);
         }
+
         return null;
     }
 
@@ -102,6 +160,34 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
     /** COMMENT OF SHIPMENT **/
     @GetMapping(name = "/", value = "/ofShipments/{id}")
     public ResponseEntity<List<Comment>> findAllCommentsOfShipmentId(@PathVariable long id){
-        return ResponseEntity.ok(service.findByShipmentId(id));
+        ArrayList<Comment> comments = (ArrayList<Comment>) service.findByShipmentId(id);
+        ArrayList<Comment> restrictedDatas = new ArrayList<>();
+
+        for(Comment comment : comments){
+            // MESSAGE
+            String message = comment.getMessage();
+
+            // USER
+            User user = new User(comment.getUser().getName(), comment.getUser().getSurname());
+
+            // SHIPMENT
+            Shipment shipment = new Shipment();
+            shipment.setImage(comment.getShipment().getImage());
+            shipment.setMessage(comment.getShipment().getMessage());
+            shipment.setDescription(comment.getShipment().getDescription());
+            shipment.setStyleBg(comment.getShipment().getStyleBg());
+            shipment.setTagUserId(comment.getShipment().getTagUserId());
+            shipment.setUser(new User(comment.getShipment().getUser().getName(), comment.getShipment().getUser().getSurname()));
+
+            // ANSWER OF USER
+            AnswerOfUser answer = new AnswerOfUser(comment.getAnswer().getAnswer(),new User(comment.getAnswer().getUser().getName(), comment.getAnswer().getUser().getSurname()));
+
+            // COMMENT
+            Comment data = new Comment(message, user, shipment, answer);
+
+            restrictedDatas.add(data);
+        }
+
+        return ResponseEntity.ok(restrictedDatas);
     }
 }

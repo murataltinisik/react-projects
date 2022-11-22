@@ -96,14 +96,20 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
     public ResponseEntity<?> findById(@PathVariable long id) throws UserNotFoundException {
         try{
             Optional<User> user = service.findById(id);
-            if(user.get().getDeletedAt() == null){
-                if(user.isEmpty()){
-                    throw new UserNotFoundException();
-                }
-                return ResponseEntity.ok(user);
-            }else{
-                throw new UserNotFoundException();
+
+            if(!user.isEmpty()){
+                User restrictedData = new User(
+                        user.get().getName(),
+                        user.get().getSurname(),
+                        user.get().getUsername(),
+                        user.get().getEmailPhone(),
+                        user.get().getRole()
+                );
+                restrictedData.setCreatedAt(user.get().getCreatedAt());
+
+                return ResponseEntity.ok(restrictedData);
             }
+            return null;
         }catch (UserNotFoundException e){
             return ResponseEntity.ok(e.getMessage());
         }catch (Exception e){
@@ -116,7 +122,22 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
     public ResponseEntity<List<User>> findAll() {
         ArrayList<User> userList = service.findByDeletedAtNull();
         if(userList.size() > 0){
-            return ResponseEntity.ok(userList);
+            ArrayList<User> restrictedDatas = new ArrayList<>();
+
+            for(User user: userList){
+                User newUser = new User(
+                        user.getName(),
+                        user.getSurname(),
+                        user.getUsername(),
+                        user.getEmailPhone(),
+                        user.getRole()
+                );
+                newUser.setCreatedAt(user.getCreatedAt());
+
+                restrictedDatas.add(newUser);
+            }
+
+            return ResponseEntity.ok(restrictedDatas);
         }
         return null;
     }
@@ -127,7 +148,7 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
         return ResponseEntity.ok(service.countByDeletedAtNull());
     }
 
-    @PostMapping(name = "/", value = "login")
+    @PostMapping(name = "/", value = "/login")
     public ResponseEntity<User> loginUser(@RequestBody UserRequestObject o) throws UserNotFoundException{
         User user = service.findByEmailPhone(o.getEmailPhone());
         if(user.getDeletedAt() == null){
@@ -139,5 +160,48 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
             throw new UserNotFoundException();
         }
         return null;
+    }
+
+    @PatchMapping(name = "/", value = "/{id}/newPassword")
+    public ResponseEntity<?> newPasswordOfUser(@PathVariable long id, @RequestBody UserRequestObject o){
+       try {
+           if(service.findByIdAndDeletedAtNull(id).isPresent()){
+               Optional<User> user = service.findById(id);
+               boolean isItCorrect = hashing.decoder(o.getPassword(), user.get().getPassword());
+
+               if(isItCorrect){
+                   User restrictedData = new User();
+
+                   if(o.getNewPassword().equals(o.getNewPasswordAgain())){
+                       restrictedData.setPassword(hashing.encoder(o.getNewPassword()));
+                       user.get().setPassword(restrictedData.getPassword());
+                   }else{
+                        return ResponseEntity.ok("Passwords don't match!!!");
+                   }
+                   return ResponseEntity.ok(service.save(user.get()));
+               }
+           }
+           return null;
+       }catch (Exception e){
+            throw e;
+       }
+    }
+
+    @PatchMapping(name = "/", value = "/forgotPassword")
+    public ResponseEntity<?> forgotPassword(@RequestBody UserRequestObject o){
+        try{
+            User user = service.findByEmailPhone(o.getEmailPhone());
+            if(user.getDeletedAt() == null){
+                if(o.getNewPassword().equals(o.getNewPasswordAgain())){
+                    user.setPassword(hashing.encoder(o.getNewPassword()));
+                    return ResponseEntity.ok(service.save(user));
+                }else{
+                    return ResponseEntity.ok("Passwords don't match!!!");
+                }
+            }
+            return null;
+        }catch (Exception e){
+            throw e;
+        }
     }
 }

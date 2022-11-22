@@ -3,10 +3,9 @@ package com.facebook.backend.controllers;
 import com.facebook.backend.controllers.requestObjects.AnswerOfUserRequestObject;
 import com.facebook.backend.entities.AnswerOfUser;
 import com.facebook.backend.entities.Comment;
-import com.facebook.backend.entities.Shipment;
+import com.facebook.backend.entities.User;
 import com.facebook.backend.services.IAnswerOfUserService;
 import com.facebook.backend.services.ICommentService;
-import com.facebook.backend.services.IShipmentService;
 import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +67,14 @@ public class AnswerOfUserController implements ICrudUtility<AnswerOfUser, Answer
     @GetMapping(value = "{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
         try{
+            Optional<AnswerOfUser> answerOfUser = service.findById(id);
+
+            User user = new User(
+                    answerOfUser.get().getUser().getName(),
+                    answerOfUser.get().getUser().getSurname()
+            );
+            answerOfUser.get().setUser(user);
+
             return ResponseEntity.ok(service.findById(id));
         }catch (Exception e){
             return ResponseEntity.ok(e.getMessage());
@@ -79,7 +86,19 @@ public class AnswerOfUserController implements ICrudUtility<AnswerOfUser, Answer
     public ResponseEntity<List<AnswerOfUser>> findAll() {
         if(service.findAll().size() > 0){
             ArrayList<AnswerOfUser> answerOfUserList = (ArrayList<AnswerOfUser>) service.findAll();
-            return ResponseEntity.ok(answerOfUserList);
+            ArrayList<AnswerOfUser> restrictedDatas = new ArrayList<>();
+
+            for(AnswerOfUser answerOfUser: answerOfUserList){
+                // USER
+                User user = new User(
+                        answerOfUser.getUser().getName(),
+                        answerOfUser.getUser().getSurname()
+                );
+
+                restrictedDatas.add(new AnswerOfUser(answerOfUser.getAnswer(), user));
+            }
+
+            return ResponseEntity.ok(restrictedDatas);
         }
         return null;
     }

@@ -78,7 +78,17 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
     @GetMapping(name = "/", value = "{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
         try{
-            return ResponseEntity.ok(service.findById(id));
+            Optional<Story> optional = service.findById(id);
+
+            Story story = new Story();
+            story.setText(optional.get().getText());
+            story.setFontStyle(optional.get().getFontStyle());
+            story.setBackground(optional.get().getBackground());
+            story.setImageSource(optional.get().getImageSource());
+            story.setCreatedAt(optional.get().getCreatedAt());
+            story.setUser(new User(optional.get().getUser().getName(), optional.get().getUser().getSurname()));
+
+            return ResponseEntity.ok(story);
         }catch (StoryNotFoundException e){
             throw e;
         }catch (Exception e){
@@ -92,7 +102,21 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
         try{
             ArrayList<Story> stories = (ArrayList<Story>) service.findAll();
             if(stories.size() > 0){
-                return ResponseEntity.ok(stories);
+                ArrayList<Story> newStories = new ArrayList<>();
+
+                for(Story story : stories){
+                    Story newStory = new Story();
+
+                    newStory.setText(story.getText());
+                    newStory.setFontStyle(story.getFontStyle());
+                    newStory.setBackground(story.getBackground());
+                    newStory.setImageSource(story.getImageSource());
+                    newStory.setCreatedAt(story.getCreatedAt());
+                    newStory.setUser(new User(story.getUser().getName(), story.getUser().getSurname()));
+
+                    newStories.add(newStory);
+                }
+                return ResponseEntity.ok(newStories);
             }
             return null;
         }catch (Exception e){

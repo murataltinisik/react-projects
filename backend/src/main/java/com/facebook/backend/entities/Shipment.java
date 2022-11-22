@@ -36,6 +36,15 @@ public class Shipment extends AuditModel {
         super();
     }
 
+    public Shipment(String image, String message, String description, String styleBg, long tagUserId, User user) {
+        this.image = image;
+        this.message = message;
+        this.description = description;
+        this.styleBg = styleBg;
+        this.tagUserId = tagUserId;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }

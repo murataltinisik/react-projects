@@ -89,13 +89,16 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
         try {
             Optional<Shipment> shipment = service.findById(id);
 
-            if(shipment.get().getDeletedAt() == null){
-                if(shipment.isEmpty()){
-                    throw new ShipmentNotFoundException();
-                }
-                return ResponseEntity.ok(shipment);
-            }
-            return null;
+            Shipment restrictedData = new Shipment();
+            restrictedData.setImage(shipment.get().getImage());
+            restrictedData.setMessage(shipment.get().getMessage());
+            restrictedData.setDescription(shipment.get().getDescription());
+            restrictedData.setStyleBg(shipment.get().getStyleBg());
+            restrictedData.setCreatedAt(shipment.get().getCreatedAt());
+            restrictedData.setTagUserId(shipment.get().getTagUserId());
+            restrictedData.setUser(new User(shipment.get().getUser().getName(), shipment.get().getUser().getSurname()));
+
+            return ResponseEntity.ok(restrictedData);
         }catch (ShipmentNotFoundException e){
             return ResponseEntity.ok(e.getMessage());
         }catch (Exception e){
@@ -108,7 +111,23 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
     public ResponseEntity<List<Shipment>> findAll() {
         ArrayList<Shipment> shipments = service.findByDeletedAtNull();
         if(shipments.size() > 0){
-            return ResponseEntity.ok(shipments);
+            ArrayList<Shipment> restrictedDatas = new ArrayList<>();
+
+            for(Shipment shipment : shipments){
+                Shipment restrictedData = new Shipment();
+
+                restrictedData.setImage(shipment.getImage());
+                restrictedData.setMessage(shipment.getMessage());
+                restrictedData.setDescription(shipment.getDescription());
+                restrictedData.setStyleBg(shipment.getStyleBg());
+                restrictedData.setCreatedAt(shipment.getCreatedAt());
+                restrictedData.setTagUserId(shipment.getTagUserId());
+                restrictedData.setUser(new User(shipment.getUser().getName(), shipment.getUser().getSurname()));
+
+                restrictedDatas.add(restrictedData);
+            }
+
+            return ResponseEntity.ok(restrictedDatas);
         }
         return null;
     }

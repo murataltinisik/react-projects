@@ -1,7 +1,6 @@
 package com.facebook.backend.entities;
 
 import javax.persistence.*;
-import java.net.spi.URLStreamHandlerProvider;
 
 @Entity
 @Table(name = "comments")
@@ -24,6 +23,21 @@ public class Comment {
 
     @Column(name = "created_at")
     private String createdAt;
+
+    public Comment(){}
+
+    public Comment(String message, User user, Shipment shipment) {
+        this.message = message;
+        this.user = user;
+        this.shipment = shipment;
+    }
+
+    public Comment(String message, User user, Shipment shipment, AnswerOfUser answer) {
+        this.message = message;
+        this.user = user;
+        this.shipment = shipment;
+        this.answer = answer;
+    }
 
     public long getId() {
         return id;

@@ -15,6 +15,13 @@ public class AnswerOfUser {
     @ManyToOne
     private User user;
 
+    public AnswerOfUser(){}
+
+    public AnswerOfUser(String answer, User user) {
+        this.answer = answer;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }

@@ -1,7 +1,6 @@
 package com.facebook.backend.controllers.requestObjects;
 
 public class UserRequestObject {
-
     private int id;
     private String name;
     private String surname;
@@ -10,6 +9,9 @@ public class UserRequestObject {
     private int role;
     private String password;
     private String deletedAt;
+
+    private String newPassword;
+    private String newPasswordAgain;
 
     public int getId() {
         return id;
@@ -73,5 +75,21 @@ public class UserRequestObject {
 
     public void setDeletedAt(String deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getNewPasswordAgain() {
+        return newPasswordAgain;
+    }
+
+    public void setNewPasswordAgain(String newPasswordAgain) {
+        this.newPasswordAgain = newPasswordAgain;
     }
 }
