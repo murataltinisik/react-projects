@@ -36,6 +36,10 @@ public class User extends AuditModel {
         super();
     }
 
+    public User(long id){
+        this.id = id;
+    }
+
     public User(long id, String name, String surname){
         this.id = id;
         this.name = name;
