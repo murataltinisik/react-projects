@@ -1,2 +1,7 @@
-package com.facebook.backend.enums;public class UserGender {
+package com.facebook.backend.enums;
+
+public enum UserGender {
+    MALE,
+    FEMALE,
+    SPECIAL
 }

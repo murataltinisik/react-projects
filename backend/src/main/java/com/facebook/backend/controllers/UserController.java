@@ -2,9 +2,11 @@ package com.facebook.backend.controllers;
 
 import com.facebook.backend.controllers.requestObjects.UserRequestObject;
 import com.facebook.backend.entities.User;
+import com.facebook.backend.entities.UserInformation;
 import com.facebook.backend.enums.UserRole;
 import com.facebook.backend.exceptions.userException.UserAlreadyExistsException;
 import com.facebook.backend.exceptions.userException.UserNotFoundException;
+import com.facebook.backend.services.IUserInformationService;
 import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import com.facebook.backend.utilities.PasswordHashing;
@@ -25,6 +27,9 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
     private IUserService service;
 
     @Autowired
+    private IUserInformationService informationService;
+
+    @Autowired
     private PasswordHashing hashing;
 
     @Override
@@ -34,6 +39,7 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
             throw new UserAlreadyExistsException();
         }else{
             try {
+                // USER DATA
                 User user = new User();
                 user.setName(o.getName());
                 user.setSurname(o.getSurname());
@@ -42,7 +48,20 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
                 user.setEmailPhone(o.getEmailPhone());
                 user.setRole(UserRole.MEMBER.ordinal());
                 user.setDeletedAt(o.getDeletedAt());
-                return ResponseEntity.ok(service.save(user));
+
+                // USER SAVED
+                service.save(user);
+
+                // USER INFORMATION DATA
+                UserInformation information = new UserInformation();
+                information.setUser(user);
+                information.setBirthday(o.getBirthday());
+                information.setGender(o.getGender());
+
+                // INFORMATION SAVED
+                informationService.save(information);
+
+                return ResponseEntity.ok(user);
             }catch (UserAlreadyExistsException e){
                 throw e;
             }catch (Exception e){
@@ -200,6 +219,44 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
                 }
             }
             return null;
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    @GetMapping(name = "/", value = "/info/{id}")
+    public ResponseEntity<UserInformation> usersInformation(@PathVariable long id){
+        try{
+            // USER INFORMATION
+            Optional<UserInformation> information = informationService.findByUserId(id);
+
+            information.get().setUser(new User(information.get().getUser().getName(), information.get().getUser().getSurname()));
+
+            return ResponseEntity.ok(information.get());
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    @PutMapping(name = "/", value = "/info/{id}")
+    public ResponseEntity<?> userInformationUpdate(@PathVariable long id, @RequestBody UserRequestObject o){
+        try{
+            // USER INFORMATION
+            Optional<UserInformation> getUserInformation = informationService.findByUserId(id);
+
+            if(getUserInformation.isPresent()){
+                getUserInformation.get().setBirthday(o.getBirthday());
+                getUserInformation.get().setGender(o.getGender());
+                return ResponseEntity.ok(informationService.save(getUserInformation.get()));
+            }else{
+                UserInformation newUserInformation = new UserInformation();
+                newUserInformation.setUser(service.findById(id).get());
+                newUserInformation.setGender(o.getGender());
+                newUserInformation.setBirthday(o.getBirthday());
+                return ResponseEntity.ok(informationService.save(newUserInformation));
+            }
+        }catch (UserNotFoundException e){
+            throw e;
         }catch (Exception e){
             throw e;
         }

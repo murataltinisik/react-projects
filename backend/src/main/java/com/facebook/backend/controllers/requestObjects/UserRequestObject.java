@@ -1,5 +1,9 @@
 package com.facebook.backend.controllers.requestObjects;
 
+import com.facebook.backend.enums.UserGender;
+
+import java.util.Date;
+
 public class UserRequestObject {
     private int id;
     private String name;
@@ -9,9 +13,10 @@ public class UserRequestObject {
     private int role;
     private String password;
     private String deletedAt;
-
     private String newPassword;
     private String newPasswordAgain;
+    private Date birthday;
+    private int gender;
 
     public int getId() {
         return id;
@@ -91,5 +96,21 @@ public class UserRequestObject {
 
     public void setNewPasswordAgain(String newPasswordAgain) {
         this.newPasswordAgain = newPasswordAgain;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 }
