@@ -5,7 +5,6 @@ import com.facebook.backend.entities.Notification;
 import com.facebook.backend.entities.User;
 import com.facebook.backend.services.INotificationService;
 import com.facebook.backend.utilities.ICrudUtility;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

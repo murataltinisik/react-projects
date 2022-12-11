@@ -4,7 +4,6 @@ import com.facebook.backend.controllers.requestObjects.ReelRequestObject;
 import com.facebook.backend.entities.Reel;
 import com.facebook.backend.entities.User;
 import com.facebook.backend.exceptions.reelException.ReelNotFoundException;
-import com.facebook.backend.services.IReelDetailService;
 import com.facebook.backend.services.IReelService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;

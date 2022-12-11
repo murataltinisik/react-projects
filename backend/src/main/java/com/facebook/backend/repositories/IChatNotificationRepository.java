@@ -1,6 +1,5 @@
 package com.facebook.backend.repositories;
 
-import com.facebook.backend.controllers.ChatNotificationController;
 import com.facebook.backend.entities.ChatNotification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
