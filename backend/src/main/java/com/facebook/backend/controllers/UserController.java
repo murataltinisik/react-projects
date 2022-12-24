@@ -1,17 +1,23 @@
 package com.facebook.backend.controllers;
 
+import com.facebook.backend.controllers.requestObjects.UserConfirmationRequestObject;
 import com.facebook.backend.controllers.requestObjects.UserRequestObject;
 import com.facebook.backend.entities.User;
+import com.facebook.backend.entities.UserConfirmation;
 import com.facebook.backend.entities.UserInformation;
 import com.facebook.backend.enums.UserRole;
 import com.facebook.backend.exceptions.userException.UserAlreadyExistsException;
 import com.facebook.backend.exceptions.userException.UserNotFoundException;
+import com.facebook.backend.services.IUserConfirmationService;
 import com.facebook.backend.services.IUserInformationService;
 import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import com.facebook.backend.utilities.PasswordHashing;
+import com.facebook.backend.utilities.RandomCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
@@ -30,7 +36,13 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
     private IUserInformationService informationService;
 
     @Autowired
+    private IUserConfirmationService confirmationService;
+
+    @Autowired
     private PasswordHashing hashing;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @Override
     @PostMapping(name = "/")
@@ -211,14 +223,45 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
         try{
             User user = service.findByEmailPhone(o.getEmailPhone());
             if(user.getDeletedAt() == null){
-                if(o.getNewPassword().equals(o.getNewPasswordAgain())){
-                    user.setPassword(hashing.encoder(o.getNewPassword()));
-                    return ResponseEntity.ok(service.save(user));
-                }else{
-                    return ResponseEntity.ok("Passwords don't match!!!");
-                }
+                // STRING CODE
+                String code = new RandomCode(5).randomNumberProduce();
+                UserConfirmation confirmation = new UserConfirmation();
+                confirmation.setUser(user);
+                confirmation.setCode(code);
+                confirmationService.save(confirmation);
+
+                // SIMPLE MAIL MESSAGE
+                SimpleMailMessage mailMessage = new SimpleMailMessage();
+                mailMessage.setFrom("facebook@security.gmail.com");
+                mailMessage.setTo(user.getEmailPhone());
+                mailMessage.setSubject("EMAIL CONFIRMATION...");
+                mailMessage.setText(code);
+                mailSender.send(mailMessage);
             }
             return null;
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    @PatchMapping(value = "/confirmation/{id}")
+    public ResponseEntity<Boolean> emailConfirmation(@PathVariable long id, @RequestBody UserConfirmationRequestObject o){
+        try{
+            boolean isTrue = confirmationService.findByUserId(id).getCode().equals(o.getCode());
+            return ResponseEntity.ok(isTrue);
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    @PatchMapping(value = "/recover/{id}")
+    public ResponseEntity<?> recoverPassword(@PathVariable long id, @RequestBody UserRequestObject o){
+        try{
+            Optional<User> user = service.findById(id);
+            if(o.getNewPassword().equals(o.getNewPasswordAgain())){
+                user.get().setPassword(hashing.encoder(o.getNewPassword()));
+            }
+            return ResponseEntity.ok(service.save(user.get()));
         }catch (Exception e){
             throw e;
         }
