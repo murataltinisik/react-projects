@@ -5,6 +5,7 @@ import com.facebook.backend.entities.ShipmentProperty;
 import com.facebook.backend.services.IShipmentPropertyService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ public class ShipmentPropertyController implements ICrudUtility<ShipmentProperty
 
     @Override
     @PostMapping
+    @CacheEvict(cacheNames = {"allShipments", "allShipmentsOfUser"}, allEntries = true)
     public ResponseEntity<ShipmentProperty> store(@RequestBody ShipmentPropertyRequestObject o) {
         try {
             ShipmentProperty property = new ShipmentProperty();

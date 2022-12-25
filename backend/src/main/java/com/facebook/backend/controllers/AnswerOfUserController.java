@@ -9,6 +9,7 @@ import com.facebook.backend.services.ICommentService;
 import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,9 @@ public class AnswerOfUserController implements ICrudUtility<AnswerOfUser, Answer
 
     @Override
     @PostMapping(name = "/")
+    @CacheEvict(cacheNames = {"allComments", "allCommentsOfShipment"},
+            allEntries = true
+    )
     public ResponseEntity<AnswerOfUser> store(@RequestBody AnswerOfUserRequestObject o) {
         try{
             if(userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()) {

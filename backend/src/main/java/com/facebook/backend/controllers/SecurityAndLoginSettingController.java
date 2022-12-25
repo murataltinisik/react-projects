@@ -10,6 +10,7 @@ import com.facebook.backend.services.SecurityAndLoginSettingService;
 import com.facebook.backend.utilities.ICrudUtility;
 import com.facebook.backend.utilities.PasswordHashing;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,6 +76,7 @@ public class SecurityAndLoginSettingController implements ICrudUtility<SecurityA
     }
 
     @PatchMapping(value = "{id}")
+    @CacheEvict(cacheNames = "allUsers", allEntries = true)
     public ResponseEntity<?> updateSetting(@PathVariable long id, @RequestBody UserRequestObject o) {
         try {
             Optional<User> user = userService.findById(id);

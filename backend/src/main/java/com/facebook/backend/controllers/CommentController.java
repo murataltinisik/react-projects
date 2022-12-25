@@ -12,6 +12,8 @@ import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.CurrentTime;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +35,7 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
 
     @Override
     @PostMapping
+    @CacheEvict(cacheNames = {"allComments", "allCommentsOfShipment"}, allEntries = true)
     public ResponseEntity<Comment> store(@RequestBody CommentRequestObject o) {
         try{
             if(userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()){
@@ -51,6 +54,7 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
 
     @Override
     @PutMapping(value = "{id}")
+    @CacheEvict(cacheNames = {"allComments", "allCommentsOfShipment"}, allEntries = true)
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody CommentRequestObject o) {
         try {
             Optional<Comment> answer = service.findById(id);
@@ -65,6 +69,7 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
 
     @Override
     @DeleteMapping(value = "{id}")
+    @CacheEvict(cacheNames = {"allComments", "allCommentsOfShipment"}, allEntries = true)
     public void destroy(@PathVariable long id) {
         if(!service.findById(id).isEmpty()){
             service.deleteById(id);
@@ -109,6 +114,7 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
 
     @Override
     @GetMapping
+    @Cacheable("allComments")
     public ResponseEntity<List<Comment>> findAll() {
         ArrayList<Comment> comments = (ArrayList<Comment>) service.findAll();
 
@@ -159,6 +165,7 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
 
     /** COMMENT OF SHIPMENT **/
     @GetMapping(name = "/", value = "/ofShipments/{id}")
+    @Cacheable("allCommentsOfShipment")
     public ResponseEntity<List<Comment>> findAllCommentsOfShipmentId(@PathVariable long id){
         ArrayList<Comment> comments = (ArrayList<Comment>) service.findByShipmentId(id);
         ArrayList<Comment> restrictedDatas = new ArrayList<>();

@@ -9,8 +9,6 @@ import java.util.Optional;
 
 @Service
 public interface IUserService extends IUserRepository {
-
-
     @Override
     ArrayList<User> findByDeletedAtNull();
 

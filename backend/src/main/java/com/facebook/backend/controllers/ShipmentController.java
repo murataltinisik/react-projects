@@ -10,6 +10,8 @@ import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.CurrentTime;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +31,7 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
 
     @Override
     @PostMapping(name = "/")
+    @CacheEvict(cacheNames = {"allShipments", "allShipmentsOfUser"}, allEntries = true)
     public ResponseEntity<Shipment> store(@RequestBody ShipmentRequestObject o) throws UserNotFoundException {
         try{
             if(userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()){
@@ -50,6 +53,7 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
 
     @Override
     @PutMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = {"allShipments", "allShipmentsOfUser"}, allEntries = true)
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody ShipmentRequestObject o) {
         try{
             if(userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()){
@@ -73,6 +77,7 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
 
     @Override
     @DeleteMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = {"allShipments", "allShipmentsOfUser"}, allEntries = true)
     public void destroy(@PathVariable long id) {
         try{
             Optional<Shipment> shipment = service.findById(id);
@@ -108,6 +113,7 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
 
     @Override
     @GetMapping(name = "/")
+    @Cacheable("allShipments")
     public ResponseEntity<List<Shipment>> findAll() {
         ArrayList<Shipment> shipments = service.findByDeletedAtNull();
         if(shipments.size() > 0){
@@ -139,6 +145,7 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
     }
 
     @GetMapping(name = "/", value = "/user/{userId}")
+    @Cacheable("allShipmentsOfUser")
     public ResponseEntity<ArrayList<Shipment>> theShipmentsOfUser(@PathVariable long userId){
         return ResponseEntity.ok(service.findByUserIdAndDeletedAtNull(userId));
     }

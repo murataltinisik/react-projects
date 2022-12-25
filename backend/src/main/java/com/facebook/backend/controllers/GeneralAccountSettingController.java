@@ -9,6 +9,8 @@ import com.facebook.backend.services.IGeneralAccountSettingService;
 import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,7 @@ public class GeneralAccountSettingController implements ICrudUtility<GeneralAcco
 
     @Override
     @PostMapping
+    @CacheEvict(cacheNames = {"allUsers", "theGetUser"}, allEntries = true)
     public ResponseEntity<GeneralAccountSetting> store(@RequestBody GeneralAccountSettingRequestObject o) {
         try{
             GeneralAccountSetting setting = new GeneralAccountSetting();
@@ -50,6 +53,7 @@ public class GeneralAccountSettingController implements ICrudUtility<GeneralAcco
 
     @Override
     @GetMapping(value = "{id}")
+    @Cacheable("theGetUser")
     public ResponseEntity<?> findById(@PathVariable long id) {
         try {
             Optional<User> user = userService.findById(id);
@@ -72,6 +76,7 @@ public class GeneralAccountSettingController implements ICrudUtility<GeneralAcco
     }
 
     @PatchMapping(value = "{id}")
+    @CacheEvict(cacheNames = {"allUsers", "theGetUser"}, allEntries = true)
     public ResponseEntity<?> updateUser(@PathVariable long id, @RequestBody UserRequestObject o) {
         try {
             Optional<User> user = userService.findById(id);

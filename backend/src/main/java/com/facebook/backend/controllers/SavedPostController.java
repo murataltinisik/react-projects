@@ -7,6 +7,8 @@ import com.facebook.backend.entities.User;
 import com.facebook.backend.services.ISavedPostService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class SavedPostController implements ICrudUtility<SavedPost, SavedPostReq
 
     @Override
     @PostMapping(name = "/")
+    @CacheEvict(cacheNames = {"allSavedPosts", "allSavedPostsOfUser", "allSavedPostsOfShipment"}, allEntries = true)
     public ResponseEntity<SavedPost> store(@RequestBody SavedPostRequestObject o) {
         try{
             SavedPost savedPost = new SavedPost();
@@ -37,6 +40,7 @@ public class SavedPostController implements ICrudUtility<SavedPost, SavedPostReq
 
     @Override
     @PutMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = {"allSavedPosts", "allSavedPostsOfUser", "allSavedPostsOfShipment"}, allEntries = true)
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody SavedPostRequestObject o) {
         try{
             Optional<SavedPost> savedPost = service.findById(id);
@@ -52,6 +56,7 @@ public class SavedPostController implements ICrudUtility<SavedPost, SavedPostReq
 
     @Override
     @DeleteMapping(name = "/", value = "/{id}")
+    @CacheEvict(cacheNames = {"allSavedPosts", "allSavedPostsOfUser", "allSavedPostsOfShipment"}, allEntries = true)
     public void destroy(@PathVariable long id) {
         service.deleteById(id);
     }
@@ -79,6 +84,7 @@ public class SavedPostController implements ICrudUtility<SavedPost, SavedPostReq
 
     @Override
     @GetMapping(name = "/")
+    @Cacheable("allSavedPosts")
     public ResponseEntity<List<SavedPost>> findAll() {
         try{
             ArrayList<SavedPost> savedPostList = (ArrayList<SavedPost>) service.findAll();
@@ -110,6 +116,7 @@ public class SavedPostController implements ICrudUtility<SavedPost, SavedPostReq
     }
 
     @GetMapping(name = "/", value = "/ofUser/{id}")
+    @Cacheable("allSavedPostsOfUser")
     public ResponseEntity<List<SavedPost>> theSavedPostsOfUser(@PathVariable long id){
         try{
             ArrayList<SavedPost> savedPosts = service.findByUserId(id);
@@ -137,6 +144,7 @@ public class SavedPostController implements ICrudUtility<SavedPost, SavedPostReq
     }
 
     @GetMapping(name = "/", value = "/ofShipment/{id}")
+    @Cacheable("allSavedPostsOfShipment")
     public ResponseEntity<List<SavedPost>> theSavedPostsOfShipment(@PathVariable long id){
         try{
             ArrayList<SavedPost> savedPosts = service.findByShipmentId(id);

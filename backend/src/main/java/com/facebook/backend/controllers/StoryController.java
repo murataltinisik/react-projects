@@ -9,6 +9,8 @@ import com.facebook.backend.services.IStoryService;
 import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,7 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
 
     @Override
     @PostMapping(name = "/")
+    @CacheEvict(cacheNames = {"allStories", "allStoriesOfUser"}, allEntries = true)
     public ResponseEntity<Story> store(@RequestBody StoryRequestObject o) {
         try{
             if(userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()){
@@ -47,6 +50,7 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
 
     @Override
     @PutMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = {"allStories", "allStoriesOfUser"}, allEntries = true)
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody StoryRequestObject o) {
         try{
             Optional<User> userExists = userService.findById(o.getUser().getId());
@@ -70,6 +74,7 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
 
     @Override
     @DeleteMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = {"allStories", "allStoriesOfUser"}, allEntries = true)
     public void destroy(@PathVariable long id) {
         service.deleteById(id);
     }
@@ -98,6 +103,7 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
 
     @Override
     @GetMapping(name = "/")
+    @Cacheable("allStories")
     public ResponseEntity<List<Story>> findAll() {
         try{
             ArrayList<Story> stories = (ArrayList<Story>) service.findAll();
@@ -131,6 +137,7 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
     }
 
     @GetMapping(name = "/", value = "/theStoriesOfUser/{id}")
+    @Cacheable("allStoriesOfUser")
     public ResponseEntity<ArrayList<Story>> theStoriesOfUser(@PathVariable long id){
         return ResponseEntity.ok(service.findByUserId(id));
     }

@@ -6,6 +6,8 @@ import com.facebook.backend.entities.User;
 import com.facebook.backend.services.INotificationService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,11 @@ public class NotificationController implements ICrudUtility<Notification, Notifi
 
     @Override
     @PostMapping
+    @CacheEvict(cacheNames = {
+            "theNotificationOfUser", "theNotificationShows5",
+            "theUserNotification","theUserNotificationsSeen", "theUserNotificationsNotSeen"
+        }, allEntries = true
+    )
     public ResponseEntity<Notification> store(@RequestBody NotificationRequestObject o) {
         try{
             Notification notification = new Notification();
@@ -37,6 +44,11 @@ public class NotificationController implements ICrudUtility<Notification, Notifi
 
     @Override
     @PatchMapping(value = "{id}")
+    @CacheEvict(cacheNames = {
+            "theNotificationOfUser", "theNotificationShows5",
+            "theUserNotification","theUserNotificationsSeen", "theUserNotificationsNotSeen"
+        }, allEntries = true
+    )
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody NotificationRequestObject o) {
         try{
             Optional<Notification> notification = service.findById(id);
@@ -68,6 +80,7 @@ public class NotificationController implements ICrudUtility<Notification, Notifi
     }
 
     @GetMapping(value = "/ofUser/{id}")
+    @Cacheable("theNotificationOfUser")
     public ResponseEntity<List<Notification>> theNotificationOfUser(@PathVariable long id){
         try{
             ArrayList<Notification> notifications = service.findByUserId(id);
@@ -90,6 +103,7 @@ public class NotificationController implements ICrudUtility<Notification, Notifi
     }
 
     @GetMapping(value = "show/{id}")
+    @Cacheable("theNotificationShows5")
     public ResponseEntity<List<Notification>> theNotificationShows5(@PathVariable long id){
         try{
             ArrayList<Notification> notifications = service.findAllOrderByIdLimit5(id);
@@ -112,11 +126,13 @@ public class NotificationController implements ICrudUtility<Notification, Notifi
     }
 
     @GetMapping(value = "/count/{id}")
+    @Cacheable("theUserNotification")
     public ResponseEntity<Long> theNumberOfNotification(@PathVariable long id) {
         return ResponseEntity.ok(service.countByUserId(id));
     }
 
     @GetMapping(value = "/seen/{id}")
+    @Cacheable("theUserNotificationsSeen")
     public ResponseEntity<List<Notification>> theUserNotificationsSeen(@PathVariable long id){
         try {
             ArrayList<Notification> notifications = service.findByUserIdAndIsSeen(id, 1);
@@ -139,6 +155,7 @@ public class NotificationController implements ICrudUtility<Notification, Notifi
     }
 
     @GetMapping(value = "/notseen/{id}")
+    @Cacheable("theUserNotificationsNotSeen")
     public ResponseEntity<List<Notification>> theUserNotificationsNotSeen(@PathVariable long id){
         try {
             ArrayList<Notification> notifications = service.findByUserIdAndIsSeen(id, 0);

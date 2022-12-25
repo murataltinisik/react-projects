@@ -15,6 +15,8 @@ import com.facebook.backend.utilities.ICrudUtility;
 import com.facebook.backend.utilities.PasswordHashing;
 import com.facebook.backend.utilities.RandomCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -46,6 +48,7 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
 
     @Override
     @PostMapping(name = "/")
+    @CacheEvict(cacheNames = "allUsers", allEntries = true)
     public ResponseEntity<User> store(@RequestBody UserRequestObject o) throws UserAlreadyExistsException {
         if(service.countByUsernameOrEmailPhone(o.getUsername(), o.getEmailPhone()) > 0){
             throw new UserAlreadyExistsException();
@@ -84,6 +87,7 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
 
     @Override
     @PutMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = "allUsers", allEntries = true)
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody UserRequestObject o) throws UserNotFoundException {
         try{
             Optional<User> user = service.findById(id);
@@ -110,6 +114,7 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
 
     @Override
     @DeleteMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = "allUsers", allEntries = true)
     public void destroy(@PathVariable long id) {
         try{
             Optional<User> user = service.findById(id);
@@ -150,6 +155,7 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
 
     @Override
     @GetMapping(name="/")
+    @Cacheable("allUsers")
     public ResponseEntity<List<User>> findAll() {
         ArrayList<User> userList = service.findByDeletedAtNull();
         if(userList.size() > 0){

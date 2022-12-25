@@ -7,6 +7,8 @@ import com.facebook.backend.exceptions.userException.UserNotFoundException;
 import com.facebook.backend.services.IFriendService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class FriendController implements ICrudUtility<Friend, FriendRequestObjec
 
     @Override
     @PostMapping
+    @CacheEvict(cacheNames = {"theFriendsOfUser"}, allEntries = true)
     public ResponseEntity<Friend> store(@RequestBody FriendRequestObject o) {
         try {
             if(!service.findByUserIdAndFriendId(o.getUser().getId(), o.getFriend().getId()).isPresent()){
@@ -45,6 +48,7 @@ public class FriendController implements ICrudUtility<Friend, FriendRequestObjec
 
     @Override
     @DeleteMapping(value = "{id}")
+    @CacheEvict(cacheNames = {"theFriendsOfUser"}, allEntries = true)
     public void destroy(@PathVariable long id) {
         try{
             service.deleteById(id);
@@ -82,6 +86,7 @@ public class FriendController implements ICrudUtility<Friend, FriendRequestObjec
     }
 
     @GetMapping(value = "/ofUser/{id}")
+    @Cacheable("theFriendsOfUser")
     public ResponseEntity<List<Friend>> theFriendsOfUser(@PathVariable long id){
         try{
             ArrayList<Friend> friends = service.findByUserId(id);

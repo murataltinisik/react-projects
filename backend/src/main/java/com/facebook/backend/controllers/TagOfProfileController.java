@@ -8,6 +8,8 @@ import com.facebook.backend.services.ITagOfProfileService;
 import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,7 @@ public class TagOfProfileController implements ICrudUtility<TagOfProfile, TagOfP
 
     @Override
     @PostMapping(name = "/")
+    @CacheEvict(cacheNames = {"allTags", "theTagOfProfileOfUser"}, allEntries = true)
     public ResponseEntity<TagOfProfile> store(@RequestBody TagOfProfileRequestObject o) throws ProfileTagHasAlreadyException {
         try{
             if(userService.findByIdAndDeletedAtNull(o.getUser().getId()).isPresent()) {
@@ -78,6 +81,7 @@ public class TagOfProfileController implements ICrudUtility<TagOfProfile, TagOfP
 
     @Override
     @PutMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = {"allTags", "theTagOfProfileOfUser"}, allEntries = true)
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody TagOfProfileRequestObject o) {
         try{
             Optional<TagOfProfile> tagOfProfile = service.findById(id);
@@ -123,6 +127,7 @@ public class TagOfProfileController implements ICrudUtility<TagOfProfile, TagOfP
 
     @Override
     @DeleteMapping(name = "/", value = "{id}")
+    @CacheEvict(cacheNames = {"allTags", "theTagOfProfileOfUser"}, allEntries = true)
     public void destroy(@PathVariable long id) {
         service.deleteById(id);
     }
@@ -143,6 +148,7 @@ public class TagOfProfileController implements ICrudUtility<TagOfProfile, TagOfP
 
     @Override
     @GetMapping(name = "/")
+    @Cacheable("allTags")
     public ResponseEntity<List<TagOfProfile>> findAll() {
         try{
             ArrayList<TagOfProfile> tagOfProfiles = (ArrayList<TagOfProfile>) service.findAll();
@@ -173,6 +179,7 @@ public class TagOfProfileController implements ICrudUtility<TagOfProfile, TagOfP
     }
 
     @GetMapping(name = "/", value = "/user/{id}")
+    @Cacheable("theTagOfProfileOfUser")
     public ResponseEntity<TagOfProfile> theTagOfProfileOfUser(@PathVariable long id){
         try{
             Optional<TagOfProfile> tagOfProfile = Optional.ofNullable(service.findByUserId(id));

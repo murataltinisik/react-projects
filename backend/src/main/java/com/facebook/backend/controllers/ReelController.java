@@ -7,6 +7,8 @@ import com.facebook.backend.exceptions.reelException.ReelNotFoundException;
 import com.facebook.backend.services.IReelService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class ReelController implements ICrudUtility<Reel, ReelRequestObject> {
 
     @Override
     @PostMapping
+    @CacheEvict(cacheNames = "allReels", allEntries = true)
     public ResponseEntity<Reel> store(@RequestBody ReelRequestObject o) {
         try {
             Reel reel = new Reel();
@@ -37,13 +40,13 @@ public class ReelController implements ICrudUtility<Reel, ReelRequestObject> {
     }
 
     @Override
-    @PatchMapping(value = "{id}")
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody ReelRequestObject o) {
         return null;
     }
 
     @Override
     @DeleteMapping(value = "{id}")
+    @CacheEvict(cacheNames = "allReels", allEntries = true)
     public void destroy(@PathVariable long id) {
         service.deleteById(id);
     }
@@ -63,6 +66,7 @@ public class ReelController implements ICrudUtility<Reel, ReelRequestObject> {
     @Override
     @GetMapping
     @Transactional
+    @Cacheable("allReels")
     public ResponseEntity<List<Reel>> findAll() {
         try {
             ArrayList<Reel> reels = service.findAllOrderByIdLimit7();

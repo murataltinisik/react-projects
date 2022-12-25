@@ -6,6 +6,8 @@ import com.facebook.backend.entities.User;
 import com.facebook.backend.services.IChatNotificationService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,10 @@ public class ChatNotificationController implements ICrudUtility<ChatNotification
 
     @Override
     @PostMapping
+    @CacheEvict(cacheNames =
+            {"allChatNotificationOfUser", "allChatMessagesSeen"},
+            allEntries = true
+    )
     public ResponseEntity<ChatNotification> store(@RequestBody ChatNotificationRequestObject o) {
         try {
             ChatNotification notification = new ChatNotification();
@@ -37,6 +43,10 @@ public class ChatNotificationController implements ICrudUtility<ChatNotification
 
     @Override
     @PatchMapping(value = "{id}")
+    @CacheEvict(cacheNames =
+            {"allChatNotificationOfUser", "allChatMessagesSeen"},
+            allEntries = true
+    )
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody ChatNotificationRequestObject o) {
         try {
             Optional<ChatNotification> notification = service.findById(id);
@@ -51,6 +61,10 @@ public class ChatNotificationController implements ICrudUtility<ChatNotification
 
     @Override
     @DeleteMapping(value = "{id}")
+    @CacheEvict(cacheNames =
+            {"allChatNotificationOfUser", "allChatMessagesSeen"},
+            allEntries = true
+    )
     public void destroy(@PathVariable long id) {
         service.deleteById(id);
     }
@@ -81,11 +95,7 @@ public class ChatNotificationController implements ICrudUtility<ChatNotification
 
     @Override
     public ResponseEntity<List<ChatNotification>> findAll() {
-        try {
-            return ResponseEntity.ok(service.findAll());
-        }catch (Exception e){
-            throw e;
-        }
+        return null;
     }
 
     @Override
@@ -94,6 +104,7 @@ public class ChatNotificationController implements ICrudUtility<ChatNotification
     }
 
     @GetMapping(value = "/ofUser/{id}")
+    @Cacheable("allChatNotificationOfUser")
     public ResponseEntity<List<ChatNotification>> theChatNotificationsOfUser(@PathVariable long id){
         try {
             ArrayList<ChatNotification> notifications = service.findByUserId(id);
@@ -128,6 +139,7 @@ public class ChatNotificationController implements ICrudUtility<ChatNotification
     }
 
     @GetMapping(value = "/ofUser/{id}/seen/{seen}")
+    @Cacheable("allChatMessagesSeen")
     public ResponseEntity<List<ChatNotification>> TheMessagesSeen(@PathVariable long id, @PathVariable int seen){
         try {
             ArrayList<ChatNotification> notifications = service.findByUserIdAndSeenEquals(id, seen);

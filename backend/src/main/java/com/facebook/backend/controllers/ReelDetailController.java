@@ -6,6 +6,8 @@ import com.facebook.backend.enums.ReelDetailType;
 import com.facebook.backend.services.IReelDetailService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,10 @@ public class ReelDetailController implements ICrudUtility<ReelDetail, ReelDetail
 
     @Override
     @PostMapping
+    @CacheEvict(cacheNames = {"theNumberLikesOfReel", "theNumberCommentsOfReel",
+            "theNumberSharesOfReel", "theDetailsOfReel"
+        }, allEntries = true
+    )
     public ResponseEntity<ReelDetail> store(@RequestBody ReelDetailRequestObject o) {
         try{
             ReelDetail detail = new ReelDetail();
@@ -34,12 +40,20 @@ public class ReelDetailController implements ICrudUtility<ReelDetail, ReelDetail
     }
 
     @Override
+    @CacheEvict(cacheNames = {"theNumberLikesOfReel", "theNumberCommentsOfReel",
+            "theNumberSharesOfReel", "theDetailsOfReel"
+        }, allEntries = true
+    )
     public ResponseEntity<?> update(long id, ReelDetailRequestObject o) {
         return null;
     }
 
     @Override
     @DeleteMapping(value = "{id}")
+    @CacheEvict(cacheNames = {"theNumberLikesOfReel", "theNumberCommentsOfReel",
+            "theNumberSharesOfReel", "theDetailsOfReel"
+        }, allEntries = true
+    )
     public void destroy(@PathVariable long id) {
         service.deleteById(id);
     }
@@ -60,21 +74,25 @@ public class ReelDetailController implements ICrudUtility<ReelDetail, ReelDetail
     }
 
     @GetMapping(value = "/numberOfLikes/{id}")
+    @Cacheable("theNumberLikesOfReel")
     public ResponseEntity<Long> theNumberLikesOfReel(@PathVariable long id){
         return ResponseEntity.ok(service.countByReelIdAndType(id, ReelDetailType.LIKE));
     }
 
     @GetMapping(value = "/numberOfComments/{id}")
+    @Cacheable("theNumberCommentsOfReel")
     public ResponseEntity<Long> theNumberCommentsOfReel(@PathVariable long id){
         return ResponseEntity.ok(service.countByReelIdAndType(id, ReelDetailType.COMMENT));
     }
 
     @GetMapping(value = "/numberOfShares/{id}")
+    @Cacheable("theNumberSharesOfReel")
     public ResponseEntity<Long> theNumberSharesOfReel(@PathVariable long id){
         return ResponseEntity.ok(service.countByReelIdAndType(id, ReelDetailType.SHARE));
     }
 
     @GetMapping(value = "/{id}")
+    @Cacheable("theDetailsOfReel")
     public ResponseEntity<?> theDetailsOfReel(@PathVariable long id){
         List<Object> object = service.findAllDetailsOfReel(id);
 
