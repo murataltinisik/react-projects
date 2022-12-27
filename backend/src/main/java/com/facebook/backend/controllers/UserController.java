@@ -17,6 +17,9 @@ import com.facebook.backend.utilities.RandomCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -143,7 +146,19 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
                 );
                 restrictedData.setCreatedAt(user.get().getCreatedAt());
 
-                return ResponseEntity.ok(restrictedData);
+
+                // HATEOAS
+                Link self = WebMvcLinkBuilder.linkTo(UserController.class)
+                        .slash(id).withSelfRel();
+                Link create = WebMvcLinkBuilder.linkTo(UserController.class)
+                        .slash("").withRel("create");
+                Link update = WebMvcLinkBuilder.linkTo(UserController.class)
+                        .slash(id).withRel("update");
+                Link delete = WebMvcLinkBuilder.linkTo(UserController.class)
+                        .slash(id).withRel("delete");
+                EntityModel<User> resource = EntityModel.of(restrictedData, self, create, update, delete);
+
+                return ResponseEntity.ok(resource);
             }
             return null;
         }catch (UserNotFoundException e){

@@ -11,6 +11,9 @@ import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -85,6 +88,7 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
         try{
             Optional<Story> optional = service.findById(id);
 
+            // STORY
             Story story = new Story();
             story.setText(optional.get().getText());
             story.setFontStyle(optional.get().getFontStyle());
@@ -93,7 +97,18 @@ public class StoryController implements ICrudUtility<Story, StoryRequestObject> 
             story.setCreatedAt(optional.get().getCreatedAt());
             story.setUser(new User(optional.get().getUser().getName(), optional.get().getUser().getSurname()));
 
-            return ResponseEntity.ok(story);
+            // HATEOAS
+            Link self = WebMvcLinkBuilder.linkTo(StoryController.class)
+                    .slash(id).withSelfRel();
+            Link create = WebMvcLinkBuilder.linkTo(StoryController.class)
+                    .slash("").withRel("create");
+            Link update = WebMvcLinkBuilder.linkTo(StoryController.class)
+                    .slash(id).withRel("update");
+            Link delete = WebMvcLinkBuilder.linkTo(StoryController.class)
+                    .slash(id).withRel("delete");
+            EntityModel<Story> resources = EntityModel.of(story, self, create, update, delete);
+
+            return ResponseEntity.ok(resources);
         }catch (StoryNotFoundException e){
             throw e;
         }catch (Exception e){

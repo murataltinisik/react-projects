@@ -1,7 +1,5 @@
 package com.facebook.backend.controllers.requestObjects;
 
-import com.facebook.backend.enums.UserGender;
-
 import java.util.Date;
 
 public class UserRequestObject {

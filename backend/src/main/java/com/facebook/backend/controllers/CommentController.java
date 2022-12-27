@@ -14,6 +14,9 @@ import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -104,7 +107,18 @@ public class CommentController implements ICrudUtility<Comment, CommentRequestOb
             // COMMENT
             Comment restrictedData = new Comment(message, user, shipment, answer);
 
-            return ResponseEntity.ok(restrictedData);
+            // HATEOAS
+            Link self = WebMvcLinkBuilder.linkTo(CommentController.class)
+                    .slash(id).withSelfRel();
+            Link create = WebMvcLinkBuilder.linkTo(CommentController.class)
+                    .slash("").withRel("create");
+            Link update = WebMvcLinkBuilder.linkTo(CommentController.class)
+                    .slash(id).withRel("update");
+            Link delete = WebMvcLinkBuilder.linkTo(CommentController.class)
+                    .slash(id).withRel("delete");
+            EntityModel<Comment> resources = EntityModel.of(restrictedData, self, create, update, delete);
+
+            return ResponseEntity.ok(resources);
         }catch (CommentNotFoundException e){
             throw e;
         }catch (Exception e){

@@ -10,6 +10,9 @@ import com.facebook.backend.services.IUserService;
 import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,13 +76,25 @@ public class AnswerOfUserController implements ICrudUtility<AnswerOfUser, Answer
         try{
             Optional<AnswerOfUser> answerOfUser = service.findById(id);
 
+            // USER
             User user = new User(
                     answerOfUser.get().getUser().getName(),
                     answerOfUser.get().getUser().getSurname()
             );
             answerOfUser.get().setUser(user);
 
-            return ResponseEntity.ok(service.findById(id));
+            // HATEOAS
+            Link self = WebMvcLinkBuilder.linkTo(AnswerOfUserController.class)
+                    .slash(id).withSelfRel();
+            Link create = WebMvcLinkBuilder.linkTo(AnswerOfUserController.class)
+                    .slash("").withRel("create");
+            Link update = WebMvcLinkBuilder.linkTo(AnswerOfUserController.class)
+                    .slash(id).withRel("update");
+            Link delete = WebMvcLinkBuilder.linkTo(AnswerOfUserController.class)
+                    .slash(id).withRel("delete");
+            EntityModel<AnswerOfUser> resources = EntityModel.of(service.findById(id).get(), self, create, update, delete);
+
+            return ResponseEntity.ok(resources);
         }catch (Exception e){
             return ResponseEntity.ok(e.getMessage());
         }

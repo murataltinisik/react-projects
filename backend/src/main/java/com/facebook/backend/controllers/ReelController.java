@@ -9,6 +9,9 @@ import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,7 +58,20 @@ public class ReelController implements ICrudUtility<Reel, ReelRequestObject> {
     @GetMapping(value = "{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
         try {
-            return ResponseEntity.ok(service.findById(id));
+            // HATEOAS
+            Link self = WebMvcLinkBuilder.linkTo(ReelController.class)
+                    .slash(id).withSelfRel();
+            Link create = WebMvcLinkBuilder.linkTo(ReelController.class)
+                    .slash("").withRel("create");
+            Link update = WebMvcLinkBuilder.linkTo(ReelController.class)
+                    .slash(id).withRel("update");
+            Link delete = WebMvcLinkBuilder.linkTo(ReelController.class)
+                    .slash(id).withRel("delete");
+            Link details = WebMvcLinkBuilder.linkTo(ReelController.class)
+                    .slash("/detail/"+id).withRel("detail");
+            EntityModel<Reel> resources = EntityModel.of(service.findById(id).get(), self, create, update, delete, details);
+
+            return ResponseEntity.ok(resources);
         }catch (ReelNotFoundException e){
             throw e;
         }catch (Exception e){

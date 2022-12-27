@@ -10,6 +10,9 @@ import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -138,9 +141,21 @@ public class TagOfProfileController implements ICrudUtility<TagOfProfile, TagOfP
         try{
             Optional<TagOfProfile> tagOfProfile = service.findById(id);
 
+            // TAG OF PROFILE
             tagOfProfile.get().setUser(new User(tagOfProfile.get().getUser().getName(), tagOfProfile.get().getUser().getSurname()));
 
-            return ResponseEntity.ok(tagOfProfile);
+            // HATEOAS
+            Link self = WebMvcLinkBuilder.linkTo(TagOfProfileController.class)
+                    .slash(id).withSelfRel();
+            Link create = WebMvcLinkBuilder.linkTo(TagOfProfileController.class)
+                    .slash("").withRel("create");
+            Link update = WebMvcLinkBuilder.linkTo(TagOfProfileController.class)
+                    .slash(id).withRel("update");
+            Link delete = WebMvcLinkBuilder.linkTo(TagOfProfileController.class)
+                    .slash(id).withRel("delete");
+            EntityModel<TagOfProfile> resources = EntityModel.of(tagOfProfile.get(), self, create, update, delete);
+
+            return ResponseEntity.ok(resources);
         }catch (Exception e){
             throw e;
         }

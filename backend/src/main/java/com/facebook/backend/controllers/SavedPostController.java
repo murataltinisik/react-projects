@@ -9,6 +9,9 @@ import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -76,7 +79,18 @@ public class SavedPostController implements ICrudUtility<SavedPost, SavedPostReq
             // USER
             User user = new User(savedPost.get().getUser().getId());
 
-            return ResponseEntity.ok(new SavedPost(user, shipment));
+            // HATEOAS
+            Link self = WebMvcLinkBuilder.linkTo(SavedPostController.class)
+                    .slash(id).withSelfRel();
+            Link create = WebMvcLinkBuilder.linkTo(SavedPostController.class)
+                    .slash("").withRel("create");
+            Link update = WebMvcLinkBuilder.linkTo(SavedPostController.class)
+                    .slash(id).withRel("update");
+            Link delete = WebMvcLinkBuilder.linkTo(SavedPostController.class)
+                    .slash(id).withRel("delete");
+            EntityModel<SavedPost> resources = EntityModel.of(new SavedPost(user, shipment), self, create, update, delete);
+
+            return ResponseEntity.ok(resources);
         }catch (Exception e){
             throw e;
         }

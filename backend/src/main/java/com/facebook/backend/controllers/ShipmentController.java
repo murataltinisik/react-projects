@@ -12,6 +12,9 @@ import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -94,6 +97,7 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
         try {
             Optional<Shipment> shipment = service.findById(id);
 
+            // SHIPMENT
             Shipment restrictedData = new Shipment();
             restrictedData.setImage(shipment.get().getImage());
             restrictedData.setMessage(shipment.get().getMessage());
@@ -103,7 +107,18 @@ public class ShipmentController implements ICrudUtility<Shipment, ShipmentReques
             restrictedData.setTagUserId(shipment.get().getTagUserId());
             restrictedData.setUser(new User(shipment.get().getUser().getName(), shipment.get().getUser().getSurname()));
 
-            return ResponseEntity.ok(restrictedData);
+            // HATEOAS
+            Link self = WebMvcLinkBuilder.linkTo(ShipmentController.class)
+                    .slash(id).withSelfRel();
+            Link create = WebMvcLinkBuilder.linkTo(ShipmentController.class)
+                    .slash("").withRel("create");
+            Link update = WebMvcLinkBuilder.linkTo(ShipmentController.class)
+                    .slash(id).withRel("update");
+            Link delete = WebMvcLinkBuilder.linkTo(ShipmentController.class)
+                    .slash(id).withRel("delete");
+            EntityModel<Shipment> resource = EntityModel.of(restrictedData, self, create, update, delete);
+
+            return ResponseEntity.ok(resource);
         }catch (ShipmentNotFoundException e){
             return ResponseEntity.ok(e.getMessage());
         }catch (Exception e){

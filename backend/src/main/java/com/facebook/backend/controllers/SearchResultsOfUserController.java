@@ -71,19 +71,19 @@ public class SearchResultsOfUserController implements ICrudUtility<SearchResults
 
     @GetMapping(value = "/{id}")
     @Cacheable("allSearchResultsOfUser")
-    public ResponseEntity<List<SearchResultsOfUser>> searchResultsOfUser(@PathVariable long id){
+    public ResponseEntity<List<?>> searchResultsOfUser(@PathVariable long id){
         try {
             ArrayList<SearchResultsOfUser> resultsOfUsers = (ArrayList<SearchResultsOfUser>) service.findByUserId(id);
             ArrayList<SearchResultsOfUser> restrictedData = new ArrayList<>();
 
+            // SEARCH RESULTS OF USER
             for(SearchResultsOfUser resultsOfUser : resultsOfUsers){
                 User user = new User(resultsOfUser.getUser().getName(), resultsOfUser.getUser().getSurname());
 
                 restrictedData.add(new SearchResultsOfUser(user, resultsOfUser.getWanted()));
             }
 
-            return ResponseEntity.ok(restrictedData
-            );
+            return ResponseEntity.ok(restrictedData);
         }catch (Exception e){
             throw e;
         }

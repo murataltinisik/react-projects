@@ -9,6 +9,9 @@ import com.facebook.backend.utilities.ICrudUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,11 +66,19 @@ public class FriendController implements ICrudUtility<Friend, FriendRequestObjec
         try{
             Optional<Friend> friend = service.findById(id);
 
+            // FRIEND
             friend.get().setUser(new User(friend.get().getUser().getName(), friend.get().getUser().getSurname()));
             friend.get().setFriend(new User(friend.get().getFriend().getName(), friend.get().getFriend().getSurname()));
             friend.get().setCreatedAt(friend.get().getCreatedAt());
 
-            return ResponseEntity.ok(friend);
+            // HATEOAS
+            Link self = WebMvcLinkBuilder.linkTo(FriendController.class)
+                    .slash(id).withSelfRel();
+            Link delete = WebMvcLinkBuilder.linkTo(FriendController.class)
+                    .slash(id).withRel("delete");
+            EntityModel<Friend> resources = EntityModel.of(friend.get(), self, delete);
+
+            return ResponseEntity.ok(resources);
         }catch (UserNotFoundException e){
             throw e;
         }catch (Exception e){
