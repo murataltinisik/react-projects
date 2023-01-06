@@ -4,4 +4,4 @@ import com.facebook.backend.repositories.IAnswerOfUserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface IAnswerOfUserService extends IAnswerOfUserRepository { }
+public interface IAnswerOfUserService extends IAnswerOfUserRepository {}

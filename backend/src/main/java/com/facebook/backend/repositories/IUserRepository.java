@@ -18,4 +18,6 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     long countByDeletedAtNull();
 
     long countByUsernameOrEmailPhone(String username, String emailPhone);
+
+    long countByEmailPhone(String emailPhone);
 }

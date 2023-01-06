@@ -58,7 +58,22 @@ public class User extends AuditModel {
         this.emailPhone = emailPhone;
     }
 
+    public User(long id, String name, String surname, String username, String emailPhone){
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.emailPhone = emailPhone;
+    }
+
     public User(String name, String surname, String username, String emailPhone, int role) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.emailPhone = emailPhone;
+        this.role = role;
+    }
+
+    public User(long id, String name, String surname, String username, String emailPhone, int role) {
         this.name = name;
         this.surname = surname;
         this.username = username;

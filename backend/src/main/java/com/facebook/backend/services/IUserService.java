@@ -23,4 +23,7 @@ public interface IUserService extends IUserRepository {
 
     @Override
     long countByUsernameOrEmailPhone(String username, String emailPhone);
+
+    @Override
+    long countByEmailPhone(String emailPhone);
 }

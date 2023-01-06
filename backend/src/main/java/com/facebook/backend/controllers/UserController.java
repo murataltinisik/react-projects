@@ -20,6 +20,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -32,6 +33,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController implements ICrudUtility<User, UserRequestObject> {
 
     @Autowired
@@ -53,7 +55,7 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
     @PostMapping(name = "/")
     @CacheEvict(cacheNames = "allUsers", allEntries = true)
     public ResponseEntity<User> store(@RequestBody UserRequestObject o) throws UserAlreadyExistsException {
-        if(service.countByUsernameOrEmailPhone(o.getUsername(), o.getEmailPhone()) > 0){
+        if(service.countByEmailPhone(o.getEmailPhone()) > 0){
             throw new UserAlreadyExistsException();
         }else{
             try {
@@ -101,9 +103,22 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
                     user.get().setName(o.getName());
                     user.get().setSurname(o.getSurname());
                     user.get().setUsername(o.getUsername());
-                    user.get().setPassword(o.getPassword());
                     user.get().setEmailPhone(o.getEmailPhone());
-                    return ResponseEntity.ok(service.save(user.get()));
+
+                    service.save(user.get());
+
+                    // RESTRICTED DATA
+                    User restrictedData = new User(
+                            user.get().getName(),
+                            user.get().getSurname(),
+                            user.get().getUsername(),
+                            user.get().getEmailPhone()
+                    );
+                    restrictedData.setId(id);
+                    restrictedData.setCreatedAt(user.get().getCreatedAt());
+                    restrictedData.setUpdatedAt(user.get().getUpdatedAt());
+
+                    return ResponseEntity.ok(restrictedData);
                 }
             }else{
                 throw new UserNotFoundException();
@@ -144,8 +159,8 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
                         user.get().getEmailPhone(),
                         user.get().getRole()
                 );
+                restrictedData.setId(id);
                 restrictedData.setCreatedAt(user.get().getCreatedAt());
-
 
                 // HATEOAS
                 Link self = WebMvcLinkBuilder.linkTo(UserController.class)
@@ -201,15 +216,20 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
     }
 
     @PostMapping(name = "/", value = "/login")
-    public ResponseEntity<User> loginUser(@RequestBody UserRequestObject o) throws UserNotFoundException{
+    public ResponseEntity<?> loginUser(@RequestBody UserRequestObject o) throws UserNotFoundException{
         User user = service.findByEmailPhone(o.getEmailPhone());
-        if(user.getDeletedAt() == null){
-            boolean isItCorrect = hashing.decoder(o.getPassword(), user.getPassword());
-            if(isItCorrect){
-                return ResponseEntity.ok(user);
+        try{
+            if(user.getDeletedAt() == null){
+                boolean isItCorrect = hashing.decoder(o.getPassword(), user.getPassword());
+                if(isItCorrect){
+                    return ResponseEntity.ok(user);
+                }
+                return ResponseEntity.ok(false);
             }
-        }else{
-            throw new UserNotFoundException();
+        }catch (UserNotFoundException e){
+            return ResponseEntity.ok("User Not Found!!");
+        }catch (Exception e){
+            return ResponseEntity.ok(HttpStatus.NOT_FOUND);
         }
         return null;
     }
@@ -222,15 +242,19 @@ public class UserController implements ICrudUtility<User, UserRequestObject> {
                boolean isItCorrect = hashing.decoder(o.getPassword(), user.get().getPassword());
 
                if(isItCorrect){
+                   // RESTRICTED DATA
                    User restrictedData = new User();
 
                    if(o.getNewPassword().equals(o.getNewPasswordAgain())){
                        restrictedData.setPassword(hashing.encoder(o.getNewPassword()));
                        user.get().setPassword(restrictedData.getPassword());
+                       service.save(user.get());
                    }else{
-                        return ResponseEntity.ok("Passwords don't match!!!");
+                        return ResponseEntity.ok("PASSWORD_NOT_MATCH");
                    }
-                   return ResponseEntity.ok(service.save(user.get()));
+                   return ResponseEntity.ok("PASSWORD_CHANGED_SUCCESSFUL");
+               }else{
+                   return ResponseEntity.ok("WRONG_PASSWORD");
                }
            }
            return null;
