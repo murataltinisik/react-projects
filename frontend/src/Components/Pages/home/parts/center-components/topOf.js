@@ -19,7 +19,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // * REACT ROUTER 5.2.0
 import { NavLink } from 'react-router-dom';
 
-function topOf({ Scss, active, setActive }) {
+function topOf({ Scss, active, setActive, userData }) {
+
   // * ACTIVE TAB
   const makeActivate = e => {
     const itemId = e.target.getAttribute('itemId');
@@ -101,7 +102,7 @@ function topOf({ Scss, active, setActive }) {
           <div className={`${Scss.content}`}>
             <NavLink to="/stories" className={Scss.stories}>
               <div className={Scss.image}>
-                <img src="https://scontent.fesb10-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=dst-png_p160x160&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=_8ak1Gi-hKwAX_yS4pc&_nc_ht=scontent.fesb10-1.fna&oh=00_AT9Q5dLtDBN2nSgZJ2BGQ97nINX8t_yH_3VnSdEoDrQcsw&oe=63314CF8" />
+                <img src="../../../../assets/app-images/icons/user_not_found.png" />
               </div>
 
               <div
@@ -227,7 +228,7 @@ function topOf({ Scss, active, setActive }) {
               <div
                 className={`${Scss.foot} d-flex direction-column align-items-center`}
               >
-                <p>Murat'ın Odası</p>
+                <p>{userData && userData.name}'ın Odası</p>
                 <small>Başla</small>
                 <button className="btn">Oluştur</button>
               </div>

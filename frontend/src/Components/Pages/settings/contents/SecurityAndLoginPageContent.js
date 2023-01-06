@@ -25,6 +25,10 @@ import {
 // * REACT ROUTER 5.2.0
 import { NavLink } from 'react-router-dom';
 
+// * REDUX
+import { connect } from "react-redux";
+import { newPasswordOfUser } from "../../../../actions/User/newUser";
+
 class SecurityAndLoginPageContent extends Component {
   constructor() {
     super();
@@ -34,6 +38,7 @@ class SecurityAndLoginPageContent extends Component {
         new: '',
         newAgain: '',
       },
+      user: localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"))
     };
   }
 
@@ -42,8 +47,8 @@ class SecurityAndLoginPageContent extends Component {
   }
 
   onSubmitNewPassword = e => {
-    console.log(this.state.password);
     e.preventDefault();
+    this.props.newPasswordOfUser(this.state.user.id, this.state.password);
   };
 
   render() {
@@ -145,8 +150,28 @@ class SecurityAndLoginPageContent extends Component {
                   </NavLink>
 
                   <div className={Scss.changeProperty}>
+                    {/* ALERT */}
+                    {this.props.newUser.user === "WRONG_PASSWORD" &&
+                      <div className="alert alert-danger">
+                        Şifreniz Yanlış! Lütfen tekrar deneyiniz.
+                      </div>
+                    }
+
+                    {this.props.newUser.user === "PASSWORD_NOT_MATCH" &&
+                      <div className="alert alert-danger">
+                        Yeni Şifreler Uyuşmuyor!!!
+                      </div>
+                    }
+
+                    {this.props.newUser.user === "PASSWORD_CHANGED_SUCCESSFUL" &&
+                      <div className="alert alert-success">
+                        Şifre Başarılı bir şekilde değiştirildi!
+                        Lütfen Tekrar Giriş Yapınız.
+                      </div>
+                    }
+
                     <form onSubmit={this.onSubmitNewPassword}>
-                      Yeni Adınız*
+                      Yeni Şifreniz*
                       <div className="mb-1 mt-1">
                         <input
                           type="password"
@@ -310,4 +335,12 @@ class SecurityAndLoginPageContent extends Component {
   }
 }
 
-export default SecurityAndLoginPageContent;
+const mapStateToProps = ({ newUser }) => {
+  return { newUser }
+}
+
+const mapDispatchToProps = {
+  newPasswordOfUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SecurityAndLoginPageContent);

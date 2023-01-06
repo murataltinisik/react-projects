@@ -41,7 +41,17 @@ class Users extends Component {
       onMouseLeave: onMouseLeave,
       onSettingsDetail: onSettingsDetail,
       userProfileBackMenu: userProfileBackMenu,
+      user: localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"))
     };
+  }
+
+  onLeave = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("isLogin");
+
+    setTimeout(() => {
+      window.location.reload()
+    }, 500)
   }
 
   render() {
@@ -63,7 +73,7 @@ class Users extends Component {
                 className={`${UserScss.selectedProfile} dark-link text-decoration-none px-2 py-05 d-flex justify-content-start align-items-center`}
               >
                 <img src="https://scontent.fesb4-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p60x60&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=jvAgaOmK2RAAX9V38AS&_nc_ht=scontent.fesb4-1.fna&oh=00_AT9daDbbsXxh0Fbrq5zuH8FOZJo5nyZHr6TeJavbEbLiHA&oe=633D2A78" />
-                <span className="ml-1">Murat Altınışık</span>
+                <span className="ml-1">{this.state.user.name + " " + this.state.user.surname}</span>
               </NavLink>
               <div className="hr mb-0"></div>
               <div
@@ -128,7 +138,7 @@ class Users extends Component {
                   <span>
                     <FontAwesomeIcon icon={faDoorOpen} />
                   </span>
-                  <button>Çıkış Yap</button>
+                  <button onClick={this.onLeave}>Çıkış Yap</button>
                 </li>
 
                 {/* MENU FOOTER */}

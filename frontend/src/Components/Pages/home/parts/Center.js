@@ -16,13 +16,16 @@ function Center() {
   // MENU LIST SHOW
   const [menuListShow, setMenuListShow] = useState(false);
 
+  // FETCH USER DATA
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <div id={Scss.CenterContainer} className="centerContainerResp">
       {/* TOP OF */}
-      <TopOf Scss={Scss} active={active} setActive={setActive} />
+      <TopOf userData={user} Scss={Scss} active={active} setActive={setActive} />
 
       {/* SHIPMENT OPERATION */}
-      <Shipment Scss={Scss} />
+      <Shipment userData={user} Scss={Scss} />
 
       {/* ACQUAINTANCES */}
       <Acquaintances

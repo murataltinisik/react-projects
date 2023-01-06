@@ -1,0 +1,23 @@
+// TODO: ALERT COMPONENT
+.alert{
+  margin-bottom: 1rem;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 8px;
+  font-size: .85rem;
+  border-radius: 5px;
+}
+
+.alert-danger{
+  background-color: rgba(255, 0, 0, 0.53);
+}
+
+.alert-success{
+  background-color: rgba(54, 164, 32, 0.82);
+}
+
+.alert-info{
+  color: #0C0D0D;
+  font-weight: 500;
+  background-color: #f9f9f9;
+}

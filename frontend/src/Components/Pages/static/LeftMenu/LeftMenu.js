@@ -11,6 +11,7 @@ import { faChevronDown, faCopyright } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
 function LeftMenu() {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <>
       {/* LEFT MENU */}
@@ -24,7 +25,7 @@ function LeftMenu() {
               className={`${Scss.userImage} mr-1`}
               src="https://scontent.fesb9-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p40x40&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=iarlXRJtnSoAX9roAoV&_nc_ht=scontent.fesb9-1.fna&oh=00_AfBdmxp3-P7VzKNb_tI8lkLpoQsLlbKKh6MJz6aNJ2X1rg&oe=63845B78"
             />
-            Murat Altınışık
+            {user && user.name + " " + user.surname}
           </NavLink>
         </li>
 

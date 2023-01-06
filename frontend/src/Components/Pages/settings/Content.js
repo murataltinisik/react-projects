@@ -7,6 +7,7 @@ import '../../assets/scss/settings-scss/responsive.scss';
 
 // ? ASSETS
 import '../../assets/css/Link/link.scss';
+import '../../assets/css/Alert/alert.scss';
 
 // ? CONTENTS
 import GeneralPageContent from './contents/GeneralPageContent';
@@ -30,8 +31,8 @@ function Content() {
   return (
     <div id={Scss.ContentContainer} className="ContentContainerResp">
       <Switch>
-        <Route exact path={`${path}`} component={GeneralPageContent} />
-        <Route path={`${path}/generic`} component={GeneralPageContent} />
+        <Route exact path={`${path}`} component={GeneralPageContent}/>
+        <Route path={`${path}/generic`} component={GeneralPageContent}/>
         <Route
           path={`${path}/security-and-login`}
           component={SecurityAndLoginPageContent}

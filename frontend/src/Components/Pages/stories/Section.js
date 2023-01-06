@@ -25,9 +25,12 @@ function Section() {
     setImageStorySettings,
   } = useStory();
 
+  // * USER
+  const user = localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"))
+
   const menu = [
     {
-      name: 'Murat Altınışık',
+      name: user.name + " " + user.surname,
       image: [
         true,
         'https://scontent.fesb3-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p60x60&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=mvzbp2eS_CYAX8DfXqy&tn=U7RQGoxjCU6lu3jj&_nc_ht=scontent.fesb3-1.fna&oh=00_AT-Xdrff5jm5VpXa6c2u4Zde9_haBKlM2fohhIVyX9Drcw&oe=6358D9F8',

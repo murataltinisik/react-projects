@@ -17,7 +17,22 @@ import Navbar from './parts/Navbar';
 import RightNavbar from './parts/RightNavbar';
 import NewMessage from './parts/NewMessage';
 
-function Header() {
+// * REDUX
+import { connect } from 'react-redux'
+import { fetchUser } from "../../actions/User/user";
+import {useEffect, useState} from "react";
+
+function Header(props) {
+  // * STATE
+  const [isRequest, setIsRequest] = useState(false);
+
+  useEffect(() => {
+    if(!isRequest){
+      props.fetchUser(JSON.parse(localStorage.getItem("user")).id);
+      setIsRequest(true);
+    }
+  }, [isRequest]);
+
   return (
     <>
       <div id={Scss.HeaderContainer} className="HeaderContainer px-1">
@@ -39,4 +54,12 @@ function Header() {
   );
 }
 
-export default Header;
+const mapStateToProps = ({ user }) => {
+  return { user }
+}
+
+const mapDispatchToProps = {
+  fetchUser,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

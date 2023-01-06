@@ -6,7 +6,7 @@ import PopUpCard, { onOpenPopUp } from '../../../static/PopUpCard/PopUpCard';
 // * CONTEXT
 import { ShipmentDataProvider } from '../../../../Context/ShipmentDataContext';
 
-function shipment({ Scss }) {
+function shipment({ Scss, userData }) {
   // * POPUP
   const head = {
     label: 'ShipmentPopUpContainer',
@@ -33,7 +33,7 @@ function shipment({ Scss }) {
               className={`${Scss.whatDoYouThink} ml-1`}
               onClick={e => onOpenPopUp(e, 'ShipmentPopUpContainer')}
             >
-              Ne Düşünüyorsun, Murat?
+              Ne Düşünüyorsun, {userData && userData.name}?
             </div>
           </div>
 

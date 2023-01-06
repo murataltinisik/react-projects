@@ -32,44 +32,58 @@ import NotMatch from '../Pages/NotMatch/NotMatch';
 
 // * REACT ROUTER 5.2.0
 import { Switch, Route } from 'react-router-dom';
+import {useEffect, useMemo, useState} from "react";
 
 function FacebookRoutes() {
+  // * LOGIN STATE
+  const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin") ? localStorage.getItem("isLogin"):false);
+
   return (
     <Switch>
-      {/* HOME */}
-      <Route exact path="/" component={Home} />
+      {isLogin ?
+          <>
+            {/* HOME */}
+            <Route exact path="/" component={Home} />
 
-      {/* MESSAGES - NO COMPONENT */}
-      <Route path="/messages" component={Home} />
+            {/* MESSAGES - NO COMPONENT */}
+            <Route path="/messages" component={Home} />
 
-      {/* PROFILE */}
-      <Route path="/profile" component={Profile} />
+            {/* PROFILE */}
+            <Route path="/profile" component={Profile} />
 
-      {/* STORIES */}
-      <Route path="/stories" component={Stories} />
+            {/* STORIES */}
+            <Route path="/stories" component={Stories} />
 
-      {/* REELS */}
-      <Route path="/reels/:id" component={Reels} />
+            {/* REELS */}
+            <Route path="/reels/:id" component={Reels} />
 
-      {/* SETTINGS */}
-      <Route path="/settings" component={Settings} />
+            {/* SETTINGS */}
+            <Route path="/settings" component={Settings} />
 
-      {/* BOOKMARKS */}
-      <Route path="/bookmarks" component={Bookmarks} />
+            {/* BOOKMARKS */}
+            <Route path="/bookmarks" component={Bookmarks} />
 
-      {/* AUTHENTICATION */}
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/find-account" component={FindAccount} />
+            {/* WATCH */}
+            <Route path="/watch" component={Watch} />
 
-      {/* WATCH */}
-      <Route path="/watch" component={Watch} />
+            {/* FRIENDS */}
+            <Route path="/friends" component={Friends} />
 
-      {/* FRIENDS */}
-      <Route path="/friends" component={Friends} />
+            {/* NOT FOUND */}
+            <Route path="/*" component={NotMatch} />
+          </>
+          :
+          <>
+            {/* AUTHENTICATION */}
+            <Route exact path="/" component={Login}/>
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/register" component={Register}/>
+            <Route path="/find-account" component={FindAccount} />
+          </>
+      }
 
-      {/* NOT FOUND */}
-      <Route path="/*" component={NotMatch} />
+
+
     </Switch>
   );
 }

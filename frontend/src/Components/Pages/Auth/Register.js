@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 import '../../assets/css/Link/link.scss';
 import '../../assets/css/List/list.scss';
 import '../../assets/css/Input/input.scss';
+import '../../assets/css/Alert/alert.scss';
 import '../../assets/css/Display/flex.scss';
 import '../../assets/css/Button/button.scss';
 import '../../assets/css/WidthHeight/width-height.scss';
@@ -22,7 +23,11 @@ import '../../assets/scss/auth-scss/responsive/responsive.scss';
 // * REACT ROUTER 5.2.0
 import { NavLink } from 'react-router-dom';
 
-function Register() {
+// * REDUX COMPONENTS
+import { connect } from 'react-redux';
+import { registerUser } from '../../../actions/User/auth';
+
+function Register(props) {
   // * DAYS
   const days = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -48,6 +53,7 @@ function Register() {
   // * YEARS
   const years = [];
 
+  // YEARS
   for (let i = 0; i <= 100; i++) {
     let year = new Date().getFullYear();
     years.push(year - i);
@@ -88,7 +94,7 @@ function Register() {
     },
     validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      props.registerUser(values);
     },
   });
 
@@ -114,6 +120,20 @@ function Register() {
             <div className="hr mt-1"></div>
 
             <form onSubmit={formik.handleSubmit} className="p-1 pt-0 px-2">
+              {/* ALERT */}
+              {props.auth.user.error === "Already Reported" && (
+                <div className="alert alert-danger">
+                  E-Posta Adresiniz Geçersiz! Lütfen Farklı bir
+                  e-posta adresini kullanınız...
+                </div>
+              )}
+
+              {props.auth.user.createdAt && props.auth.user.createdAt.length > 0 && (
+                  <div className="alert alert-success">
+                    Kayıt Başarılı. Yönlendiriliyorsunuz...
+                  </div>
+              )}
+
               {/* NAME AND SURNAME */}
               <div className="input-group d-flex justify-content-center">
                 <div>
@@ -225,7 +245,11 @@ function Register() {
                     value={formik.values.day}
                   >
                     {days.map((day, i) => (
-                      <option value={i}>{day}</option>
+                      <option
+                        value={day.toString().length === 1 ? '0' + day : day}
+                      >
+                        {day}
+                      </option>
                     ))}
                   </select>
 
@@ -236,7 +260,13 @@ function Register() {
                     value={formik.values.month}
                   >
                     {months.map((month, i) => (
-                      <option value={i}>{month}</option>
+                      <option
+                        value={
+                          i.toString().length === 1 ? '0' + (i + 1) : i + 1
+                        }
+                      >
+                        {month}
+                      </option>
                     ))}
                   </select>
 
@@ -274,7 +304,7 @@ function Register() {
                       type="radio"
                       name="gender"
                       onChange={formik.handleChange}
-                      value="male"
+                      value="0"
                     />
                   </label>
 
@@ -284,7 +314,7 @@ function Register() {
                       type="radio"
                       name="gender"
                       onChange={formik.handleChange}
-                      value="female"
+                      value="1"
                     />
                   </label>
 
@@ -293,7 +323,7 @@ function Register() {
                     <input
                       type="radio"
                       name="gender"
-                      value="private"
+                      value="2"
                       onChange={formik.handleChange}
                     />
                   </label>
@@ -465,4 +495,12 @@ function Register() {
   );
 }
 
-export default Register;
+const mapStateToProps = ({ auth }) => {
+  return { auth };
+};
+
+const mapDispatchToProps = {
+  registerUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

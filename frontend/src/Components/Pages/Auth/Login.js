@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 // ? FORMIK
 import { useFormik } from 'formik';
@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 // ? ASSETS -> CSS
 import '../../assets/css/Link/link.scss';
 import '../../assets/css/List/list.scss';
+import '../../assets/css/Alert/alert.scss';
 import '../../assets/css/Input/input.scss';
 import '../../assets/css/Button/button.scss';
 import '../../assets/css/MarginPadding/margin-padding.scss';
@@ -19,7 +20,13 @@ import Scss from '../../assets/scss/auth-scss/style.module.scss';
 // * REACT ROUTER 5.2.0
 import { NavLink } from 'react-router-dom';
 
-function Login() {
+// * REDUX COMPONENTS
+import { connect } from 'react-redux';
+import { loginUser } from '../../../actions/User/auth';
+
+function Login(props) {
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const validationSchema = Yup.object({
     emailOrNumber: Yup.string()
       .max(70, 'Email Adresiniz En fazla 70 karakterli olmalıdır!!!')
@@ -37,7 +44,8 @@ function Login() {
     },
     validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      props.loginUser(values);
+      setIsSubmit(true);
     },
   });
 
@@ -59,6 +67,28 @@ function Login() {
           {/* FORM */}
           <div className={Scss.container}>
             <form onSubmit={formik.handleSubmit}>
+              {localStorage.getItem("redirect_type") === "CHANGE_PASSWORD" &&
+                <div className="alert alert-info">
+                  Şifreniz Değiştirildiği için, tekrar giriş yapmanız gerekiyor...
+                </div>
+              }
+
+              {isSubmit && (props.auth.user === "NOT_FOUND" ? (
+                    <div className="alert alert-danger">Lütfen E-Posta veya Şifrenizi Kontrol ediniz!!!</div>
+                ):(
+                    props.auth.user === undefined ? (
+                        <div className="alert alert-danger">
+                          Şifreniz Hatalı!!!
+                        </div>
+                    ):(
+                        <div className="alert alert-success">
+                          Giriş Başarılı...
+                        </div>
+                    )
+                )
+              )}
+
+
               <div className="input-group">
                 <input
                   type="text"
@@ -108,7 +138,9 @@ function Login() {
               </div>
 
               <div className="input-group">
-                <button className="primary-btn">Giriş Yap</button>
+                <button type="submit" className="primary-btn">
+                  Giriş Yap
+                </button>
                 <div className="br"></div>
                 <NavLink to="/find-account" className="primary-link">
                   Şifreni mi Unuttun?
@@ -260,4 +292,12 @@ function Login() {
   );
 }
 
-export default Login;
+const mapStateToProps = ({ auth }) => {
+  return { auth };
+};
+
+const mapDispatchToProps = {
+  loginUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

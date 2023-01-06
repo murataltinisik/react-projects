@@ -16,6 +16,10 @@ import {
   onRunUpdateComponent,
 } from '../TabProperty/TabProperty';
 
+// * REDUX
+import { connect } from "react-redux";
+import { updateUser } from "../../../../actions/User/newUser";
+
 class GeneralPageContent extends Component {
   constructor() {
     super();
@@ -23,27 +27,41 @@ class GeneralPageContent extends Component {
       name: '',
       username: '',
       contact: '',
+      user: localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"))
     };
   }
-
   componentDidUpdate() {
     onRunUpdateComponent(this.props.location.search);
   }
 
   // *
   onSubmitName = e => {
-    // return this.state.name;
     e.preventDefault();
+    if(this.state.name.length >= 5){
+      const name = this.state.name.split(" ")[0];
+      const surname = this.state.name.split(" ")[1];
+
+      this.state.user.name = name;
+      this.state.user.surname = surname;
+
+      this.props.updateUser(this.state.user);
+    }
   };
 
   onSubmitUserName = e => {
-    // return this.state.username;
     e.preventDefault();
+    if(this.state.username.length >= 5){
+      this.state.user.username = this.state.username;
+      this.props.updateUser(this.state.user);
+    }
   };
 
   onSubmitContact = e => {
-    // return this.state.contact;
     e.preventDefault();
+    if(this.state.contact.length >= 10){
+      this.state.user.emailPhone = this.state.contact;
+      this.props.updateUser(this.state.user);
+    }
   };
 
   render() {
@@ -58,7 +76,9 @@ class GeneralPageContent extends Component {
             <li id="name" className="parentTab">
               <NavLink to={`${this.props.match.url}?section=name`}>
                 <p className={Scss.title}>Adın</p>
-                <p className={Scss.info}>Murat Altınışık</p>
+                <p className={Scss.info}>
+                  {this.state.user && `${this.state.user.name} ${this.state.user.surname}`}
+                </p>
                 <button className={Scss.action}>
                   <FontAwesomeIcon icon={faPencil} />
                   <span>Düzenle</span>
@@ -83,7 +103,9 @@ class GeneralPageContent extends Component {
             <li id="username" className="parentTab">
               <NavLink to={`${this.props.match.url}?section=username`}>
                 <p className={Scss.title}>Kullanıcı Adı</p>
-                <p className={Scss.info}>Bir Kullanıcı adı Belirlemedin.</p>
+                <p className={Scss.info}>
+                  {this.state.user && this.state.user.username ? `${this.state.user && this.state.user.username}`:"Bir Kullanıcı Adı Belirtmediniz."}
+                </p>
                 <button className={Scss.action}>
                   <FontAwesomeIcon icon={faPencil} />
                   <span>Düzenle</span>
@@ -109,8 +131,8 @@ class GeneralPageContent extends Component {
               <NavLink to={`${this.props.match.url}?section=contact`}>
                 <p className={Scss.title}>İletişim</p>
                 <p className={Scss.info}>
-                  <span>Ana:</span>
-                  altinisikmurat396@gmail.com
+                  <span>Ana: </span>
+                  {this.state.user && `${this.state.user.emailPhone}`}
                 </p>
                 <button className={Scss.action}>
                   <FontAwesomeIcon icon={faPencil} />
@@ -171,4 +193,12 @@ class GeneralPageContent extends Component {
   }
 }
 
-export default GeneralPageContent;
+const mapStateToProps = ({ newUser }) => {
+  return { newUser }
+}
+
+const mapDispatchToProps = {
+  updateUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GeneralPageContent);
